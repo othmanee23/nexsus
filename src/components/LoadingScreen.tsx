@@ -103,7 +103,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
 
               {/* Monospace Metadata & Percentage */}
               <div className="w-full flex items-center justify-between text-[10px] sm:text-xs font-mono tracking-widest text-black/40 uppercase">
-                <span>CASABLANCA</span>
+                <span>TEMARA</span>
                 <span>{progress}%</span>
               </div>
             </div>
@@ -116,7 +116,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
             transition={{ delay: 0.6, duration: 0.6 }}
             className="absolute bottom-8 text-[10px] tracking-widest uppercase font-mono text-black/40"
           >
-            NEXSUS GROUP • 2026
+            NEXSUS PROJECT SARL • 2026
           </motion.div>
         </motion.div>
       )}

@@ -40,6 +40,17 @@ export const NexsusLogo: React.FC<NexsusLogoProps> = ({
     );
   }
 
+  if (!invert && !fillColor) {
+    return (
+      <img
+        src="/images/nexsus-logo-og.jpeg"
+        alt="NEXSUS"
+        className={className}
+        loading="eager"
+      />
+    );
+  }
+
   return (
     <svg
       viewBox="0 0 969 183"

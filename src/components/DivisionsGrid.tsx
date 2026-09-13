@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
+import { copy, Language } from '../i18n';
 
 export interface DivisionItem {
   id: string;
@@ -15,66 +16,137 @@ export interface DivisionItem {
 interface DivisionsGridProps {
   onSelectDivision: (id: string) => void;
   onOpenContact: () => void;
+  language: Language;
 }
 
-const DIVISIONS: DivisionItem[] = [
-  {
-    id: 'amaris',
-    code: '01',
-    name: 'AMARIS',
-    subtitle: 'BRAND & VISUAL SYSTEMS',
-    description:
-      'Logos, interfaces, and visual systems for sovereign enterprises that choose substance over market noise. Dynamic architectures built to define category leadership.',
-    bullets: [
-      'Brand architecture & guidelines',
-      'Bespoke creative direction',
-      'Digital design systems',
-    ],
-    image: '/images/division-amaris.jpg',
-  },
-  {
-    id: 'projects',
-    code: '02',
-    name: 'PROJECTS',
-    subtitle: 'BUILT ENVIRONMENT & ARCHITECTURE',
-    description:
-      'Architecture, interior fit-outs, and physical monoliths engineered to endure for decades. Precision construction meeting contemporary functional luxury.',
-    bullets: [
-      'Architectural masterplanning',
-      'High-specification fit-outs',
-      'Environmental spatial branding',
-    ],
-    image: '/images/division-projects.jpg',
-  },
-  {
-    id: 'technology',
-    code: '03',
-    name: 'TECHNOLOGY',
-    subtitle: 'SYSTEMS & COMPUTATION',
-    description:
-      'Enterprise software platforms, computational systems, and custom digital tooling. High-concurrency infrastructures delivering uncompromised resilience.',
-    bullets: [
-      'Distributed cloud infrastructure',
-      'Scalable systems engineering',
-      'Computational tooling & APIs',
-    ],
-    image: '/images/division-technology.jpg',
-  },
-  {
-    id: 'ventures',
-    code: '04',
-    name: 'VENTURES',
-    subtitle: 'CAPITAL & CONSUMER BRANDS',
-    description:
-      'Incubation of proprietary consumer brands, direct capital allocation, and sovereign operating holdings. Cultivating long-term enterprise equity.',
-    bullets: [
-      'Direct-to-consumer incubation',
-      'Strategic capital deployment',
-      'Long-term equity governance',
-    ],
-    image: '/images/division-ventures.jpg',
-  },
-];
+const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
+  en: [
+    {
+      id: 'amaris',
+      code: '01',
+      name: 'AMARIS',
+      subtitle: 'BRAND & VISUAL SYSTEMS',
+      description:
+        'Logos, interfaces, and visual systems for sovereign enterprises that choose substance over market noise. Dynamic architectures built to define category leadership.',
+      bullets: ['Brand architecture & guidelines', 'Bespoke creative direction', 'Digital design systems'],
+      image: '/images/division-amaris.jpg',
+    },
+    {
+      id: 'projects',
+      code: '02',
+      name: 'PROJECTS',
+      subtitle: 'BUILT ENVIRONMENT & ARCHITECTURE',
+      description:
+        'Architecture, interior fit-outs, and physical monoliths engineered to endure for decades. Precision construction meeting contemporary functional luxury.',
+      bullets: ['Architectural masterplanning', 'High-specification fit-outs', 'Environmental spatial branding'],
+      image: '/images/division-projects.jpg',
+    },
+    {
+      id: 'technology',
+      code: '03',
+      name: 'TECHNOLOGY',
+      subtitle: 'SYSTEMS & COMPUTATION',
+      description:
+        'Enterprise software platforms, computational systems, and custom digital tooling. High-concurrency infrastructures delivering uncompromised resilience.',
+      bullets: ['Distributed cloud infrastructure', 'Scalable systems engineering', 'Computational tooling & APIs'],
+      image: '/images/division-technology.jpg',
+    },
+    {
+      id: 'ventures',
+      code: '04',
+      name: 'VENTURES',
+      subtitle: 'CAPITAL & CONSUMER BRANDS',
+      description:
+        'Incubation of proprietary consumer brands, direct capital allocation, and sovereign operating holdings. Cultivating long-term enterprise equity.',
+      bullets: ['Direct-to-consumer incubation', 'Strategic capital deployment', 'Long-term equity governance'],
+      image: '/images/division-ventures.jpg',
+    },
+  ],
+  fr: [
+    {
+      id: 'amaris',
+      code: '01',
+      name: 'AMARIS',
+      subtitle: 'MARQUE & SYSTÈMES VISUELS',
+      description:
+        'Logos, interfaces et systèmes visuels pour les entreprises qui privilégient la substance au bruit du marché. Des architectures de marque pensées pour durer.',
+      bullets: ['Architecture de marque & guidelines', 'Direction créative sur mesure', 'Systèmes de design digital'],
+      image: '/images/division-amaris.jpg',
+    },
+    {
+      id: 'projects',
+      code: '02',
+      name: 'PROJECTS',
+      subtitle: 'ENVIRONNEMENT BÂTI & ARCHITECTURE',
+      description:
+        'Architecture, aménagement intérieur et exécution d’espaces durables. Une construction précise au service d’une fonctionnalité contemporaine.',
+      bullets: ['Planification architecturale', 'Aménagements haut de gamme', 'Branding spatial et environnemental'],
+      image: '/images/division-projects.jpg',
+    },
+    {
+      id: 'technology',
+      code: '03',
+      name: 'TECHNOLOGY',
+      subtitle: 'SYSTÈMES & COMPUTATION',
+      description:
+        'Plateformes logicielles, systèmes numériques et outils digitaux sur mesure. Des infrastructures résilientes pour les opérations ambitieuses.',
+      bullets: ['Infrastructure cloud distribuée', 'Ingénierie de systèmes scalables', 'Outils numériques & APIs'],
+      image: '/images/division-technology.jpg',
+    },
+    {
+      id: 'ventures',
+      code: '04',
+      name: 'VENTURES',
+      subtitle: 'CAPITAL & MARQUES CONSUMER',
+      description:
+        'Incubation de marques propriétaires, allocation directe du capital et construction de participations opérationnelles à long terme.',
+      bullets: ['Incubation direct-to-consumer', 'Déploiement stratégique du capital', 'Gouvernance long terme'],
+      image: '/images/division-ventures.jpg',
+    },
+  ],
+  ar: [
+    {
+      id: 'amaris',
+      code: '01',
+      name: 'AMARIS',
+      subtitle: 'الهوية البصرية وأنظمة العلامة',
+      description:
+        'شعارات وواجهات وأنظمة بصرية للمؤسسات التي تختار الجوهر بدل ضجيج السوق. بنى إبداعية مصممة لبناء حضور قوي ومستدام.',
+      bullets: ['هندسة العلامة ودلائلها', 'إدارة إبداعية مخصصة', 'أنظمة تصميم رقمية'],
+      image: '/images/division-amaris.jpg',
+    },
+    {
+      id: 'projects',
+      code: '02',
+      name: 'PROJECTS',
+      subtitle: 'البناء والعمارة الداخلية',
+      description:
+        'عمارة وتجهيز داخلي وتنفيذ فضاءات مصممة لتدوم. دقة في البناء تجمع بين الوظيفة المعاصرة والجودة العالية.',
+      bullets: ['تخطيط معماري', 'تجهيزات عالية المواصفات', 'هوية مكانية وتجارية'],
+      image: '/images/division-projects.jpg',
+    },
+    {
+      id: 'technology',
+      code: '03',
+      name: 'TECHNOLOGY',
+      subtitle: 'الأنظمة والحلول الرقمية',
+      description:
+        'منصات برمجية للمؤسسات، أنظمة رقمية وأدوات مخصصة. بنية تقنية مرنة تخدم العمليات الطموحة.',
+      bullets: ['بنية سحابية موزعة', 'هندسة أنظمة قابلة للتوسع', 'أدوات رقمية وواجهات API'],
+      image: '/images/division-technology.jpg',
+    },
+    {
+      id: 'ventures',
+      code: '04',
+      name: 'VENTURES',
+      subtitle: 'رأس المال والمشاريع',
+      description:
+        'احتضان علامات ومنتجات خاصة، توظيف مباشر لرأس المال، وبناء شركات تشغيلية ذات قيمة طويلة المدى.',
+      bullets: ['احتضان علامات استهلاكية', 'توظيف استراتيجي لرأس المال', 'حوكمة طويلة المدى'],
+      image: '/images/division-ventures.jpg',
+    },
+  ],
+};
 
 const DivisionRow: React.FC<{
   division: DivisionItem;
@@ -82,7 +154,8 @@ const DivisionRow: React.FC<{
   isActive: boolean;
   onHover: () => void;
   onSelect: (id: string) => void;
-}> = ({ division, index, isActive, onHover, onSelect }) => {
+  viewLabel: string;
+}> = ({ division, index, isActive, onHover, onSelect, viewLabel }) => {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -128,7 +201,7 @@ const DivisionRow: React.FC<{
           className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 z-30 hidden lg:flex w-20 h-20 rounded-full bg-black text-white flex-col items-center justify-center gap-0.5 text-[11px] font-mono font-medium tracking-widest uppercase shadow-2xl"
         >
           <div className="flex items-center gap-1">
-            <span>VIEW</span>
+            <span>{viewLabel}</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </div>
         </motion.div>
@@ -223,9 +296,12 @@ const DivisionRow: React.FC<{
 
 export const DivisionsGrid: React.FC<DivisionsGridProps> = ({
   onSelectDivision,
+  language,
 }) => {
   // Default to first row active, changes on hover
-  const [activeId, setActiveId] = useState<string>(DIVISIONS[0].id);
+  const divisions = DIVISIONS_BY_LANGUAGE[language];
+  const [activeId, setActiveId] = useState<string>(divisions[0].id);
+  const t = copy[language];
 
   return (
     <section id="divisions-grid" className="w-full bg-white">
@@ -240,22 +316,18 @@ export const DivisionsGrid: React.FC<DivisionsGridProps> = ({
         >
           <div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-black uppercase leading-[1.08]">
-              THE OPERATING
-              <br />
-              DISCIPLINES
-              <br />
-              FRAMEWORK
+              {t.disciplinesTitle}
             </h2>
           </div>
           <div className="text-xs sm:text-sm font-mono tracking-wider uppercase text-black/50">
-            NEXSUS OPERATING MODEL • 01 — 04
+            {t.operatingModel}
           </div>
         </motion.div>
       </div>
 
       {/* Accordion List of Divisions */}
       <div className="w-full">
-        {DIVISIONS.map((division, index) => (
+        {divisions.map((division, index) => (
           <DivisionRow
             key={division.id}
             index={index}
@@ -263,6 +335,7 @@ export const DivisionsGrid: React.FC<DivisionsGridProps> = ({
             isActive={activeId === division.id}
             onHover={() => setActiveId(division.id)}
             onSelect={onSelectDivision}
+            viewLabel={t.view}
           />
         ))}
       </div>

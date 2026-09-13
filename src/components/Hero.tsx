@@ -1,14 +1,17 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { InteractiveHeroLogo } from './InteractiveHeroLogo';
+import { copy, Language } from '../i18n';
 
 interface HeroProps {
   onOpenContact: () => void;
   onSelectDivision?: (divisionId: 'amaris' | 'projects' | 'technology' | 'ventures') => void;
+  language: Language;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision, language }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const t = copy[language];
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -63,10 +66,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision }) =
           >
             <div className="flex items-center gap-2 text-black">
               <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
-              <span className="font-semibold">INDEPENDENT GROUP</span>
+              <span className="font-semibold">{t.independentGroup}</span>
             </div>
-            <p className="text-black/60">33.5731° N, 7.5898° W • CASABLANCA</p>
-            <p className="text-[10px] text-black/40">EST. 2026 // ALL RIGHTS RESERVED</p>
+            <p className="text-black/60">33.9265° N, 6.9123° W • {t.heroLocation}</p>
+            <p className="text-[10px] text-black/40">{t.rights}</p>
           </motion.div>
 
           {/* Right Block: Strictly on Right */}
@@ -78,9 +81,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision }) =
             className="flex flex-col space-y-6 sm:space-y-8 max-w-2xl lg:max-w-3xl"
           >
             <p className="text-lg sm:text-xl lg:text-2xl font-light tracking-[-0.015em] leading-[1.35] text-black">
-              Logos, spaces, interfaces, and capital allocation for sovereign entities that choose{' '}
+              {t.heroLead}{' '}
               <span className="font-medium text-black underline decoration-black/25 underline-offset-6">
-                substance over noise
+                {t.heroEmphasis}
               </span>
               .
             </p>
@@ -115,7 +118,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision }) =
                 onClick={onOpenContact}
                 className="text-[11px] font-mono tracking-widest uppercase px-3.5 py-1.5 bg-black text-white hover:bg-black/80 transition-colors cursor-pointer"
               >
-                CONNECT →
+                {t.connect} →
               </button>
             </motion.div>
           </motion.div>

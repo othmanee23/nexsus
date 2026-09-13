@@ -1,7 +1,8 @@
 import React, { useEffect, useId, useState } from 'react';
 import { motion } from 'motion/react';
 import { X, Check, ArrowRight } from 'lucide-react';
-import { CONTACT_EMAIL } from '../config';
+import { CONTACT_EMAIL, FORMATTED_PHONE } from '../config';
+import { copy, Language } from '../i18n';
 
 const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY || '';
 
@@ -26,12 +27,14 @@ interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
   preselectedDivision?: string;
+  language: Language;
 }
 
 export const ContactModal: React.FC<ContactModalProps> = ({
   isOpen,
   onClose,
   preselectedDivision,
+  language,
 }) => {
   const [selectedDivision, setSelectedDivision] = useState<string>(
     preselectedDivision || 'group'
@@ -47,6 +50,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const turnstileId = useId().replace(/:/g, '');
+  const t = copy[language];
 
   useEffect(() => {
     if (!isOpen || !turnstileSiteKey || turnstileWidgetId) return;
@@ -175,13 +179,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
             <div className="space-y-2">
               <span className="text-[11px] font-sans tracking-widest text-black/60 uppercase">
-                INQUIRY DISPATCHED • REF: NX-2026-921
+                {t.sentRef}
               </span>
               <h3 className="text-3xl font-normal tracking-tight text-black">
-                Transmission received.
+                {t.sentTitle}
               </h3>
               <p className="text-sm text-black/70 font-light leading-relaxed max-w-md">
-                Thank you, <span className="text-black font-medium">{name}</span>. The NEXSUS executive team will evaluate your inquiry across the relevant division and establish contact within 24 business hours.
+                <span className="text-black font-medium">{name}</span>, {t.sentBody}
               </p>
             </div>
 
@@ -190,7 +194,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 onClick={handleReset}
                 className="inline-flex items-center gap-2 text-xs font-sans tracking-widest uppercase text-black hover:opacity-60 transition-opacity cursor-pointer border-b border-black pb-0.5"
               >
-                <span>RETURN TO OVERVIEW</span>
+                <span>{t.returnOverview}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -199,13 +203,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({
           <div className="space-y-8">
             <div className="space-y-2">
               <div className="text-[11px] font-sans tracking-widest text-black/60 uppercase">
-                DIRECT ENGAGEMENT
+                {t.directEngagement}
               </div>
               <h3 className="text-2xl sm:text-3xl font-normal tracking-tight text-black">
-                Start a <span className="font-editorial-italic font-normal text-3xl sm:text-4xl">conversation.</span>
+                {t.startConversation}
               </h3>
               <p className="text-xs sm:text-sm text-black/60 font-light">
-                Direct your proposal or partnership inquiry to the appropriate operating discipline.
+                {t.contactIntro}
               </p>
             </div>
 
@@ -224,11 +228,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               {/* Discipline Selector */}
               <div className="space-y-2">
                 <label className="text-[11px] font-sans tracking-wider text-black uppercase block">
-                  Select Relevant Division:
+                  {t.selectDivision}
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-sans">
                   {[
-                    { id: 'group', label: 'GROUP LEVEL' },
+                    { id: 'group', label: t.groupLevel.toUpperCase() },
                     { id: 'amaris', label: '01 / AMARIS' },
                     { id: 'projects', label: '02 / PROJECTS' },
                     { id: 'technology', label: '03 / TECH & SOL' },
@@ -254,7 +258,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-sans tracking-wider text-black/60 uppercase">
-                    Your Name *
+                    {t.nameLabel}
                   </label>
                   <input
                     type="text"
@@ -268,7 +272,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-sans tracking-wider text-black/60 uppercase">
-                    Organization / Entity
+                    {t.organizationLabel}
                   </label>
                   <input
                     type="text"
@@ -282,7 +286,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
               <div className="space-y-1.5">
                 <label className="text-[11px] font-sans tracking-wider text-black/60 uppercase">
-                  Email Address *
+                  {t.emailLabel}
                 </label>
                 <input
                   type="email"
@@ -296,7 +300,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
               <div className="space-y-1.5">
                 <label className="text-[11px] font-sans tracking-wider text-black/60 uppercase">
-                  Brief / Opportunity Description *
+                  {t.messageLabel}
                 </label>
                 <textarea
                   required
@@ -319,11 +323,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               <div className="pt-2">
                 {error ? (
                   <p className="mb-3 text-xs text-red-700 font-sans" role="alert">
-                    {error} You can also email us directly at{' '}
+                    {error} {t.errorFallback}{' '}
                     <a className="underline underline-offset-2" href={`mailto:${CONTACT_EMAIL}`}>
                       {CONTACT_EMAIL}
                     </a>
-                    .
+                    {' '}or {FORMATTED_PHONE}.
                   </p>
                 ) : null}
                 <button
@@ -331,7 +335,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   disabled={submitting}
                   className="w-full bg-black text-white py-3.5 text-xs font-sans tracking-widest uppercase hover:bg-black/85 transition-colors cursor-pointer flex items-center justify-center gap-2"
                 >
-                  <span>{submitting ? 'TRANSMITTING...' : 'TRANSMIT INQUIRY'}</span>
+                  <span>{submitting ? t.submitting : t.submit}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

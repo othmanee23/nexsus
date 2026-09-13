@@ -1,12 +1,16 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { NeuralSphere } from './NeuralSphere';
+import { copy, Language } from '../i18n';
 
 interface AboutSectionProps {
   onOpenContact?: () => void;
+  language: Language;
 }
 
-export const AboutSection: React.FC<AboutSectionProps> = () => {
+export const AboutSection: React.FC<AboutSectionProps> = ({ language }) => {
+  const t = copy[language];
+
   return (
     <section
       id="about"
@@ -23,7 +27,7 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
             className="text-xs sm:text-sm font-sans font-medium tracking-wider uppercase text-black"
           >
-            02 — ABOUT NEXSUS
+            {t.aboutLabel}
           </motion.div>
 
           {/* Glowing Neural Particle Sphere Box */}
@@ -48,9 +52,7 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-black uppercase leading-[1.08]"
           >
-            CROSS-DISCIPLINARY
-            <br />
-            OPERATING MATRIX
+            {t.aboutTitle}
           </motion.h2>
 
           {/* 2-Column Editorial Manifesto */}
@@ -63,11 +65,9 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
               transition={{ duration: 0.75, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
             >
               <p>
-                NEXSUS operates at the nexus of brand culture, built environment, computational
-                architecture, and long-term capital allocation. Rather than fragmenting intent
-                across isolated agencies, our unified operating model eliminates the distance
-                between strategic vision and material execution.
+                {t.aboutBody}
               </p>
+              <p className="mt-4">{t.aboutBody2}</p>
             </motion.div>
 
             {/* Right Paragraph: Philosophy of Action */}
@@ -79,17 +79,10 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
               className="space-y-4 text-black/75"
             >
               <p>
-                <strong className="text-black font-medium">Permanence Over Noise</strong> —
-                Market trends dissipate and hype cycles fade, but enduring enterprise value is
-                rooted in architectural rigor and operational substance. Every venture, physical
-                space, and computational platform we construct is engineered to outlast cyclical
-                disruption.
+                <strong className="text-black font-medium">{t.permanenceTitle}</strong> — {t.permanence}
               </p>
               <p>
-                <strong className="text-black font-medium">Precision in Execution</strong> —
-                Ideas reveal their truth only when shaped, engineered, and deployed. We partner
-                with sovereign enterprises to build enduring institutions defined by uncompromised
-                craftsmanship.
+                <strong className="text-black font-medium">{t.precisionTitle}</strong> — {t.precision}
               </p>
             </motion.div>
           </div>
@@ -98,16 +91,16 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
           <div className="mt-12 sm:mt-16 border-t border-black/10">
             {[
               {
-                title: 'CORE OPERATING DIVISIONS',
-                desc: 'Amaris • Projects • Tech • Ventures',
+                title: t.coreDivisions,
+                desc: t.coreDivisionsDesc,
               },
               {
-                title: 'HEADQUARTERS & GEOGRAPHIC REACH',
-                desc: 'Casablanca, Morocco • Global Mandates',
+                title: t.headquarters,
+                desc: t.headquartersDesc,
               },
               {
-                title: 'CAPITAL GOVERNANCE & STRUCTURE',
-                desc: '100% Sovereign & Independent',
+                title: t.legalStructure,
+                desc: t.legalStructureDesc,
               },
             ].map((item, idx) => (
               <motion.div

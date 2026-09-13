@@ -2,16 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { NexsusLogo } from './NexsusLogo';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { copy, LANGUAGES, Language } from '../i18n';
 
 interface HeaderProps {
   onOpenContact: () => void;
   onNavigate?: (sectionId: string) => void;
+  language: Language;
+  onLanguageChange: (language: Language) => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLanguageChange }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [timeString, setTimeString] = useState('');
+  const t = copy[language];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,27 +79,43 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
               onClick={() => scrollToSection('divisions-grid')}
               className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
             >
-              SERVICES
+              {t.services}
             </button>
             <button
               onClick={() => scrollToSection('about')}
               className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
             >
-              ABOUT
+              {t.about}
             </button>
           </nav>
 
           {/* Right: GMT Time & Underlined "GET IN TOUCH →" */}
-          <div className="flex items-center space-x-6 sm:space-x-8">
+          <div className="flex items-center space-x-4 sm:space-x-6">
             <span className="hidden sm:inline-block text-xs font-mono tracking-wider text-black/80">
               {timeString}
             </span>
+
+            <div className="hidden sm:flex items-center gap-1 border border-black/15 p-0.5">
+              {LANGUAGES.map((item) => (
+                <button
+                  key={item.code}
+                  type="button"
+                  onClick={() => onLanguageChange(item.code)}
+                  className={`px-2 py-1 text-[10px] font-mono uppercase transition-colors ${
+                    language === item.code ? 'bg-black text-white' : 'text-black/60 hover:text-black'
+                  }`}
+                  aria-pressed={language === item.code}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
 
             <button
               onClick={onOpenContact}
               className="inline-flex items-center gap-1.5 text-xs font-medium tracking-wider uppercase text-black hover:opacity-60 transition-opacity cursor-pointer border-b border-black pb-0.5 group focus:outline-none"
             >
-              <span>GET IN TOUCH</span>
+              <span>{t.getInTouch}</span>
               <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </button>
 
@@ -138,27 +158,43 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
                   onClick={() => scrollToSection('divisions-grid')}
                   className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
                 >
-                  SERVICES
+                  {t.services}
                 </button>
                 <button
                   onClick={() => scrollToSection('about')}
                   className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
                 >
-                  ABOUT
+                  {t.about}
                 </button>
               </nav>
 
               {/* Right: GMT Time & Underlined "GET IN TOUCH →" */}
-              <div className="flex items-center space-x-6 sm:space-x-8">
+              <div className="flex items-center space-x-4 sm:space-x-6">
                 <span className="hidden sm:inline-block text-xs font-mono tracking-wider text-black/80">
                   {timeString}
                 </span>
+
+                <div className="hidden sm:flex items-center gap-1 border border-black/15 p-0.5">
+                  {LANGUAGES.map((item) => (
+                    <button
+                      key={item.code}
+                      type="button"
+                      onClick={() => onLanguageChange(item.code)}
+                      className={`px-2 py-1 text-[10px] font-mono uppercase transition-colors ${
+                        language === item.code ? 'bg-black text-white' : 'text-black/60 hover:text-black'
+                      }`}
+                      aria-pressed={language === item.code}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
 
                 <button
                   onClick={onOpenContact}
                   className="inline-flex items-center gap-1.5 text-xs font-medium tracking-wider uppercase text-black hover:opacity-60 transition-opacity cursor-pointer border-b border-black pb-0.5 group focus:outline-none"
                 >
-                  <span>GET IN TOUCH</span>
+                  <span>{t.getInTouch}</span>
                   <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
                 </button>
 
@@ -188,27 +224,43 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
           >
             <div className="space-y-8 pt-4">
               <div className="text-[11px] font-mono tracking-widest text-black/50 uppercase">
-                NAVIGATION
+                {t.navigation}
               </div>
               <div className="flex flex-col space-y-6 text-xl font-medium tracking-tight text-black uppercase">
                 <button
                   onClick={() => scrollToSection('divisions-grid')}
                   className="text-left hover:opacity-60 transition-opacity cursor-pointer"
                 >
-                  SERVICES
+                  {t.services}
                 </button>
                 <button
                   onClick={() => scrollToSection('about')}
                   className="text-left hover:opacity-60 transition-opacity cursor-pointer"
                 >
-                  ABOUT NEXSUS
+                  {t.aboutNexsus}
                 </button>
+              </div>
+              <div className="flex items-center gap-2 pt-2">
+                {LANGUAGES.map((item) => (
+                  <button
+                    key={item.code}
+                    type="button"
+                    onClick={() => onLanguageChange(item.code)}
+                    className={`px-3 py-2 border text-xs font-mono uppercase ${
+                      language === item.code
+                        ? 'bg-black text-white border-black'
+                        : 'border-black/20 text-black/70'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
               </div>
             </div>
 
             <div className="pt-8 border-t border-black/10 space-y-4">
               <div className="flex justify-between items-center text-xs font-mono tracking-wider text-black/60 uppercase">
-                <span>CASABLANCA / 2026</span>
+                <span>{t.heroLocation} / 2026</span>
                 <span>{timeString}</span>
               </div>
               <button
@@ -218,7 +270,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
                 }}
                 className="w-full py-3.5 bg-black text-white text-xs font-medium tracking-widest uppercase flex items-center justify-center gap-2 cursor-pointer hover:bg-black/90 transition-colors"
               >
-                <span>GET IN TOUCH</span>
+                <span>{t.getInTouch}</span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
             </div>

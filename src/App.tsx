@@ -7,10 +7,13 @@ import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { LoadingScreen } from './components/LoadingScreen';
+import { LANGUAGES, Language } from './i18n';
 
 export const App: React.FC = () => {
   const [contactOpen, setContactOpen] = useState(false);
   const [contactDivision, setContactDivision] = useState<string>('group');
+  const [language, setLanguage] = useState<Language>('en');
+  const dir = LANGUAGES.find((item) => item.code === language)?.dir || 'ltr';
 
   const handleOpenContact = (divisionId = 'group') => {
     setContactDivision(divisionId);
@@ -25,7 +28,11 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-white text-black selection:bg-black selection:text-white flex flex-col justify-between">
+    <div
+      dir={dir}
+      lang={language === 'ar' ? 'ar-MA' : language === 'fr' ? 'fr-MA' : 'en-MA'}
+      className="min-h-screen w-full bg-white text-black selection:bg-black selection:text-white flex flex-col justify-between"
+    >
       {/* Intro Loading Screen with Centered Logo & Zoom-Out Website Entry */}
       <LoadingScreen durationMs={1600} />
 
@@ -33,6 +40,8 @@ export const App: React.FC = () => {
       <Header
         onOpenContact={() => handleOpenContact('group')}
         onNavigate={handleNavigate}
+        language={language}
+        onLanguageChange={setLanguage}
       />
 
       {/* Main Content: Hero, Disciplines Interactive Grid, and About The Brand */}
@@ -40,17 +49,20 @@ export const App: React.FC = () => {
         <Hero
           onOpenContact={() => handleOpenContact('group')}
           onSelectDivision={(id) => handleOpenContact(id)}
+          language={language}
         />
 
         {/* Divisions Interactive Showcase & Cards Grid */}
         <DivisionsGrid
           onSelectDivision={(id) => handleOpenContact(id)}
           onOpenContact={() => handleOpenContact('group')}
+          language={language}
         />
 
         {/* High-Level About The Brand Section */}
         <AboutSection
           onOpenContact={() => handleOpenContact('group')}
+          language={language}
         />
       </main>
 
@@ -59,6 +71,7 @@ export const App: React.FC = () => {
         onNavigate={handleNavigate}
         onOpenContact={() => handleOpenContact('group')}
         onSelectDivision={(id) => handleOpenContact(id)}
+        language={language}
       />
 
       {/* Interactive Contact Modal */}
@@ -66,6 +79,7 @@ export const App: React.FC = () => {
         isOpen={contactOpen}
         onClose={() => setContactOpen(false)}
         preselectedDivision={contactDivision}
+        language={language}
       />
 
       <Analytics />
