@@ -12,8 +12,19 @@ import { LANGUAGES, Language } from './i18n';
 export const App: React.FC = () => {
   const [contactOpen, setContactOpen] = useState(false);
   const [contactDivision, setContactDivision] = useState<string>('group');
-  const [language, setLanguage] = useState<Language>('en');
+  const initialLanguage = (): Language => {
+    if (window.location.pathname.startsWith('/fr')) return 'fr';
+    if (window.location.pathname.startsWith('/ar')) return 'ar';
+    return 'en';
+  };
+  const [language, setLanguageState] = useState<Language>(initialLanguage);
   const dir = LANGUAGES.find((item) => item.code === language)?.dir || 'ltr';
+
+  const setLanguage = (nextLanguage: Language) => {
+    setLanguageState(nextLanguage);
+    const nextPath = nextLanguage === 'en' ? '/' : `/${nextLanguage}/`;
+    window.history.replaceState({}, '', nextPath);
+  };
 
   const handleOpenContact = (divisionId = 'group') => {
     setContactDivision(divisionId);
