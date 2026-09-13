@@ -1,7 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useId, useState } from 'react';
 import { motion } from 'motion/react';
 import { X, Check, ArrowRight } from 'lucide-react';
 import { CONTACT_EMAIL } from '../config';
+
+const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY || '';
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        container: string | HTMLElement,
+        options: {
+          sitekey: string;
+          callback: (token: string) => void;
+          'expired-callback': () => void;
+          'error-callback': () => void;
+        }
+      ) => string;
+      reset: (widgetId?: string) => void;
+    };
+  }
+}
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -22,9 +41,50 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [website, setWebsite] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileWidgetId, setTurnstileWidgetId] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const turnstileId = useId().replace(/:/g, '');
+
+  useEffect(() => {
+    if (!isOpen || !turnstileSiteKey || turnstileWidgetId) return;
+
+    const renderTurnstile = () => {
+      const element = document.getElementById(turnstileId);
+      if (!element || !window.turnstile || turnstileWidgetId) return;
+
+      const widgetId = window.turnstile.render(element, {
+        sitekey: turnstileSiteKey,
+        callback: setTurnstileToken,
+        'expired-callback': () => setTurnstileToken(''),
+        'error-callback': () => setTurnstileToken(''),
+      });
+      setTurnstileWidgetId(widgetId);
+    };
+
+    if (!window.turnstile) {
+      const existingScript = document.querySelector<HTMLScriptElement>(
+        'script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]'
+      );
+
+      if (existingScript) {
+        existingScript.addEventListener('load', renderTurnstile, { once: true });
+        return () => existingScript.removeEventListener('load', renderTurnstile);
+      }
+
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      script.async = true;
+      script.defer = true;
+      script.onload = renderTurnstile;
+      document.head.appendChild(script);
+      return;
+    }
+
+    renderTurnstile();
+  }, [isOpen, turnstileId, turnstileWidgetId]);
 
   if (!isOpen) return null;
 
@@ -46,6 +106,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
           email,
           message,
           website,
+          turnstileToken,
         }),
       });
 
@@ -58,6 +119,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
       setSubmitted(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unable to send your inquiry right now.');
+      if (turnstileWidgetId) {
+        window.turnstile?.reset(turnstileWidgetId);
+        setTurnstileToken('');
+      }
     } finally {
       setSubmitting(false);
     }
@@ -70,6 +135,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     setEmail('');
     setMessage('');
     setWebsite('');
+    setTurnstileToken('');
     setError('');
     onClose();
   };
@@ -241,6 +307,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   className="w-full bg-white border border-black/30 px-3.5 py-2.5 text-xs text-black placeholder-black/40 focus:outline-none focus:border-black resize-none"
                 />
               </div>
+
+              {turnstileSiteKey ? (
+                <div
+                  id={turnstileId}
+                  className="min-h-[65px]"
+                  aria-label="Spam protection"
+                />
+              ) : null}
 
               <div className="pt-2">
                 {error ? (
