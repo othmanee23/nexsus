@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { DivisionsGrid } from './components/DivisionsGrid';
@@ -66,6 +67,8 @@ export const App: React.FC = () => {
         onClose={() => setContactOpen(false)}
         preselectedDivision={contactDivision}
       />
+
+      <Analytics />
     </div>
   );
 };
