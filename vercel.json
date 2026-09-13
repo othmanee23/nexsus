@@ -28,6 +28,19 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.nexsus.ma"
+        }
+      ],
+      "destination": "https://nexsus.ma/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/((?!api/|images/|robots.txt|sitemap.xml|assets/).*)",

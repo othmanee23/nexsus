@@ -41,3 +41,5 @@ Then connect the Git repository to Vercel, set the production domain to `nexsus.
 - Add `nexsus.ma` and `www.nexsus.ma` in Vercel Domains.
 - Point DNS records from the domain provider to Vercel.
 - Submit `https://nexsus.ma/sitemap.xml` in Google Search Console.
+- Keep Resend receiving disabled if Hostinger remains the email inbox provider.
+- Rotate `RESEND_API_KEY` if it was ever pasted into a shared channel.

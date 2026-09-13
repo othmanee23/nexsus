@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { NexsusLogo } from './NexsusLogo';
-import { CONTACT_EMAIL } from '../config';
+import { CONTACT_EMAIL, FOUNDER_EMAIL } from '../config';
 
 interface FooterProps {
   onNavigate?: (sectionId: string) => void;
@@ -36,7 +36,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             </button>
           </motion.div>
 
-          {/* Column 2: Social Channels (Stacked) */}
+          {/* Column 2: Direct Channels */}
           <motion.div
             initial={{ opacity: 0, y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -45,28 +45,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             className="lg:col-span-4 flex flex-col space-y-1.5 font-mono text-[11px] sm:text-xs text-black/80"
           >
             <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noreferrer"
+              href={`mailto:${CONTACT_EMAIL}`}
               className="hover:text-black hover:translate-x-1 transition-all w-fit cursor-pointer"
             >
-              INSTAGRAM
+              {CONTACT_EMAIL.toUpperCase()}
             </a>
             <a
-              href="https://x.com"
-              target="_blank"
-              rel="noreferrer"
+              href={`mailto:${FOUNDER_EMAIL}`}
               className="hover:text-black hover:translate-x-1 transition-all w-fit cursor-pointer"
             >
-              X (TWITTER)
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-black hover:translate-x-1 transition-all w-fit cursor-pointer"
-            >
-              LINKEDIN
+              {FOUNDER_EMAIL.toUpperCase()}
             </a>
           </motion.div>
 
