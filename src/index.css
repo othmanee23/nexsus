@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'InterDisplay', 'Inter Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'InterDisplay', 'Inter Display', 'Inter', sans-serif;
+  --color-canvas: #FFFFFF;
+  --color-pure-white: #FFFFFF;
+  --color-charcoal: #000000;
+  --color-subtle: #000000;
+  --color-hairline: #000000;
+}
+
+:root {
+  --bg-primary: #FFFFFF;
+  --text-primary: #000000;
+  --border-subtle: #000000;
+}
+
+body {
+  font-family: 'InterDisplay', 'Inter Display', 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  background-color: #FFFFFF;
+  color: #000000;
+  overflow-x: hidden;
+}
+
+/* Enforce the two fonts strictly across utility classes */
+.font-sans,
+.font-mono {
+  font-family: 'InterDisplay', 'Inter Display', 'Inter', sans-serif !important;
+}
+
+/* Editorial serif utility */
+.font-editorial-italic,
+.font-serif {
+  font-family: 'Instrument Serif', Georgia, serif !important;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Custom smooth scroll bar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}
+
