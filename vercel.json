@@ -44,11 +44,19 @@
   "rewrites": [
     {
       "source": "/fr",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/ar",
-      "destination": "/index.html"
+      "destination": "/"
+    },
+    {
+      "source": "/fr/(.*)",
+      "destination": "/"
+    },
+    {
+      "source": "/ar/(.*)",
+      "destination": "/"
     },
     {
       "source": "/((?!api/|images/|robots.txt|sitemap.xml|assets/).*)",
