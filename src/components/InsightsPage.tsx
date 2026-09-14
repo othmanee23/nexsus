@@ -6,9 +6,9 @@ import { InsightArtwork } from './InsightArtwork';
 import { InsightReadImage } from './InsightReadImage';
 
 const services = [
-  { title: 'TECHNOLOGY & AI FACTORY', image: '/images/division-technology.jpg', aspectRatio: '124 / 141' },
-  { title: 'BRAND POWERHOUSE', image: '/images/division-amaris.jpg', aspectRatio: '157 / 192' },
-  { title: 'PERFORMANCE ENGINE', image: '/images/division-ventures.jpg', aspectRatio: '135 / 120' },
+  { title: 'TECHNOLOGY & AI FACTORY', image: '/images/service-technology.png', aspectRatio: '124 / 141' },
+  { title: 'BRAND POWERHOUSE', image: '/images/service-amaris.png', aspectRatio: '157 / 192' },
+  { title: 'PERFORMANCE ENGINE', image: '/images/service-ventures.png', aspectRatio: '135 / 120' },
 ];
 
 export const InsightsPage = ({ onNavigate, language }: { onNavigate: (path: string) => void; language: Language }) => {

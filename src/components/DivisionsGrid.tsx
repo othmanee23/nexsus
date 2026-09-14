@@ -36,7 +36,7 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
       approach: 'Define the brief, coordinate design and delivery, and manage quality, budget, and schedule.',
       vision: 'Create lasting, adaptable spaces.',
       cta: 'Discuss your project',
-      image: '/images/division-projects.jpg',
+      image: '/images/service-projects.png',
     },
     {
       id: 'technology',
@@ -50,7 +50,7 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
         'We first understand the business process, its users, and the existing systems. We define the requirements, select an appropriate solution, and build or integrate it around the operating context. Validation, deployment, and user adoption form part of the delivery process.',
       vision: 'Help organizations build digital foundations that remain useful as their operations and needs evolve.',
       cta: 'Discuss your technology needs',
-      image: '/images/division-technology.jpg',
+      image: '/images/service-technology.png',
     },
     {
       id: 'amaris',
@@ -64,7 +64,7 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
         'We begin with the organization’s objectives, audience, and positioning. This informs the creative direction and the identity, campaign, or content required. We carry that direction through design and production so the final outputs work together across channels.',
       vision: 'Build brands whose identity and communication remain recognizable, coherent, and relevant as they grow.',
       cta: 'Discuss your creative brief',
-      image: '/images/division-amaris.jpg',
+      image: '/images/service-amaris.png',
     },
     {
       id: 'ventures',
@@ -78,7 +78,7 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
         'We assess the market need, define the proposition, and examine how the business will operate. Opportunities are developed progressively, using customer feedback and commercial milestones to guide further commitments.',
       vision: 'Build a portfolio of businesses and brands with distinct market positions and durable operating foundations.',
       cta: 'Discuss an opportunity',
-      image: '/images/division-ventures.jpg',
+      image: '/images/service-ventures.png',
     },
   ],
   fr: [
@@ -93,7 +93,7 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
       approach: 'Définir le brief, coordonner la conception et la livraison, et gérer la qualité, le budget et le calendrier.',
       vision: 'Créer des espaces durables et adaptables.',
       cta: 'Discuter de votre projet',
-      image: '/images/division-projects.jpg',
+      image: '/images/service-projects.png',
     },
     {
       id: 'technology',
@@ -107,7 +107,7 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
         'Nous comprenons d’abord le processus métier, ses utilisateurs et les systèmes existants. Nous définissons les besoins, choisissons une solution adaptée, puis la construisons ou l’intégrons au contexte opérationnel.',
       vision: 'Aider les organisations à construire des fondations digitales utiles à mesure que leurs besoins évoluent.',
       cta: 'Discuter de vos besoins technologiques',
-      image: '/images/division-technology.jpg',
+      image: '/images/service-technology.png',
     },
     {
       id: 'amaris',
@@ -121,7 +121,7 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
         'Nous partons des objectifs, de l’audience et du positionnement. Cette base guide la direction créative, l’identité, la campagne ou le contenu, puis nous assurons la cohérence jusqu’à la production.',
       vision: 'Construire des marques reconnaissables, cohérentes et pertinentes dans leur évolution.',
       cta: 'Discuter de votre brief créatif',
-      image: '/images/division-amaris.jpg',
+      image: '/images/service-amaris.png',
     },
     {
       id: 'ventures',
@@ -135,7 +135,7 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
         'Nous évaluons le besoin de marché, définissons la proposition et examinons le modèle opérationnel. Les opportunités progressent avec les retours clients et les étapes commerciales.',
       vision: 'Construire un portefeuille d’activités et de marques avec des positions de marché distinctes et des bases opérationnelles durables.',
       cta: 'Discuter d’une opportunité',
-      image: '/images/division-ventures.jpg',
+      image: '/images/service-ventures.png',
     },
   ],
   ar: [
@@ -150,7 +150,7 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
       approach: 'تحديد متطلبات المشروع، وتنسيق التصميم والتسليم، وإدارة الجودة والميزانية والجدول الزمني.',
       vision: 'إنشاء مساحات مستدامة وقابلة للتكيف.',
       cta: 'ناقش مشروعك',
-      image: '/images/division-projects.jpg',
+      image: '/images/service-projects.png',
     },
     {
       id: 'technology',
@@ -164,7 +164,7 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
         'نفهم أولاً مسار العمل والمستخدمين والأنظمة القائمة. نحدد المتطلبات ونختار الحل المناسب، ثم نبنيه أو ندمجه حول السياق التشغيلي.',
       vision: 'مساعدة المؤسسات على بناء أسس رقمية تبقى مفيدة مع تطور العمليات والاحتياجات.',
       cta: 'ناقش احتياجاتك التقنية',
-      image: '/images/division-technology.jpg',
+      image: '/images/service-technology.png',
     },
     {
       id: 'amaris',
@@ -178,7 +178,7 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
         'نبدأ من أهداف المؤسسة وجمهورها وتموضعها. توجه هذه المعطيات الاتجاه الإبداعي والهوية أو الحملة أو المحتوى، ثم نضمن الاتساق عبر التصميم والإنتاج.',
       vision: 'بناء علامات تبقى واضحة ومتسقة وملائمة أثناء نموها.',
       cta: 'ناقش موجزك الإبداعي',
-      image: '/images/division-amaris.jpg',
+      image: '/images/service-amaris.png',
     },
     {
       id: 'ventures',
@@ -192,7 +192,7 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
         'نقيم حاجة السوق، ونحدد العرض، ونفحص طريقة تشغيل النشاط. تتطور الفرص تدريجياً بالاعتماد على ملاحظات العملاء والمحطات التجارية.',
       vision: 'بناء محفظة أعمال وعلامات ذات مواقع سوقية واضحة وأسس تشغيلية مستدامة.',
       cta: 'ناقش فرصة',
-      image: '/images/division-ventures.jpg',
+      image: '/images/service-ventures.png',
     },
   ],
 };
