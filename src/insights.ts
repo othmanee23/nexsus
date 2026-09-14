@@ -1,3 +1,5 @@
+import { TEMPLATE_INSIGHTS } from './insightTemplate';
+
 export type Insight = {
   slug: string;
   category: string;
@@ -102,5 +104,15 @@ export const INSIGHTS: Insight[] = [
   },
 ];
 
-export const getInsight = (slug: string) =>
-  INSIGHTS.find((insight) => insight.slug === slug);
+export const getInsight = (slug: string): Insight | undefined => {
+  const existing = INSIGHTS.find(insight => insight.slug === slug);
+  const template = TEMPLATE_INSIGHTS.find(insight => insight.slug === slug);
+  if (!template) return existing;
+  return {
+    slug: template.slug, category: 'Tooling', readTime: '4 min',
+    title: template.title, excerpt: template.excerpt,
+    image: existing?.image || '/images/insights/amaris-nexsus-hero.jpeg',
+    published: existing?.published || 'September 14, 2026', author: 'NEXSUS Editorial',
+    sections: existing?.sections || [{ heading: template.title, body: template.excerpt }],
+  };
+};

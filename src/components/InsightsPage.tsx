@@ -1,70 +1,60 @@
-import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
-import { INSIGHTS } from '../insights';
-import { copy, Language } from '../i18n';
+import React, { useRef, useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Language } from '../i18n';
+import { TEMPLATE_INSIGHTS } from '../insightTemplate';
+import { InsightArtwork, ArtworkCrop } from './InsightArtwork';
 
-interface InsightsPageProps {
-  onNavigate: (path: string) => void;
-  language: Language;
-}
+const services: { title: string; crop: ArtworkCrop }[] = [
+  { title: 'TECHNOLOGY & AI FACTORY', crop: [12, 989, 124, 141] },
+  { title: 'BRAND POWERHOUSE', crop: [148, 989, 157, 192] },
+  { title: 'PERFORMANCE ENGINE', crop: [317, 989, 135, 120] },
+];
 
-export const InsightsPage: React.FC<InsightsPageProps> = ({ onNavigate, language }) => {
-  const t = copy[language];
-
-  return (
-    <main className="flex-1 bg-white px-4 py-16 text-black sm:px-8 sm:py-20 lg:px-12">
-      <section className="mx-auto w-full max-w-[1800px]">
-        <div className="grid grid-cols-1 gap-8 border-b border-black/10 pb-10 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <div className="text-[11px] font-mono uppercase tracking-widest text-black/50">
-              {t.insights}
-            </div>
-            <h1 className="mt-4 text-4xl font-medium uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
-              {t.insightsTitle}
-            </h1>
-          </div>
-          <p className="max-w-md text-sm leading-relaxed text-black/60 lg:col-span-4 lg:col-start-9 lg:self-end">
-            {t.insightsDescription}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-x-8 gap-y-12 py-12 md:grid-cols-2">
-          {INSIGHTS.map((insight) => (
-            <article key={insight.slug} className="group">
-              <button
-                type="button"
-                onClick={() => onNavigate(`/insight/${insight.slug}`)}
-                className="block w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
-              >
-                <div className="aspect-[16/8] w-full overflow-hidden bg-black/5">
-                  <img
-                    src={insight.image}
-                    alt=""
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="mt-4 flex items-start justify-between gap-5">
-                  <div>
-                    <div className="text-[10px] font-mono uppercase tracking-widest text-black/45">
-                      {insight.category} · {insight.readTime}
-                    </div>
-                    <h2 className="mt-2 text-xl font-medium uppercase tracking-tight text-black">
-                      {insight.title}
-                    </h2>
-                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-black/60">
-                      {insight.excerpt}
-                    </p>
-                  </div>
-                  <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
-              </button>
-            </article>
-          ))}
-        </div>
-      </section>
-    </main>
-  );
+export const InsightsPage = ({ onNavigate, language }: { onNavigate: (path: string) => void; language: Language }) => {
+  const [category, setCategory] = useState(0);
+  const [page, setPage] = useState<number | null>(null);
+  const [offset, setOffset] = useState(0);
+  const grid = useRef<HTMLDivElement>(null);
+  const filtered = TEMPLATE_INSIGHTS.filter(item => !category || item.category === category);
+  const visible = page === null ? filtered : filtered.slice(page * 2, page * 2 + 2);
+  const href = (path: string) => `${language === 'en' ? '' : `/${language}`}${path}`;
+  const navigate = (event: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault(); onNavigate(path);
+  };
+  return <main className="insights-template" dir="ltr" lang="en">
+    <header className="insights-intro">
+      <div><p className="insights-eyebrow">NEWS</p><h1>THE LATEST<br />FROM OUR BLOG</h1></div>
+      <p className="insights-description">Expand your digital understanding.<br />Insights from industry experts.</p>
+    </header>
+    <nav className="insights-categories" aria-label="Article categories">
+      <button type="button" onClick={() => { setCategory(0); setPage(null); }} aria-pressed={!category}>SORT BY</button>
+      {[1, 2, 3, 4, 5].map(value => <button type="button" key={value} aria-pressed={category === value} onClick={() => { setCategory(category === value ? 0 : value); setPage(null); }}>Category {value}</button>)}
+    </nav>
+    <div className="insights-grid" ref={grid}>{visible.map(item => <article key={item.slug}>
+      <a className="insights-card" href={href(`/insight/${item.slug}`)} onClick={event => navigate(event, `/insight/${item.slug}`)}>
+        <div className="insights-card-image"><InsightArtwork crop={item.crop} /><span className="insights-read">READ</span></div>
+        <p className="insights-meta">Tooling · 4 min</p><h2 title={item.title}>{item.title}</h2><p className="insights-excerpt">{item.excerpt}</p>
+      </a>
+    </article>)}</div>
+    <nav className="insights-pagination" aria-label="Article pages">
+      <button type="button" disabled={page === null} onClick={() => setPage(null)}>SHOW MORE</button>
+      <div>{Array.from({ length: Math.ceil(filtered.length / 2) }, (_, index) => <button type="button" key={index} aria-label={`Article page ${index + 1}`} aria-current={page === index ? 'page' : undefined} onClick={() => { setPage(index); grid.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{String(index + 1).padStart(2, '0')}</button>)}</div>
+    </nav>
+    <section className="insights-statement" aria-label="Work with us">
+      <h2>WE CREATE THE DIFFERENCE<br />BETWEEN BEING SEEN<br />AND BEING REMEMBERED.</h2>
+      <a href={href('/contact')} onClick={event => navigate(event, '/contact')}>GET IN TOUCH</a>
+    </section>
+    <section className="insights-services">
+      <header><h2>WHAT WE DO</h2><div>
+        <button type="button" title="Previous services" aria-label="Previous services" onClick={() => setOffset((offset + 2) % 3)}><ChevronLeft size={18} /></button>
+        <button type="button" title="Next services" aria-label="Next services" onClick={() => setOffset((offset + 1) % 3)}><ChevronRight size={18} /></button>
+      </div></header>
+      <div className="insights-service-grid">{services.map((_, index) => {
+        const service = services[(index + offset) % services.length];
+        return <a key={service.title} href={href('/contact')} onClick={event => navigate(event, '/contact')}><InsightArtwork crop={service.crop} /><h3>{service.title}</h3><p>A brand operating system for the world’s biggest operating system.</p></a>;
+      })}</div>
+    </section>
+  </main>;
 };
-
 export default InsightsPage;
