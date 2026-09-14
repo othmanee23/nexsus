@@ -14,23 +14,63 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://nexsus.ma/fr</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/" />
+    <loc>https://nexsus.ma/about</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/about" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/about" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/about" />
     <lastmod>2026-09-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nexsus.ma/ar</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/" />
+    <loc>https://nexsus.ma/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/contact" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/contact" />
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/insight</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/insight" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/insight" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/insight" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/insight" />
     <lastmod>2026-09-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/insight/sustainable-brand-identity</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/insight/sustainable-brand-identity" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/insight/sustainable-brand-identity" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/insight/sustainable-brand-identity" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/insight/sustainable-brand-identity" />
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/insight/brand-storytelling-success</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/insight/brand-storytelling-success" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/insight/brand-storytelling-success" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/insight/brand-storytelling-success" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/insight/brand-storytelling-success" />
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/insight/digital-systems-for-growing-teams</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/insight/digital-systems-for-growing-teams" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/insight/digital-systems-for-growing-teams" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/insight/digital-systems-for-growing-teams" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/insight/digital-systems-for-growing-teams" />
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

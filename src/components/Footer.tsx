@@ -4,6 +4,7 @@ import { ArrowRight, Instagram, Phone } from 'lucide-react';
 import { NexsusLogo } from './NexsusLogo';
 import {
   ADDRESS_LINES,
+  AMARIS_INSTAGRAM_URL,
   CONTACT_EMAIL,
   CONTACT_PHONE,
   FORMATTED_SECONDARY_PHONE,
@@ -88,7 +89,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, language }) => {
               className="inline-flex items-center gap-2 hover:text-black hover:translate-x-1 transition-all w-fit cursor-pointer"
             >
               <Instagram className="w-3 h-3" />
-              INSTAGRAM
+              @THE_NEXSUS_
+            </a>
+            <a
+              href={AMARIS_INSTAGRAM_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 hover:text-black hover:translate-x-1 transition-all w-fit cursor-pointer"
+            >
+              <Instagram className="w-3 h-3" />
+              @AMARIS__AGENCY
             </a>
           </motion.div>
 

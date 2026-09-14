@@ -51,7 +51,7 @@ export const ClientsSection: React.FC<ClientsSectionProps> = ({ language }) => {
 
         <div className="lg:col-span-8">
           <div
-            className="clients-marquee border-y border-black/10 py-7"
+            className="clients-marquee py-7"
             data-paused={paused}
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}

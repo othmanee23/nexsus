@@ -5,13 +5,13 @@ import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { copy, LANGUAGES, Language } from '../i18n';
 
 interface HeaderProps {
-  onOpenContact: () => void;
   onNavigate?: (sectionId: string) => void;
+  onRouteNavigate: (path: string) => void;
   language: Language;
   onLanguageChange: (language: Language) => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLanguageChange }) => {
+export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, language, onLanguageChange }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [timeString, setTimeString] = useState('');
@@ -48,10 +48,19 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLangu
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
+    if (onNavigate) {
+      onNavigate(id);
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const navigateTo = (path: string) => {
+    setMobileMenuOpen(false);
+    onRouteNavigate(path);
   };
 
   return (
@@ -67,7 +76,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLangu
         <div className="w-full max-w-[1800px] mx-auto flex items-center justify-between">
           {/* Left: Official Nexsus Brand Logo */}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => navigateTo('/')}
             className="flex items-center cursor-pointer group focus:outline-none"
             aria-label="Back to top"
           >
@@ -83,10 +92,16 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLangu
               {t.services}
             </button>
             <button
-              onClick={() => scrollToSection('about')}
+              onClick={() => navigateTo('/about')}
               className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
             >
               {t.about}
+            </button>
+            <button
+              onClick={() => navigateTo('/insight')}
+              className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
+            >
+              {t.insights}
             </button>
           </nav>
 
@@ -113,7 +128,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLangu
             </div>
 
             <button
-              onClick={onOpenContact}
+              onClick={() => navigateTo('/contact')}
               className="inline-flex items-center gap-1.5 text-xs font-medium tracking-wider uppercase text-black hover:opacity-60 transition-opacity cursor-pointer border-b border-black pb-0.5 group focus:outline-none"
             >
               <span>{t.getInTouch}</span>
@@ -146,7 +161,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLangu
             <div className="w-full max-w-[1800px] mx-auto flex items-center justify-between">
               {/* Left: Official Nexsus Brand Logo */}
               <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                onClick={() => navigateTo('/')}
                 className="flex items-center cursor-pointer group focus:outline-none"
                 aria-label="Back to top"
               >
@@ -162,10 +177,16 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLangu
                   {t.services}
                 </button>
                 <button
-                  onClick={() => scrollToSection('about')}
+                  onClick={() => navigateTo('/about')}
                   className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
                 >
                   {t.about}
+                </button>
+                <button
+                  onClick={() => navigateTo('/insight')}
+                  className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
+                >
+                  {t.insights}
                 </button>
               </nav>
 
@@ -192,7 +213,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLangu
                 </div>
 
                 <button
-                  onClick={onOpenContact}
+                  onClick={() => navigateTo('/contact')}
                   className="inline-flex items-center gap-1.5 text-xs font-medium tracking-wider uppercase text-black hover:opacity-60 transition-opacity cursor-pointer border-b border-black pb-0.5 group focus:outline-none"
                 >
                   <span>{t.getInTouch}</span>
@@ -235,10 +256,16 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLangu
                   {t.services}
                 </button>
                 <button
-                  onClick={() => scrollToSection('about')}
+                  onClick={() => navigateTo('/about')}
                   className="text-left hover:opacity-60 transition-opacity cursor-pointer"
                 >
                   {t.aboutNexsus}
+                </button>
+                <button
+                  onClick={() => navigateTo('/insight')}
+                  className="text-left hover:opacity-60 transition-opacity cursor-pointer"
+                >
+                  {t.insights}
                 </button>
               </div>
               <div className="flex items-center gap-2 pt-2">
@@ -266,8 +293,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLangu
               </div>
               <button
                 onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenContact();
+                  navigateTo('/contact');
                 }}
                 className="w-full py-3.5 bg-black text-white text-xs font-medium tracking-widest uppercase flex items-center justify-center gap-2 cursor-pointer hover:bg-black/90 transition-colors"
               >
