@@ -159,8 +159,20 @@ export default async function handler(req: any, res: any) {
     const email = clean(body.email, 180).toLowerCase();
     const message = clean(body.message, 3000);
 
-    if (!allowedDivisions.has(division) || name.length < 2 || !isEmail(email) || message.length < 10) {
-      return json(res, 400, { error: 'Please complete the required fields.' });
+    if (!allowedDivisions.has(division)) {
+      return json(res, 400, { error: 'Please select an area of interest.' });
+    }
+
+    if (name.length < 2) {
+      return json(res, 400, { error: 'Please enter your name.' });
+    }
+
+    if (!isEmail(email)) {
+      return json(res, 400, { error: 'Please enter a valid email address.' });
+    }
+
+    if (message.length < 2) {
+      return json(res, 400, { error: 'Please enter a message.' });
     }
 
     const turnstileValid = await verifyTurnstile(clean(body.turnstileToken, 3000), ip);

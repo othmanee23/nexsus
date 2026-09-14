@@ -310,6 +310,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 </label>
                 <textarea
                   required
+                  minLength={2}
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
