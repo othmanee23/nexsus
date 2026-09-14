@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Language } from '../i18n';
 import { TEMPLATE_INSIGHTS } from '../insightTemplate';
 import { InsightArtwork } from './InsightArtwork';
+import { InsightReadImage } from './InsightReadImage';
 
 const services = [
   { title: 'TECHNOLOGY & AI FACTORY', image: '/images/division-technology.jpg', aspectRatio: '124 / 141' },
@@ -33,7 +34,7 @@ export const InsightsPage = ({ onNavigate, language }: { onNavigate: (path: stri
     </nav>
     <div className="insights-grid" ref={grid}>{visible.map(item => <article key={item.slug}>
       <a className="insights-card" href={href(`/insight/${item.slug}`)} onClick={event => navigate(event, `/insight/${item.slug}`)}>
-        <div className="insights-card-image"><InsightArtwork src={item.image} /><span className="insights-read">READ</span></div>
+        <InsightReadImage src={item.image} />
         <p className="insights-meta">Tooling · 4 min</p><h2 title={item.title}>{item.title}</h2><p className="insights-excerpt">{item.excerpt}</p>
       </a>
     </article>)}</div>

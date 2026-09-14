@@ -107,6 +107,18 @@ export const INSIGHTS: Insight[] = [
 export const getInsight = (slug: string): Insight | undefined => {
   const existing = INSIGHTS.find(insight => insight.slug === slug);
   const template = TEMPLATE_INSIGHTS.find(insight => insight.slug === slug);
+  if (slug === 'sustainable-brand-identity') return {
+    ...INSIGHTS[0], category: 'Tooling', author: 'AI Gorithm',
+    excerpt: 'Sustainability has evolved from a corporate initiative into a defining brand characteristic. Today’s audiences expect more than promises—they look for transparency, measurable action, and a clear purpose behind every product and decision. Brands that embrace sustainability authentically build stronger trust, deeper loyalty, and a more meaningful connection with their communities.',
+    sections: [
+      { heading: 'Beyond Green Messaging', body: 'Sustainability isn’t a marketing campaign—it’s an operating principle. Consumers can quickly distinguish between genuine commitments and surface-level claims. The strongest brands integrate responsible practices into their products, culture, and communication, creating consistency across every touchpoint.' },
+      { heading: 'Building Trust Through Action', body: 'Every decision tells a story. From sourcing materials to reducing emissions and improving accessibility, visible actions reinforce brand credibility. When sustainability is backed by data and shared transparently, it transforms from a statement into proof of long-term commitment.' },
+      { heading: 'Design With Purpose', body: 'A sustainable identity extends beyond logos and color palettes. It influences packaging, digital experiences, messaging, and the overall customer journey. Thoughtful design choices—minimal waste, inclusive experiences, and accessible communication—reflect values that audiences recognize and remember.' },
+      { heading: 'Creating Emotional Value', body: 'People increasingly support brands that align with their personal beliefs. Sustainability creates an emotional layer that goes beyond product features or price, giving customers a reason to participate in a larger mission and become long-term advocates rather than one-time buyers.' },
+      { heading: 'A Brand Built for Tomorrow', body: 'Markets, regulations, and customer expectations continue to evolve. Brands that embed sustainability into their identity are better positioned to adapt, innovate, and remain relevant in a changing landscape. Flexibility and responsibility become competitive advantages rather than compliance requirements.' },
+      { heading: 'From Purpose to Perception', body: 'A sustainable brand is more than an environmentally conscious business—it’s a promise consistently delivered through actions, experiences, and storytelling. When purpose is woven into every interaction, sustainability becomes a defining part of how people recognize, trust, and remember your brand.' },
+    ],
+  };
   if (!template) return existing;
   return {
     slug: template.slug, category: 'Tooling', readTime: '4 min',

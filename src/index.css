@@ -13,9 +13,50 @@
 .insights-card { display: block; }
 .insight-artwork { overflow: hidden; position: relative; background: #f5f5f5; }
 .insight-artwork img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
-.insights-card-image { position: relative; }
-.insights-read { position: absolute; bottom: 12%; left: 20%; border-radius: 50%; background: #ed2224; color: white; width: 76px; height: 76px; display: grid; place-items: center; font-size: 14px; transform: rotate(-12deg) scale(.8); opacity: 0; transition: opacity .2s, transform .2s; }
-.insights-card:hover .insights-read, .insights-card:focus-visible .insights-read { opacity: 1; transform: rotate(-12deg) scale(1); }
+.insights-card-image { position: relative; aspect-ratio: 213 / 110; }
+.insights-card-image > img { width: 100%; height: 100%; object-fit: cover; }
+.insights-read { pointer-events: none; position: absolute; top: 50%; left: 50%; border-radius: 50%; background: #ed2224; color: white; width: 76px; height: 76px; display: grid; place-items: center; font-size: 14px; transform: translate(-50%, -50%) rotate(-12deg); opacity: 0; transition: opacity .15s; z-index: 1; }
+@media (hover: hover) and (pointer: fine) {
+  .insights-card-image:hover { cursor: none; }
+  .insights-card-image:hover .insights-read { opacity: 1; }
+}
+.insight-article-page { max-width: 1800px; width: 100%; margin: auto; padding: 110px 40px 130px; letter-spacing: 0; }
+.insight-article-heading > p { font-size: 14px; margin-bottom: 16px; }
+.insight-article-heading > p span { margin-left: 34px; }
+.insight-article-heading h1 { max-width: 1050px; font-size: 56px; text-transform: uppercase; font-weight: 500; line-height: 1.02; }
+.insight-article-hero { width: 100%; aspect-ratio: 640 / 208; object-fit: cover; margin-top: 40px; }
+.insight-article-layout { display: grid; grid-template-columns: 34fr 62fr; gap: 5%; margin-top: 80px; }
+.insight-article-layout aside { display: grid; grid-template-columns: 1fr 1fr; align-content: start; gap: 24px; font-size: 14px; line-height: 1.4; }
+.insight-article-layout aside p { color: #888; }
+.insight-article-body { font-size: 15px; line-height: 1.45; }
+.insight-article-intro { padding-bottom: 30px; border-bottom: 1px solid #eee; margin-bottom: 30px; }
+.insight-article-body section { margin-bottom: 28px; }
+.insight-article-body h2 { font-weight: 500; font-size: 21px; margin-bottom: 10px; }
+.insight-article-inline { width: 100%; aspect-ratio: 396 / 143; object-fit: cover; margin: 30px 0; }
+.insight-recent { margin-top: 150px; }
+.insight-recent > header { display: flex; justify-content: space-between; gap: 24px; align-items: center; margin-bottom: 28px; }
+.insight-recent > header h2 { font-size: 30px; font-weight: 600; }
+.insight-recent > header a { font-size: 15px; }
+.insight-recent > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.insight-recent h3 { font-size: 18px; margin-top: 16px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.insight-recent .insights-meta { margin-top: 6px; }
+.insight-article-page a:focus-visible { outline: 2px solid black; outline-offset: 5px; }
+@media (max-width: 900px) {
+  .insight-article-page { padding: 65px 26px 90px; }
+  .insight-article-heading h1 { font-size: 42px; }
+  .insight-article-layout { grid-template-columns: 1fr; gap: 35px; margin-top: 40px; }
+  .insight-article-layout aside { max-width: 400px; }
+  .insight-recent { margin-top: 85px; }
+}
+@media (max-width: 640px) {
+  .insight-article-page { padding: 48px 16px 70px; }
+  .insight-article-heading h1 { font-size: 32px; }
+  .insight-article-hero { margin-top: 26px; }
+  .insight-recent > div { grid-template-columns: 1fr; gap: 32px; }
+  .insight-recent > header h2 { font-size: 22px; }
+  .insight-recent > header a { font-size: 12px; }
+  .insight-recent h3 { white-space: normal; }
+}
 .insights-meta { color: #888; font-size: 11px; margin-top: 15px; }
 .insights-card h2 { font-size: 18px; line-height: 1.3; font-weight: 400; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; margin-top: 3px; }
 .insights-excerpt { font-size: 12px; line-height: 1.4; margin-top: 14px; max-width: 95%; }
