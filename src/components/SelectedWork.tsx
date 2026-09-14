@@ -34,7 +34,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onSelectProject }) =
 
         {/* Filter Pills */}
         <div className="flex flex-wrap items-center gap-2 text-xs font-mono tracking-wider">
-          {['ALL', 'AMARIS', 'PROJECTS', 'TECHNOLOGY', 'VENTURES'].map((filter) => (
+          {['ALL', 'PROJECTS', 'TECHNOLOGY & SOLUTIONS', 'AMARIS', 'VENTURES'].map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}

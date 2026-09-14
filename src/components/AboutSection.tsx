@@ -68,6 +68,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ language }) => {
                 {t.aboutBody}
               </p>
               <p className="mt-4">{t.aboutBody2}</p>
+              <p className="mt-4">{t.aboutBody3}</p>
             </motion.div>
 
             {/* Right Paragraph: Philosophy of Action */}
@@ -101,6 +102,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ language }) => {
               {
                 title: t.legalStructure,
                 desc: t.legalStructureDesc,
+              },
+              {
+                title: t.founded,
+                desc: t.foundedDesc,
               },
             ].map((item, idx) => (
               <motion.div

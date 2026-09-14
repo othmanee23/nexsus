@@ -56,7 +56,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLangu
 
   return (
     <>
-      {/* 1. TOP STATIC HEADER: Exactly matches reference screenshot with plain text "NEXSUS" */}
+      {/* 1. TOP STATIC HEADER */}
       <motion.header
         id="top-header"
         initial={{ opacity: 0, y: -8 }}
@@ -65,12 +65,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLangu
         className="w-full bg-white py-5 sm:py-6 px-4 sm:px-8 lg:px-12 select-none"
       >
         <div className="w-full max-w-[1800px] mx-auto flex items-center justify-between">
-          {/* Left: Clean Plain Text "NEXSUS" */}
+          {/* Left: Official Nexsus Brand Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-sm sm:text-base font-medium tracking-wider uppercase text-black cursor-pointer hover:opacity-70 transition-opacity focus:outline-none"
+            className="flex items-center cursor-pointer group focus:outline-none"
+            aria-label="Back to top"
           >
-            NEXSUS
+            <NexsusLogo className="h-5 sm:h-6 w-auto object-contain transition-opacity duration-200 group-hover:opacity-70" />
           </button>
 
           {/* Center: Navigation "SERVICES ABOUT" */}
@@ -260,7 +261,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenContact, language, onLangu
 
             <div className="pt-8 border-t border-black/10 space-y-4">
               <div className="flex justify-between items-center text-xs font-mono tracking-wider text-black/60 uppercase">
-                <span>{t.heroLocation} / 2026</span>
+                <span>{t.heroLocation} / 2025</span>
                 <span>{timeString}</span>
               </div>
               <button

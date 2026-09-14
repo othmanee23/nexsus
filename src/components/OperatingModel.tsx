@@ -16,7 +16,7 @@ export const OperatingModel: React.FC = () => {
           FROM IDEA TO <span className="font-editorial-italic font-normal text-4xl sm:text-6xl lg:text-7xl">OPERATION.</span>
         </h2>
         <p className="mt-4 text-sm sm:text-base text-[#767676] max-w-xl font-light leading-relaxed">
-          How NEXSUS deploys unified capability to compress cycle times from initial observation through sovereign market execution.
+          How NEXSUS coordinates specialist capability from initial observation through practical market execution.
         </p>
       </div>
 

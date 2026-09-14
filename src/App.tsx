@@ -7,6 +7,8 @@ import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { LoadingScreen } from './components/LoadingScreen';
+import { FAQSection } from './components/FAQSection';
+import { ClientsSection } from './components/ClientsSection';
 import { LANGUAGES, Language } from './i18n';
 
 export const App: React.FC = () => {
@@ -59,14 +61,14 @@ export const App: React.FC = () => {
       <main className="flex-1 w-full flex flex-col">
         <Hero
           onOpenContact={() => handleOpenContact('group')}
-          onSelectDivision={(id) => handleOpenContact(id)}
+          onSelectDivision={(id) => handleNavigate(`division-${id}`)}
           language={language}
         />
 
         {/* Divisions Interactive Showcase & Cards Grid */}
         <DivisionsGrid
-          onSelectDivision={(id) => handleOpenContact(id)}
-          onOpenContact={() => handleOpenContact('group')}
+          onSelectDivision={(id) => handleNavigate(`division-${id}`)}
+          onOpenContact={handleOpenContact}
           language={language}
         />
 
@@ -75,6 +77,14 @@ export const App: React.FC = () => {
           onOpenContact={() => handleOpenContact('group')}
           language={language}
         />
+
+        <FAQSection
+          onOpenContact={() => handleOpenContact('group')}
+          onSelectDivision={(id) => handleNavigate(`division-${id}`)}
+          language={language}
+        />
+
+        <ClientsSection language={language} />
       </main>
 
       {/* Minimal Footer */}

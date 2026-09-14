@@ -32,7 +32,7 @@ export const BrandStatement: React.FC = () => {
               NEXSUS connects different capabilities around one objective: turning opportunities into meaningful brands, products, environments and businesses.
             </p>
             <p className="text-sm text-[#767676] font-light leading-relaxed">
-              Rather than siloing strategy, execution, and capital, we unify creative direction, architectural delivery, software engineering, and balance sheet strength under a single sovereign operating standard.
+              Rather than siloing strategy and execution, we coordinate creative direction, architectural delivery, software engineering, and business development around a clear operating scope.
             </p>
           </div>
         </div>

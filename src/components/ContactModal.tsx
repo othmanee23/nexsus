@@ -1,7 +1,7 @@
 import React, { useEffect, useId, useState } from 'react';
 import { motion } from 'motion/react';
 import { X, Check, ArrowRight } from 'lucide-react';
-import { CONTACT_EMAIL, FORMATTED_PHONE } from '../config';
+import { CONTACT_EMAIL, FORMATTED_PHONE, FORMATTED_SECONDARY_PHONE } from '../config';
 import { copy, Language } from '../i18n';
 
 const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY || '';
@@ -51,6 +51,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   const [submitted, setSubmitted] = useState(false);
   const turnstileId = useId().replace(/:/g, '');
   const t = copy[language];
+
+  useEffect(() => {
+    if (isOpen) {
+      setSelectedDivision(preselectedDivision || 'group');
+    }
+  }, [isOpen, preselectedDivision]);
 
   useEffect(() => {
     if (!isOpen || !turnstileSiteKey || turnstileWidgetId) return;
@@ -117,12 +123,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({
       const result = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        throw new Error(result.error || 'Unable to send your inquiry right now.');
+        throw new Error(result.error || t.contactError);
       }
 
       setSubmitted(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unable to send your inquiry right now.');
+      setError(err instanceof Error ? err.message : t.contactError);
       if (turnstileWidgetId) {
         window.turnstile?.reset(turnstileWidgetId);
         setTurnstileToken('');
@@ -185,7 +191,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 {t.sentTitle}
               </h3>
               <p className="text-sm text-black/70 font-light leading-relaxed max-w-md">
-                <span className="text-black font-medium">{name}</span>, {t.sentBody}
+                {t.sentBody}
               </p>
             </div>
 
@@ -232,11 +238,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-sans">
                   {[
-                    { id: 'group', label: t.groupLevel.toUpperCase() },
-                    { id: 'amaris', label: '01 / AMARIS' },
-                    { id: 'projects', label: '02 / PROJECTS' },
-                    { id: 'technology', label: '03 / TECH & SOL' },
+                    { id: 'projects', label: '01 / PROJECTS' },
+                    { id: 'technology', label: '02 / TECHNOLOGY & SOLUTIONS' },
+                    { id: 'amaris', label: '03 / AMARIS' },
                     { id: 'ventures', label: '04 / VENTURES' },
+                    { id: 'group', label: t.groupLevel.toUpperCase() },
                   ].map((div) => (
                     <button
                       type="button"
@@ -327,7 +333,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     <a className="underline underline-offset-2" href={`mailto:${CONTACT_EMAIL}`}>
                       {CONTACT_EMAIL}
                     </a>
-                    {' '}or {FORMATTED_PHONE}.
+                    {' '}or {FORMATTED_PHONE} / {FORMATTED_SECONDARY_PHONE}.
                   </p>
                 ) : null}
                 <button

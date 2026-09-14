@@ -1,7 +1,7 @@
 {
   "name": "NEXSUS",
   "short_name": "NEXSUS",
-  "description": "NEXSUS PROJECT SARL is an independent operating company in Temara, Morocco.",
+  "description": "NEXSUS PROJECT SARL is a multidisciplinary company in Temara, Morocco.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -9,9 +9,9 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/favicon.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
       "purpose": "any"
     }
   ]

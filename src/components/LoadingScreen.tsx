@@ -116,7 +116,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
             transition={{ delay: 0.6, duration: 0.6 }}
             className="absolute bottom-8 text-[10px] tracking-widest uppercase font-mono text-black/40"
           >
-            NEXSUS PROJECT SARL • 2026
+            NEXSUS PROJECT SARL • 2025
           </motion.div>
         </motion.div>
       )}

@@ -6,10 +6,11 @@ import {
   ADDRESS_LINES,
   CONTACT_EMAIL,
   CONTACT_PHONE,
+  FORMATTED_SECONDARY_PHONE,
   FORMATTED_PHONE,
-  FOUNDER_EMAIL,
   INSTAGRAM_URL,
   LEGAL_NAME,
+  SECONDARY_PHONE,
 } from '../config';
 import { copy, Language } from '../i18n';
 
@@ -43,12 +44,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, language }) => {
             {ADDRESS_LINES.map((line) => (
               <p key={line}>{line.toUpperCase()}</p>
             ))}
-            <button
-              onClick={onOpenContact}
+            <p>{t.rights.toUpperCase()}</p>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
               className="text-left hover:text-black hover:underline underline-offset-4 transition-colors cursor-pointer"
             >
               E: {CONTACT_EMAIL.toUpperCase()}
-            </button>
+            </a>
           </motion.div>
 
           {/* Column 2: Direct Channels */}
@@ -66,17 +68,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, language }) => {
               {CONTACT_EMAIL.toUpperCase()}
             </a>
             <a
-              href={`mailto:${FOUNDER_EMAIL}`}
-              className="hover:text-black hover:translate-x-1 transition-all w-fit cursor-pointer"
-            >
-              {FOUNDER_EMAIL.toUpperCase()}
-            </a>
-            <a
               href={`tel:${CONTACT_PHONE}`}
               className="inline-flex items-center gap-2 hover:text-black hover:translate-x-1 transition-all w-fit cursor-pointer"
             >
               <Phone className="w-3 h-3" />
               {FORMATTED_PHONE}
+            </a>
+            <a
+              href={`tel:${SECONDARY_PHONE}`}
+              className="inline-flex items-center gap-2 hover:text-black hover:translate-x-1 transition-all w-fit cursor-pointer"
+            >
+              <Phone className="w-3 h-3" />
+              {FORMATTED_SECONDARY_PHONE}
             </a>
             <a
               href={INSTAGRAM_URL}

@@ -5,7 +5,7 @@ import { copy, Language } from '../i18n';
 
 interface HeroProps {
   onOpenContact: () => void;
-  onSelectDivision?: (divisionId: 'amaris' | 'projects' | 'technology' | 'ventures') => void;
+  onSelectDivision?: (divisionId: 'projects' | 'technology' | 'amaris' | 'ventures') => void;
   language: Language;
 }
 
@@ -23,7 +23,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision, lan
   const logoOpacity = useTransform(scrollYProgress, [0, 0.9], [1, 0.5]);
   const logoY = useTransform(scrollYProgress, [0, 0.8], [0, 16]);
 
-  const handleDisciplineClick = (divisionId: 'amaris' | 'projects' | 'technology' | 'ventures') => {
+  const handleDisciplineClick = (divisionId: 'projects' | 'technology' | 'amaris' | 'ventures') => {
     if (onSelectDivision) {
       onSelectDivision(divisionId);
     } else {
@@ -81,11 +81,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision, lan
             className="flex flex-col space-y-6 sm:space-y-8 max-w-2xl lg:max-w-3xl"
           >
             <p className="text-lg sm:text-xl lg:text-2xl font-light tracking-[-0.015em] leading-[1.35] text-black">
-              {t.heroLead}{' '}
-              <span className="font-medium text-black underline decoration-black/25 underline-offset-6">
-                {t.heroEmphasis}
-              </span>
-              .
+              {t.heroLead}
+              {t.heroEmphasis ? (
+                <>
+                  {' '}
+                  <span className="font-medium text-black underline decoration-black/25 underline-offset-6">
+                    {t.heroEmphasis}
+                  </span>
+                  .
+                </>
+              ) : null}
             </p>
 
             {/* Minimal Discipline Index Buttons */}
@@ -98,9 +103,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision, lan
             >
               {(
                 [
-                  { id: 'amaris', label: 'AMARIS' },
                   { id: 'projects', label: 'PROJECTS' },
-                  { id: 'technology', label: 'TECHNOLOGY' },
+                  { id: 'technology', label: 'TECHNOLOGY & SOLUTIONS' },
+                  { id: 'amaris', label: 'AMARIS' },
                   { id: 'ventures', label: 'VENTURES' },
                 ] as const
               ).map((d, i) => (

@@ -54,3 +54,65 @@ body {
   background: #000000;
 }
 
+.clients-marquee {
+  overflow: hidden;
+}
+
+.clients-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 42px;
+  animation: clients-scroll 44s linear infinite;
+  will-change: transform;
+}
+
+.clients-marquee[data-paused="true"] .clients-marquee-track,
+.clients-marquee:focus-within .clients-marquee-track {
+  animation-play-state: paused;
+}
+
+.client-logo-frame {
+  width: 190px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  padding: 8px 12px;
+}
+
+@keyframes clients-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .clients-marquee-track {
+    gap: 28px;
+  }
+
+  .client-logo-frame {
+    width: 150px;
+    height: 54px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clients-marquee {
+    overflow: visible;
+  }
+
+  .clients-marquee-track {
+    width: 100%;
+    flex-wrap: wrap;
+    animation: none;
+  }
+
+  .clients-marquee-track .client-logo-frame[aria-hidden="true"] {
+    display: none;
+  }
+}

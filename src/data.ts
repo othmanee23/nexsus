@@ -71,7 +71,7 @@ export const DIVISIONS: EcosystemDivision[] = [
       'Custom Solutions',
       'Cloud Architecture'
     ],
-    ctaText: 'EXPLORE TECHNOLOGY',
+    ctaText: 'EXPLORE TECHNOLOGY & SOLUTIONS',
     image: '/images/division-technology.jpg',
     previewImage: '/images/project-cyber.jpg',
     capabilities: [
@@ -122,7 +122,7 @@ export const SELECTED_PROJECTS: PortfolioProject[] = [
     location: 'Temara / Paris',
     image: '/images/division-ventures.jpg',
     summary: 'A unified editorial brand and design system for a premier Mediterranean investment holding company.',
-    overview: 'Lumina required a sovereign brand system capable of uniting international private equity holdings under a quiet, rigorous European aesthetic. AMARIS devised an identity grounded in Swiss typography and warm monolithic paper stock.',
+    overview: 'Lumina required a clear brand system capable of uniting international private equity holdings under a quiet, rigorous European aesthetic. AMARIS devised an identity grounded in Swiss typography and warm monolithic paper stock.',
     scope: ['Brand Strategy', 'Visual Identity System', 'Executive Stationery', 'Digital Flagship'],
     metrics: 'Unified 12 sub-entities under one coherent design language.'
   },
@@ -143,7 +143,7 @@ export const SELECTED_PROJECTS: PortfolioProject[] = [
   {
     id: 'proj-03',
     divisionId: 'technology',
-    division: 'TECHNOLOGY',
+    division: 'TECHNOLOGY & SOLUTIONS',
     category: 'ENTERPRISE PLATFORM',
     name: 'Kora Freight Orchestration Engine',
     year: '2026',
