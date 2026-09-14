@@ -2,12 +2,12 @@ import React, { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Language } from '../i18n';
 import { TEMPLATE_INSIGHTS } from '../insightTemplate';
-import { InsightArtwork, ArtworkCrop } from './InsightArtwork';
+import { InsightArtwork } from './InsightArtwork';
 
-const services: { title: string; crop: ArtworkCrop }[] = [
-  { title: 'TECHNOLOGY & AI FACTORY', crop: [12, 989, 124, 141] },
-  { title: 'BRAND POWERHOUSE', crop: [148, 989, 157, 192] },
-  { title: 'PERFORMANCE ENGINE', crop: [317, 989, 135, 120] },
+const services = [
+  { title: 'TECHNOLOGY & AI FACTORY', image: '/images/division-technology.jpg', aspectRatio: '124 / 141' },
+  { title: 'BRAND POWERHOUSE', image: '/images/division-amaris.jpg', aspectRatio: '157 / 192' },
+  { title: 'PERFORMANCE ENGINE', image: '/images/division-ventures.jpg', aspectRatio: '135 / 120' },
 ];
 
 export const InsightsPage = ({ onNavigate, language }: { onNavigate: (path: string) => void; language: Language }) => {
@@ -33,7 +33,7 @@ export const InsightsPage = ({ onNavigate, language }: { onNavigate: (path: stri
     </nav>
     <div className="insights-grid" ref={grid}>{visible.map(item => <article key={item.slug}>
       <a className="insights-card" href={href(`/insight/${item.slug}`)} onClick={event => navigate(event, `/insight/${item.slug}`)}>
-        <div className="insights-card-image"><InsightArtwork crop={item.crop} /><span className="insights-read">READ</span></div>
+        <div className="insights-card-image"><InsightArtwork src={item.image} /><span className="insights-read">READ</span></div>
         <p className="insights-meta">Tooling · 4 min</p><h2 title={item.title}>{item.title}</h2><p className="insights-excerpt">{item.excerpt}</p>
       </a>
     </article>)}</div>
@@ -52,7 +52,7 @@ export const InsightsPage = ({ onNavigate, language }: { onNavigate: (path: stri
       </div></header>
       <div className="insights-service-grid">{services.map((_, index) => {
         const service = services[(index + offset) % services.length];
-        return <a key={service.title} href={href('/contact')} onClick={event => navigate(event, '/contact')}><InsightArtwork crop={service.crop} /><h3>{service.title}</h3><p>A brand operating system for the world’s biggest operating system.</p></a>;
+        return <a key={service.title} href={href('/contact')} onClick={event => navigate(event, '/contact')}><InsightArtwork src={service.image} aspectRatio={service.aspectRatio} /><h3>{service.title}</h3><p>A brand operating system for the world’s biggest operating system.</p></a>;
       })}</div>
     </section>
   </main>;

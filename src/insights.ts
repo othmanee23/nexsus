@@ -111,7 +111,7 @@ export const getInsight = (slug: string): Insight | undefined => {
   return {
     slug: template.slug, category: 'Tooling', readTime: '4 min',
     title: template.title, excerpt: template.excerpt,
-    image: existing?.image || '/images/insights/amaris-nexsus-hero.jpeg',
+    image: template.image,
     published: existing?.published || 'September 14, 2026', author: 'NEXSUS Editorial',
     sections: existing?.sections || [{ heading: template.title, body: template.excerpt }],
   };
