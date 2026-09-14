@@ -210,7 +210,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ language, onOpenContact,
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.25 }}
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-4"
+          className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start"
         >
           <h2 className="text-2xl font-medium uppercase tracking-tight text-black sm:text-3xl">
             {t.faqTitle}
