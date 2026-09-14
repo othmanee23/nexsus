@@ -85,6 +85,9 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
 
           {/* Center: Navigation "SERVICES ABOUT" */}
           <nav className="hidden md:flex items-center space-x-10 text-xs sm:text-[13px] tracking-widest font-medium uppercase text-black">
+            <button onClick={() => navigateTo('/')} className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none">
+              {t.home}
+            </button>
             <button
               onClick={() => scrollToSection('divisions-grid')}
               className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
@@ -170,6 +173,9 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
 
               {/* Center: Navigation "SERVICES ABOUT" */}
               <nav className="hidden md:flex items-center space-x-10 text-xs sm:text-[13px] tracking-widest font-medium uppercase text-black">
+                <button onClick={() => navigateTo('/')} className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none">
+                  {t.home}
+                </button>
                 <button
                   onClick={() => scrollToSection('divisions-grid')}
                   className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
@@ -249,6 +255,9 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
                 {t.navigation}
               </div>
               <div className="flex flex-col space-y-6 text-xl font-medium tracking-tight text-black uppercase">
+                <button onClick={() => navigateTo('/')} className="text-left hover:opacity-60 transition-opacity cursor-pointer">
+                  {t.home}
+                </button>
                 <button
                   onClick={() => scrollToSection('divisions-grid')}
                   className="text-left hover:opacity-60 transition-opacity cursor-pointer"
