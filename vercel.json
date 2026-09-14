@@ -59,6 +59,22 @@
       "destination": "/"
     },
     {
+      "source": "/about",
+      "destination": "/"
+    },
+    {
+      "source": "/contact",
+      "destination": "/"
+    },
+    {
+      "source": "/insight",
+      "destination": "/"
+    },
+    {
+      "source": "/insight/(.*)",
+      "destination": "/"
+    },
+    {
       "source": "/((?!api/|images/|robots.txt|sitemap.xml|assets/).*)",
       "destination": "/index.html"
     }
