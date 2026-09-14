@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Pause, Play } from 'lucide-react';
 import { copy, Language } from '../i18n';
 
 interface ClientsSectionProps {
@@ -48,16 +47,6 @@ export const ClientsSection: React.FC<ClientsSectionProps> = ({ language }) => {
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-black/60">
             {t.clientsDescription}
           </p>
-          <button
-            type="button"
-            onClick={() => setPaused((value) => !value)}
-            className="mt-6 inline-flex h-9 w-9 items-center justify-center border border-black/20 text-black transition-colors hover:border-black focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
-            aria-label={paused ? t.play : t.pause}
-            aria-pressed={paused}
-            title={paused ? t.play : t.pause}
-          >
-            {paused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
-          </button>
         </motion.div>
 
         <div className="lg:col-span-8">
