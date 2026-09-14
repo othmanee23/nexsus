@@ -30,14 +30,12 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
       code: '01',
       name: 'PROJECTS',
       subtitle: 'Construction, Interior Architecture & Fit-out',
-      description:
-        'PROJECTS brings together construction, interior architecture, fit-out, and space design to turn project requirements into functional, well-considered environments. The division connects design decisions with technical coordination and execution across private projects and public contracts.',
-      mission: 'Deliver spaces that meet their intended use through a clearly defined scope, coordinated expertise, and careful execution.',
-      bullets: ['Construction and renovation', 'Interior architecture and space planning', 'Fit-out and interior finishes', 'Space design and layout', 'Project coordination and delivery', 'Public contracts within the division’s scope'],
-      approach:
-        'We begin with the intended use of the space, site conditions, budget, and schedule. These requirements guide the design and technical scope. We then coordinate the specialists and delivery partners required for execution, with attention to quality, progress, and handover.',
-      vision: 'Create spaces that remain useful, adaptable, and relevant to the people and organizations that occupy them.',
-      cta: 'Discuss a construction or interior project',
+      description: 'Construction, interior architecture, and fit-out for private projects and public contracts, from design through delivery.',
+      mission: 'Deliver functional, well-designed spaces through coordinated execution.',
+      bullets: ['Construction & renovation', 'Interior architecture & space planning', 'Fit-out & finishes', 'Project coordination'],
+      approach: 'Define the brief, coordinate design and delivery, and manage quality, budget, and schedule.',
+      vision: 'Create lasting, adaptable spaces.',
+      cta: 'Discuss your project',
       image: '/images/division-projects.jpg',
     },
     {
@@ -92,14 +90,12 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
       code: '01',
       name: 'PROJECTS',
       subtitle: 'Construction, architecture intérieure & fit-out',
-      description:
-        'PROJECTS réunit construction, architecture intérieure, fit-out et design d’espace pour transformer les exigences d’un projet en environnements fonctionnels et bien considérés.',
-      mission: 'Livrer des espaces adaptés à leur usage grâce à un périmètre clair, une expertise coordonnée et une exécution soignée.',
-      bullets: ['Construction et rénovation', 'Architecture intérieure et aménagement', 'Fit-out et finitions intérieures', 'Design d’espace et layout', 'Coordination et livraison de projet', 'Marchés publics dans le champ de la division'],
-      approach:
-        'Nous partons de l’usage prévu, des conditions du site, du budget et du calendrier. Ces exigences guident le design et le périmètre technique, puis nous coordonnons les spécialistes et partenaires de livraison nécessaires.',
-      vision: 'Créer des espaces utiles, adaptables et pertinents pour les personnes et organisations qui les occupent.',
-      cta: 'Discuter un projet de construction ou d’intérieur',
+      description: 'Construction, architecture intérieure et fit-out pour les projets privés et les marchés publics, de la conception à la livraison.',
+      mission: 'Livrer des espaces fonctionnels et bien conçus grâce à une exécution coordonnée.',
+      bullets: ['Construction et rénovation', 'Architecture intérieure et aménagement des espaces', 'Fit-out et finitions', 'Coordination de projet'],
+      approach: 'Définir le brief, coordonner la conception et la livraison, et gérer la qualité, le budget et le calendrier.',
+      vision: 'Créer des espaces durables et adaptables.',
+      cta: 'Discuter de votre projet',
       image: '/images/division-projects.jpg',
     },
     {
@@ -154,14 +150,12 @@ const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
       code: '01',
       name: 'PROJECTS',
       subtitle: 'البناء، العمارة الداخلية والتجهيز',
-      description:
-        'يجمع PROJECTS بين البناء والعمارة الداخلية والتجهيز وتصميم المساحات لتحويل متطلبات المشروع إلى بيئات عملية ومدروسة.',
-      mission: 'تسليم مساحات تلبي استخداماتها المقصودة من خلال نطاق واضح وخبرة منسقة وتنفيذ دقيق.',
-      bullets: ['البناء والتجديد', 'العمارة الداخلية وتخطيط المساحات', 'التجهيز والتشطيبات الداخلية', 'تصميم المساحات والتوزيع', 'تنسيق وتسليم المشاريع', 'الصفقات العمومية ضمن نطاق القسم'],
-      approach:
-        'نبدأ من الاستخدام المطلوب للمساحة، وظروف الموقع، والميزانية والجدول الزمني. توجه هذه المتطلبات التصميم والنطاق التقني، ثم ننسق المتخصصين وشركاء التنفيذ.',
-      vision: 'إنشاء مساحات تبقى مفيدة وقابلة للتكيف وملائمة للأشخاص والمؤسسات التي تستخدمها.',
-      cta: 'ناقش مشروع بناء أو تصميم داخلي',
+      description: 'البناء والعمارة الداخلية والتجهيز للمشاريع الخاصة والصفقات العمومية، من التصميم إلى التسليم.',
+      mission: 'تسليم مساحات عملية ومصممة بعناية من خلال تنفيذ منسق.',
+      bullets: ['البناء والتجديد', 'العمارة الداخلية وتخطيط المساحات', 'التجهيز والتشطيبات', 'تنسيق المشاريع'],
+      approach: 'تحديد متطلبات المشروع، وتنسيق التصميم والتسليم، وإدارة الجودة والميزانية والجدول الزمني.',
+      vision: 'إنشاء مساحات مستدامة وقابلة للتكيف.',
+      cta: 'ناقش مشروعك',
       image: '/images/division-projects.jpg',
     },
     {

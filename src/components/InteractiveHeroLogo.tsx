@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 
 interface InteractiveHeroLogoProps {
   className?: string;
@@ -70,12 +70,6 @@ export const InteractiveHeroLogo: React.FC<InteractiveHeroLogoProps> = ({
   // Normalized cursor coordinates inside SVG viewBox (0..969, 0..183)
   const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
 
-  // Client pixel position for floating cursor follower
-  const mouseX = useMotionValue(-100);
-  const mouseY = useMotionValue(-100);
-  const springX = useSpring(mouseX, { stiffness: 450, damping: 28 });
-  const springY = useSpring(mouseY, { stiffness: 450, damping: 28 });
-
   // Dynamic distortion scale that pulses subtly on cursor movement
   const [distortionScale, setDistortionScale] = useState(0);
 
@@ -87,10 +81,6 @@ export const InteractiveHeroLogo: React.FC<InteractiveHeroLogoProps> = ({
     // Relative to bounding rect
     const relX = e.clientX - rect.left;
     const relY = e.clientY - rect.top;
-
-    // Update pixel spring position for follower badge
-    mouseX.set(relX);
-    mouseY.set(relY);
 
     // Map to SVG viewBox (0 0 969 183)
     const svgX = (relX / rect.width) * 969;
@@ -113,7 +103,7 @@ export const InteractiveHeroLogo: React.FC<InteractiveHeroLogoProps> = ({
 
     setActiveLetter(closestId);
     setDistortionScale(8);
-  }, [mouseX, mouseY]);
+  }, []);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -144,31 +134,8 @@ export const InteractiveHeroLogo: React.FC<InteractiveHeroLogoProps> = ({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full cursor-crosshair group select-none"
+      className="relative w-full cursor-default group select-none"
     >
-      {/* Dynamic Pro Cursor Tooltip / Magnetic Follower (hidden on touch) */}
-      <AnimatePresence>
-        {isHovered && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.6 }}
-            transition={{ duration: 0.18 }}
-            style={{
-              left: springX,
-              top: springY,
-            }}
-            className="pointer-events-none absolute -translate-x-1/2 -translate-y-[170%] z-20 hidden md:flex items-center gap-1.5 px-3 py-1 bg-black text-white rounded-full text-[10px] font-mono tracking-widest uppercase shadow-xl"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span>
-              {activeLetter
-                ? `GLYPH / ${activeLetter.toUpperCase()}`
-                : 'NEXSUS™'}
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* SVG Logotype with Interactive Magnetic Wave & SVG Displacement Filter */}
       <svg
