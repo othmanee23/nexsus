@@ -51,7 +51,7 @@ export const ClientsSection: React.FC<ClientsSectionProps> = ({ language }) => {
 
         <div className="lg:col-span-8">
           <div
-            className="clients-marquee py-7"
+            className="clients-marquee py-5"
             data-paused={paused}
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
@@ -69,9 +69,9 @@ export const ClientsSection: React.FC<ClientsSectionProps> = ({ language }) => {
                     src={client.logo}
                     alt={index < CLIENTS.length ? client.name : ''}
                     loading="lazy"
-                    width="180"
-                    height="60"
-                    className="max-h-9 w-auto max-w-[180px] object-contain sm:max-h-12"
+                    width="260"
+                    height="100"
+                    className="max-h-[76px] w-auto max-w-[220px] object-contain sm:max-h-[96px] sm:max-w-[270px]"
                   />
                 </div>
               ))}

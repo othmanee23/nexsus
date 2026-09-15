@@ -181,13 +181,13 @@ body {
 }
 
 .client-logo-frame {
-  width: 190px;
-  height: 64px;
+  width: 300px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  padding: 8px 12px;
+  padding: 10px 15px;
 }
 
 @keyframes clients-scroll {
@@ -205,8 +205,8 @@ body {
   }
 
   .client-logo-frame {
-    width: 150px;
-    height: 54px;
+    width: 240px;
+    height: 96px;
   }
 }
 
