@@ -89,10 +89,10 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
               {t.home}
             </button>
             <button
-              onClick={() => scrollToSection('divisions-grid')}
+              onClick={() => navigateTo('/contact')}
               className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
             >
-              {t.services}
+              {t.contact}
             </button>
             <button
               onClick={() => navigateTo('/about')}
@@ -177,10 +177,10 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
                   {t.home}
                 </button>
                 <button
-                  onClick={() => scrollToSection('divisions-grid')}
+                  onClick={() => navigateTo('/contact')}
                   className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
                 >
-                  {t.services}
+                  {t.contact}
                 </button>
                 <button
                   onClick={() => navigateTo('/about')}
@@ -259,10 +259,10 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
                   {t.home}
                 </button>
                 <button
-                  onClick={() => scrollToSection('divisions-grid')}
+                  onClick={() => navigateTo('/contact')}
                   className="text-left hover:opacity-60 transition-opacity cursor-pointer"
                 >
-                  {t.services}
+                  {t.contact}
                 </button>
                 <button
                   onClick={() => navigateTo('/about')}

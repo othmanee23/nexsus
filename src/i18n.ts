@@ -9,6 +9,7 @@ export const LANGUAGES: { code: Language; label: string; dir: 'ltr' | 'rtl' }[] 
 export const copy = {
   en: {
     home: 'Home',
+    contact: 'Contact',
     services: 'Services',
     about: 'About',
     aboutNexsus: 'About NEXSUS',
@@ -84,6 +85,7 @@ export const copy = {
   },
   fr: {
     home: 'Accueil',
+    contact: 'Contact',
     services: 'Services',
     about: 'À propos',
     aboutNexsus: 'À propos de NEXSUS',
@@ -159,6 +161,7 @@ export const copy = {
   },
   ar: {
     home: 'الرئيسية',
+    contact: 'اتصل بنا',
     services: 'الخدمات',
     about: 'من نحن',
     aboutNexsus: 'عن NEXSUS',
