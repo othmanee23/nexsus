@@ -36,6 +36,11 @@ export const InsightsPage = ({ onNavigate, language }: { onNavigate: (path: stri
         const bounds = event.currentTarget.getBoundingClientRect();
         contactCursor.current.style.left = `${event.clientX - bounds.left}px`;
         contactCursor.current.style.top = `${event.clientY - bounds.top}px`;
+      }}
+      onPointerLeave={() => {
+        if (!contactCursor.current) return;
+        contactCursor.current.style.left = '';
+        contactCursor.current.style.top = '';
       }}>
       <h2>WE CREATE THE DIFFERENCE<br />BETWEEN BEING SEEN<br />AND BEING REMEMBERED.</h2>
       <span ref={contactCursor}>GET IN TOUCH</span>
