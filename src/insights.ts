@@ -74,34 +74,6 @@ export const INSIGHTS: Insight[] = [
       },
     ],
   },
-  {
-    slug: 'digital-systems-for-growing-teams',
-    category: 'Technology',
-    readTime: '5 min',
-    title: 'Digital systems for growing teams',
-    excerpt:
-      'How practical platforms, reporting, and workflow automation can make operations easier to run.',
-    image: '/images/project-tech.jpg',
-    published: 'July 15, 2025',
-    author: 'NEXSUS Editorial',
-    sections: [
-      {
-        heading: 'Start from the workflow',
-        body:
-          'Technology creates value when it is built around how people actually work. Understanding roles, decisions, handoffs, and bottlenecks helps define the system that is truly needed.',
-      },
-      {
-        heading: 'Make information easier to use',
-        body:
-          'Good reporting does not simply collect data. It helps teams see priorities, track progress, and make decisions with less friction. The interface should support action, not just observation.',
-      },
-      {
-        heading: 'Build foundations that can evolve',
-        body:
-          'Growing teams need systems that can adapt. A practical digital foundation should support current operations while leaving room for new users, processes, and integrations.',
-      },
-    ],
-  },
 ];
 
 export const getInsight = (slug: string): Insight | undefined => {
