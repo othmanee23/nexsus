@@ -89,12 +89,6 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
               {t.home}
             </button>
             <button
-              onClick={() => navigateTo('/contact')}
-              className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
-            >
-              {t.contact}
-            </button>
-            <button
               onClick={() => navigateTo('/about')}
               className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
             >
@@ -105,6 +99,12 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
               className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
             >
               {t.insights}
+            </button>
+            <button
+              onClick={() => navigateTo('/contact')}
+              className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
+            >
+              {t.contact}
             </button>
           </nav>
 
@@ -177,12 +177,6 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
                   {t.home}
                 </button>
                 <button
-                  onClick={() => navigateTo('/contact')}
-                  className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
-                >
-                  {t.contact}
-                </button>
-                <button
                   onClick={() => navigateTo('/about')}
                   className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
                 >
@@ -193,6 +187,12 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
                   className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
                 >
                   {t.insights}
+                </button>
+                <button
+                  onClick={() => navigateTo('/contact')}
+                  className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
+                >
+                  {t.contact}
                 </button>
               </nav>
 
@@ -259,12 +259,6 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
                   {t.home}
                 </button>
                 <button
-                  onClick={() => navigateTo('/contact')}
-                  className="text-left hover:opacity-60 transition-opacity cursor-pointer"
-                >
-                  {t.contact}
-                </button>
-                <button
                   onClick={() => navigateTo('/about')}
                   className="text-left hover:opacity-60 transition-opacity cursor-pointer"
                 >
@@ -275,6 +269,12 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
                   className="text-left hover:opacity-60 transition-opacity cursor-pointer"
                 >
                   {t.insights}
+                </button>
+                <button
+                  onClick={() => navigateTo('/contact')}
+                  className="text-left hover:opacity-60 transition-opacity cursor-pointer"
+                >
+                  {t.contact}
                 </button>
               </div>
               <div className="flex items-center gap-2 pt-2">
