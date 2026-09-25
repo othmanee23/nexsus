@@ -129,6 +129,8 @@ const breadcrumbSchema = (items: { name: string; path: string }[]) => ({
   })),
 });
 
+const schemaDate = (date: string) => date.includes('T') ? date : date + 'T00:00:00+00:00';
+
 export const GLOBAL_STRUCTURED_DATA = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -258,9 +260,9 @@ export const getSeoMetadata = (route: string, language: Language = 'en'): SeoMet
       headline: insight.title,
       description: insight.seoDescription,
       image: [insight.ogImage],
-      datePublished: insight.publishedAt,
-      dateModified: insight.updatedAt,
-      author: { '@type': 'Organization', name: insight.author },
+      datePublished: schemaDate(insight.publishedAt),
+      dateModified: schemaDate(insight.updatedAt),
+      author: { '@type': 'Organization', name: insight.author, url: SITE_URL + '/insights' },
       publisher: { '@id': SITE_URL + '/#organization' },
       mainEntityOfPage: { '@type': 'WebPage', '@id': insight.canonicalUrl },
       articleSection: category.label,

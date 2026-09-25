@@ -71,6 +71,7 @@ The website is technically ready for structured content production. The current 
 - Runtime route audit: one H1 and one main region on all core, division, category, article, and 404 states.
 - Responsive audit: desktop Insights and mobile division layouts render without horizontal overflow.
 - Browser console: no errors or warnings during the final article-page test.
+- Google Rich Results Test: live crawl succeeded; Article and Breadcrumb items were detected as valid.
 
 ## Remaining Work
 
