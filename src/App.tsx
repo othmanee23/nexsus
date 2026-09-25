@@ -12,8 +12,10 @@ import { ClientsSection } from './components/ClientsSection';
 import { InsightsPage } from './components/InsightsPage';
 import { InsightArticlePage } from './components/InsightArticlePage';
 import { ContactPage } from './components/ContactPage';
-import { getInsight } from './insights';
-import { SITE_DESCRIPTION, SITE_TITLE } from './config';
+import { DivisionPage } from './components/DivisionPage';
+import { NotFoundPage } from './components/NotFoundPage';
+import { getInsight, getInsightCategory, type DivisionSlug, type InsightCategorySlug } from './insights';
+import { applySeoMetadata, getSeoMetadata } from './seo';
 import { LANGUAGES, Language } from './i18n';
 
 export const App: React.FC = () => {
@@ -27,13 +29,17 @@ export const App: React.FC = () => {
   const [language, setLanguageState] = useState<Language>(initialLanguage);
   const normalizePath = () => {
     const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
-    return pathname.replace(/^\/(fr|ar)(?=\/|$)/, '') || '/';
+    const withoutLanguage = pathname.replace(/^\/(fr|ar)(?=\/|$)/, '') || '/';
+    if (withoutLanguage === '/insight') return '/insights';
+    if (withoutLanguage.startsWith('/insight/')) return withoutLanguage.replace('/insight/', '/insights/');
+    return withoutLanguage;
   };
   const [route, setRoute] = useState<string>(normalizePath);
   const dir = LANGUAGES.find((item) => item.code === language)?.dir || 'ltr';
 
   const pathForLanguage = (path: string, targetLanguage = language) => {
     const cleanPath = path === '/' ? '' : path.replace(/^\/?/, '/');
+    if (cleanPath.startsWith('/insights')) return cleanPath;
     return targetLanguage === 'en' ? cleanPath || '/' : `/${targetLanguage}${cleanPath || ''}`;
   };
 
@@ -79,28 +85,21 @@ export const App: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    const matchedInsight = route.match(/^\/insight\/([^/]+)$/);
-    const title = matchedInsight
-      ? `${getInsight(matchedInsight[1])?.title || 'Insight'} - NEXSUS`
-      : route === '/insight'
-        ? 'Insights - NEXSUS'
-        : route === '/about'
-          ? 'About - NEXSUS PROJECT SARL'
-          : route === '/contact'
-            ? 'Contact - NEXSUS PROJECT SARL'
-            : SITE_TITLE;
-    const description = route === '/insight'
-      ? 'Perspectives from NEXSUS on projects, technology, creative direction, and venture development.'
-      : matchedInsight
-        ? getInsight(matchedInsight[1])?.excerpt || SITE_DESCRIPTION
-        : SITE_DESCRIPTION;
-    const descriptionTag = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    applySeoMetadata(getSeoMetadata(route, language));
+  }, [route, language]);
 
-    document.title = title;
-    if (descriptionTag) descriptionTag.content = description;
-  }, [route]);
+  React.useEffect(() => {
+    const pathname = window.location.pathname;
+    if (!pathname.includes('/insight')) return;
+    const canonicalPath = pathname.replace(/\/insight(?=\/|$)/, '/insights');
+    window.history.replaceState({}, '', canonicalPath);
+  }, []);
 
-  const articleMatch = route.match(/^\/insight\/([^/]+)$/);
+  const categoryMatch = route.match(/^\/insights\/(projects|technology|brand-creative|ventures)$/);
+  const articleMatch = route.match(/^\/insights\/([^/]+)$/);
+  const divisionMatch = route.match(/^\/(projects|technology|amaris|ventures)$/);
+  const article = articleMatch && !categoryMatch ? getInsight(articleMatch[1]) : undefined;
+  const category = categoryMatch ? getInsightCategory(categoryMatch[1]) : undefined;
   const page =
     route === '/about' ? (
       <main className="flex-1 w-full flex flex-col">
@@ -113,11 +112,23 @@ export const App: React.FC = () => {
       </main>
     ) : route === '/contact' ? (
       <ContactPage language={language} />
-    ) : route === '/insight' ? (
+    ) : divisionMatch ? (
+      <DivisionPage
+        slug={divisionMatch[1] as DivisionSlug}
+        language={language}
+        onNavigate={handleRouteNavigate}
+      />
+    ) : route === '/insights' ? (
       <InsightsPage onNavigate={handleRouteNavigate} language={language} />
-    ) : articleMatch ? (
-      <InsightArticlePage slug={articleMatch[1]} onNavigate={handleRouteNavigate} language={language} />
-    ) : (
+    ) : category ? (
+      <InsightsPage
+        onNavigate={handleRouteNavigate}
+        language={language}
+        categorySlug={category.slug as InsightCategorySlug}
+      />
+    ) : article ? (
+      <InsightArticlePage slug={article.slug} onNavigate={handleRouteNavigate} language={language} />
+    ) : route === '/' ? (
       <main className="flex-1 w-full flex flex-col">
         <Hero
           onOpenContact={() => handleRouteNavigate('/contact')}
@@ -128,6 +139,7 @@ export const App: React.FC = () => {
         <DivisionsGrid
           onSelectDivision={(id) => handleSectionNavigate(`division-${id}`)}
           onOpenContact={handleOpenContact}
+          onRouteNavigate={handleRouteNavigate}
           language={language}
         />
 
@@ -139,6 +151,8 @@ export const App: React.FC = () => {
 
         <ClientsSection language={language} />
       </main>
+    ) : (
+      <NotFoundPage onNavigate={handleRouteNavigate} />
     );
 
   return (

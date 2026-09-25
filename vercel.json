@@ -39,44 +39,26 @@
       ],
       "destination": "https://nexsus.ma/$1",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/fr",
-      "destination": "/"
-    },
-    {
-      "source": "/ar",
-      "destination": "/"
-    },
-    {
-      "source": "/fr/(.*)",
-      "destination": "/"
-    },
-    {
-      "source": "/ar/(.*)",
-      "destination": "/"
-    },
-    {
-      "source": "/about",
-      "destination": "/"
-    },
-    {
-      "source": "/contact",
-      "destination": "/"
     },
     {
       "source": "/insight",
-      "destination": "/"
+      "destination": "/insights",
+      "permanent": true
     },
     {
-      "source": "/insight/(.*)",
-      "destination": "/"
+      "source": "/insight/:slug",
+      "destination": "/insights/:slug",
+      "permanent": true
     },
     {
-      "source": "/((?!api/|images/|robots.txt|sitemap.xml|assets/).*)",
-      "destination": "/index.html"
+      "source": "/:language(fr|ar)/insight",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/:language(fr|ar)/insight/:slug",
+      "destination": "/insights/:slug",
+      "permanent": true
     }
   ]
 }

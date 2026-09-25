@@ -6,10 +6,10 @@
     <title>NEXSUS PROJECT SARL - Operating Company in Morocco</title>
     <meta name="description" content="NEXSUS PROJECT SARL is a multidisciplinary company in Temara, Morocco working across projects, technology solutions, creative direction, and ventures." />
     <link rel="canonical" href="https://nexsus.ma/" />
-    <link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/" />
-    <link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr" />
-    <link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar" />
-    <link rel="alternate" hreflang="x-default" href="https://nexsus.ma/" />
+    <link data-seo-alternate rel="alternate" hreflang="en-MA" href="https://nexsus.ma/" />
+    <link data-seo-alternate rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr" />
+    <link data-seo-alternate rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar" />
+    <link data-seo-alternate rel="alternate" hreflang="x-default" href="https://nexsus.ma/" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="geo.region" content="MA-RAB" />
     <meta name="geo.placename" content="Temara, Morocco" />
@@ -24,32 +24,45 @@
     <meta property="og:site_name" content="NEXSUS" />
     <meta property="og:locale" content="en_MA" />
     <meta property="og:image" content="https://nexsus.ma/images/nexsus-logo-og.jpeg" />
+    <meta property="og:image:alt" content="NEXSUS wordmark" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="NEXSUS PROJECT SARL - Operating Company in Morocco" />
     <meta name="twitter:description" content="Projects, technology solutions, creative direction, and ventures from Temara." />
     <meta name="twitter:image" content="https://nexsus.ma/images/nexsus-logo-og.jpeg" />
-    <script type="application/ld+json">
+    <script id="global-structured-data" type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "NEXSUS PROJECT SARL",
-        "alternateName": "NEXSUS",
-        "url": "https://nexsus.ma/",
-        "email": "contact@nexsus.ma",
-        "telephone": ["+212708019109", "+212627901859"],
-        "sameAs": ["https://www.instagram.com/the_nexsus_/", "https://www.instagram.com/amaris__agency/"],
-        "logo": "https://nexsus.ma/images/nexsus-logo-og.jpeg",
-        "foundingDate": "2025",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "LOT ALWAHDA FATH AL KHIR N 60",
-          "addressLocality": "Temara",
-          "addressCountry": "MA"
-        },
-        "areaServed": "Morocco",
-        "knowsAbout": ["Construction and interior projects", "Technology solutions", "Creative direction", "Business ventures"]
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://nexsus.ma/#organization",
+            "name": "NEXSUS PROJECT SARL",
+            "alternateName": "NEXSUS",
+            "url": "https://nexsus.ma/",
+            "email": "contact@nexsus.ma",
+            "telephone": "+212708019109",
+            "sameAs": ["https://www.instagram.com/the_nexsus_/", "https://www.instagram.com/amaris_from_nexsus/"],
+            "logo": "https://nexsus.ma/images/nexsus-logo-og.jpeg",
+            "foundingDate": "2025",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "LOT ALWAHDA FATH AL KHIR N 60",
+              "addressLocality": "Temara",
+              "addressCountry": "MA"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://nexsus.ma/#website",
+            "url": "https://nexsus.ma/",
+            "name": "NEXSUS",
+            "publisher": { "@id": "https://nexsus.ma/#organization" },
+            "inLanguage": ["en-MA", "fr-MA", "ar-MA"]
+          }
+        ]
       }
     </script>
+    <script id="route-structured-data" type="application/ld+json">[]</script>
     <!-- Typography: Inter Display & Instrument Serif exclusively -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

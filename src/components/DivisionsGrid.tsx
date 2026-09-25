@@ -20,10 +20,11 @@ export interface DivisionItem {
 interface DivisionsGridProps {
   onSelectDivision: (id: string) => void;
   onOpenContact: (divisionId?: string) => void;
+  onRouteNavigate: (path: string) => void;
   language: Language;
 }
 
-const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
+export const DIVISIONS_BY_LANGUAGE: Record<Language, DivisionItem[]> = {
   en: [
     {
       id: 'projects',
@@ -204,8 +205,10 @@ const DivisionRow: React.FC<{
   onHover: () => void;
   onSelect: (id: string) => void;
   onOpenContact: (id: string) => void;
+  onRouteNavigate: (path: string) => void;
+  language: Language;
   viewLabel: string;
-}> = ({ division, index, isActive, onHover, onSelect, onOpenContact, viewLabel }) => {
+}> = ({ division, index, isActive, onHover, onSelect, onOpenContact, onRouteNavigate, language, viewLabel }) => {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -275,7 +278,17 @@ const DivisionRow: React.FC<{
         <div className="lg:col-span-4 flex items-start justify-between gap-4">
           <div className="flex flex-col">
             <h3 className="text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-black uppercase select-none transition-transform duration-300 group-hover:translate-x-1.5">
-              {division.name}
+              <a
+                href={(language === 'en' ? '' : '/' + language) + '/' + division.id}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                  event.preventDefault();
+                  onRouteNavigate('/' + division.id);
+                }}
+              >
+                {division.name}
+              </a>
             </h3>
             <span className="text-[11px] sm:text-xs font-mono tracking-widest text-black/50 uppercase mt-1">
               ({division.code}) {division.subtitle}
@@ -347,7 +360,11 @@ const DivisionRow: React.FC<{
           >
             <img
               src={division.image}
-              alt={division.name}
+              alt={`${division.name} division`}
+              width={1200}
+              height={1141}
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
               className={`w-full h-full object-cover transition-transform duration-700 ease-[0.16,1,0.3,1] ${
                 isActive ? 'scale-100' : 'scale-105 hover:scale-110'
@@ -368,6 +385,7 @@ const DivisionRow: React.FC<{
 export const DivisionsGrid: React.FC<DivisionsGridProps> = ({
   onSelectDivision,
   onOpenContact,
+  onRouteNavigate,
   language,
 }) => {
   // Default to first row active, changes on hover
@@ -416,6 +434,8 @@ export const DivisionsGrid: React.FC<DivisionsGridProps> = ({
             onHover={() => setActiveId(division.id)}
             onSelect={onSelectDivision}
             onOpenContact={onOpenContact}
+            onRouteNavigate={onRouteNavigate}
+            language={language}
             viewLabel={t.view}
           />
         ))}

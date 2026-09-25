@@ -45,8 +45,11 @@ export const NexsusLogo: React.FC<NexsusLogoProps> = ({
       <img
         src="/images/nexsus-logo-og.jpeg"
         alt="NEXSUS"
+        width="969"
+        height="183"
         className={className}
         loading="eager"
+        decoding="async"
       />
     );
   }

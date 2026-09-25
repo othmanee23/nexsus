@@ -58,7 +58,11 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
     }
   };
 
-  const navigateTo = (path: string) => {
+  const hrefFor = (path: string) => language === 'en' ? path : (path === '/' ? '/' + language : '/' + language + path);
+
+  const navigateTo = (event: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
     setMobileMenuOpen(false);
     onRouteNavigate(path);
   };
@@ -75,37 +79,41 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
       >
         <div className="w-full max-w-[1800px] mx-auto flex items-center justify-between">
           {/* Left: Official Nexsus Brand Logo */}
-          <button
-            onClick={() => navigateTo('/')}
+          <a
+            href={hrefFor('/')}
+            onClick={(event) => navigateTo(event, '/')}
             className="flex items-center cursor-pointer group focus:outline-none"
             aria-label="Back to top"
           >
             <NexsusLogo className="h-5 sm:h-6 w-auto object-contain transition-opacity duration-200 group-hover:opacity-70" />
-          </button>
+          </a>
 
           {/* Center: Navigation "SERVICES ABOUT" */}
           <nav className="hidden md:flex items-center space-x-10 text-xs sm:text-[13px] tracking-widest font-medium uppercase text-black">
-            <button onClick={() => navigateTo('/')} className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none">
+            <a href={hrefFor('/')} onClick={(event) => navigateTo(event, '/')} className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none">
               {t.home}
-            </button>
-            <button
-              onClick={() => navigateTo('/about')}
+            </a>
+            <a
+              href={hrefFor('/about')}
+              onClick={(event) => navigateTo(event, '/about')}
               className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
             >
               {t.about}
-            </button>
-            <button
-              onClick={() => navigateTo('/insight')}
+            </a>
+            <a
+              href="/insights"
+              onClick={(event) => navigateTo(event, '/insights')}
               className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
             >
               {t.insights}
-            </button>
-            <button
-              onClick={() => navigateTo('/contact')}
+            </a>
+            <a
+              href={hrefFor('/contact')}
+              onClick={(event) => navigateTo(event, '/contact')}
               className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
             >
               {t.contact}
-            </button>
+            </a>
           </nav>
 
           {/* Right: GMT Time & Underlined "GET IN TOUCH →" */}
@@ -130,13 +138,14 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
               ))}
             </div>
 
-            <button
-              onClick={() => navigateTo('/contact')}
+            <a
+              href={hrefFor('/contact')}
+              onClick={(event) => navigateTo(event, '/contact')}
               className="inline-flex items-center gap-1.5 text-xs font-medium tracking-wider uppercase text-black hover:opacity-60 transition-opacity cursor-pointer border-b border-black pb-0.5 group focus:outline-none"
             >
               <span>{t.getInTouch}</span>
               <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </button>
+            </a>
 
             {/* Mobile Menu Toggle */}
             <button
@@ -163,37 +172,41 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
           >
             <div className="w-full max-w-[1800px] mx-auto flex items-center justify-between">
               {/* Left: Official Nexsus Brand Logo */}
-              <button
-                onClick={() => navigateTo('/')}
+              <a
+                href={hrefFor('/')}
+                onClick={(event) => navigateTo(event, '/')}
                 className="flex items-center cursor-pointer group focus:outline-none"
                 aria-label="Back to top"
               >
                 <NexsusLogo className="h-5 sm:h-5.5 w-auto object-contain transition-opacity duration-200 group-hover:opacity-70" />
-              </button>
+              </a>
 
               {/* Center: Navigation "SERVICES ABOUT" */}
               <nav className="hidden md:flex items-center space-x-10 text-xs sm:text-[13px] tracking-widest font-medium uppercase text-black">
-                <button onClick={() => navigateTo('/')} className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none">
+                <a href={hrefFor('/')} onClick={(event) => navigateTo(event, '/')} className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none">
                   {t.home}
-                </button>
-                <button
-                  onClick={() => navigateTo('/about')}
+                </a>
+                <a
+                  href={hrefFor('/about')}
+                  onClick={(event) => navigateTo(event, '/about')}
                   className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
                 >
                   {t.about}
-                </button>
-                <button
-                  onClick={() => navigateTo('/insight')}
+                </a>
+                <a
+                  href="/insights"
+                  onClick={(event) => navigateTo(event, '/insights')}
                   className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
                 >
                   {t.insights}
-                </button>
-                <button
-                  onClick={() => navigateTo('/contact')}
+                </a>
+                <a
+                  href={hrefFor('/contact')}
+                  onClick={(event) => navigateTo(event, '/contact')}
                   className="hover:opacity-60 transition-opacity cursor-pointer focus:outline-none"
                 >
                   {t.contact}
-                </button>
+                </a>
               </nav>
 
               {/* Right: GMT Time & Underlined "GET IN TOUCH →" */}
@@ -218,13 +231,14 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
                   ))}
                 </div>
 
-                <button
-                  onClick={() => navigateTo('/contact')}
+                <a
+                  href={hrefFor('/contact')}
+                  onClick={(event) => navigateTo(event, '/contact')}
                   className="inline-flex items-center gap-1.5 text-xs font-medium tracking-wider uppercase text-black hover:opacity-60 transition-opacity cursor-pointer border-b border-black pb-0.5 group focus:outline-none"
                 >
                   <span>{t.getInTouch}</span>
                   <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-                </button>
+                </a>
 
                 {/* Mobile Menu Toggle */}
                 <button
@@ -255,27 +269,30 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
                 {t.navigation}
               </div>
               <div className="flex flex-col space-y-6 text-xl font-medium tracking-tight text-black uppercase">
-                <button onClick={() => navigateTo('/')} className="text-left hover:opacity-60 transition-opacity cursor-pointer">
+                <a href={hrefFor('/')} onClick={(event) => navigateTo(event, '/')} className="text-left hover:opacity-60 transition-opacity cursor-pointer">
                   {t.home}
-                </button>
-                <button
-                  onClick={() => navigateTo('/about')}
+                </a>
+                <a
+                  href={hrefFor('/about')}
+                  onClick={(event) => navigateTo(event, '/about')}
                   className="text-left hover:opacity-60 transition-opacity cursor-pointer"
                 >
                   {t.aboutNexsus}
-                </button>
-                <button
-                  onClick={() => navigateTo('/insight')}
+                </a>
+                <a
+                  href="/insights"
+                  onClick={(event) => navigateTo(event, '/insights')}
                   className="text-left hover:opacity-60 transition-opacity cursor-pointer"
                 >
                   {t.insights}
-                </button>
-                <button
-                  onClick={() => navigateTo('/contact')}
+                </a>
+                <a
+                  href={hrefFor('/contact')}
+                  onClick={(event) => navigateTo(event, '/contact')}
                   className="text-left hover:opacity-60 transition-opacity cursor-pointer"
                 >
                   {t.contact}
-                </button>
+                </a>
               </div>
               <div className="flex items-center gap-2 pt-2">
                 {LANGUAGES.map((item) => (
@@ -300,15 +317,14 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, onRouteNavigate, lan
                 <span>{t.heroLocation} / 2025</span>
                 <span>{timeString}</span>
               </div>
-              <button
-                onClick={() => {
-                  navigateTo('/contact');
-                }}
+              <a
+                href={hrefFor('/contact')}
+                onClick={(event) => navigateTo(event, '/contact')}
                 className="w-full py-3.5 bg-black text-white text-xs font-medium tracking-widest uppercase flex items-center justify-center gap-2 cursor-pointer hover:bg-black/90 transition-colors"
               >
                 <span>{t.getInTouch}</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

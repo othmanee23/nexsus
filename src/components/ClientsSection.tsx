@@ -69,6 +69,7 @@ export const ClientsSection: React.FC<ClientsSectionProps> = ({ language }) => {
                     src={client.logo}
                     alt={index < CLIENTS.length ? client.name : ''}
                     loading="lazy"
+                    decoding="async"
                     width="260"
                     height="100"
                     className="max-h-[76px] w-auto max-w-[220px] object-contain sm:max-h-[96px] sm:max-w-[270px]"

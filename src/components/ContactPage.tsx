@@ -86,7 +86,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ language }) => {
             </a>
             <a className="flex items-center gap-2 hover:text-black" href={AMARIS_INSTAGRAM_URL} target="_blank" rel="noreferrer">
               <Instagram className="h-4 w-4" />
-              @amaris__agency
+              @amaris_from_nexsus
             </a>
           </div>
         </div>

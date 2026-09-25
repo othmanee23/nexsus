@@ -61,7 +61,7 @@ const LETTERS = [
 export const InteractiveHeroLogo: React.FC<InteractiveHeroLogoProps> = ({
   className = 'w-full h-auto max-h-[35vh] sm:max-h-[46vh] object-contain',
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLSpanElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
 
   const [isHovered, setIsHovered] = useState(false);
@@ -73,7 +73,7 @@ export const InteractiveHeroLogo: React.FC<InteractiveHeroLogoProps> = ({
   // Dynamic distortion scale that pulses subtly on cursor movement
   const [distortionScale, setDistortionScale] = useState(0);
 
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLSpanElement>) => {
     if (!svgRef.current) return;
     const rect = svgRef.current.getBoundingClientRect();
     if (rect.width === 0 || rect.height === 0) return;
@@ -129,12 +129,12 @@ export const InteractiveHeroLogo: React.FC<InteractiveHeroLogoProps> = ({
   }, [cursorPos, isHovered]);
 
   return (
-    <div
+    <span
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full cursor-default group select-none"
+      className="relative block w-full cursor-default group select-none"
     >
 
       {/* SVG Logotype with Interactive Magnetic Wave & SVG Displacement Filter */}
@@ -144,7 +144,8 @@ export const InteractiveHeroLogo: React.FC<InteractiveHeroLogoProps> = ({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
-        aria-label="NEXSUS™"
+        aria-hidden="true"
+        focusable="false"
       >
         <defs>
           {/* Subtle Liquid Turbulence & Displacement Map Filter */}
@@ -264,7 +265,7 @@ export const InteractiveHeroLogo: React.FC<InteractiveHeroLogoProps> = ({
           );
         })}
       </svg>
-    </div>
+    </span>
   );
 };
 export default InteractiveHeroLogo;

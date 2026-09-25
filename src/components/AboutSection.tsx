@@ -45,7 +45,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ language }) => {
         {/* Right Column: Global Data Headline + 2 Column Narrative + Metric Rows */}
         <div className="lg:col-span-8 flex flex-col justify-start">
           {/* Main Display Headline */}
-          <motion.h2
+          <motion.h1
             initial={{ opacity: 0, y: 36 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.25 }}
@@ -53,7 +53,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ language }) => {
             className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-black uppercase leading-[1.08]"
           >
             {t.aboutTitle}
-          </motion.h2>
+          </motion.h1>
 
           {/* 2-Column Editorial Manifesto */}
           <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 text-xs sm:text-sm text-black/80 font-sans leading-relaxed">

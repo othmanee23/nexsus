@@ -40,7 +40,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision, lan
     >
       {/* Massive Visual Hero: NEXSUS Wordmark spanning full width */}
       <div className="w-full pt-8 sm:pt-12 lg:pt-16 pb-6 sm:pb-8 select-none overflow-hidden">
-        <motion.div
+        <motion.h1
           style={{
             scale: logoScale,
             opacity: logoOpacity,
@@ -49,8 +49,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision, lan
           }}
           className="w-full transition-transform ease-out will-change-transform"
         >
+          <span className="sr-only">NEXSUS</span>
           <InteractiveHeroLogo className="w-full h-auto max-h-[35vh] sm:max-h-[46vh] object-contain" />
-        </motion.div>
+        </motion.h1>
       </div>
 
       {/* Editorial Content Below Logo - Full Width, One Left, One Right */}
@@ -109,22 +110,32 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision, lan
                   { id: 'ventures', label: 'VENTURES' },
                 ] as const
               ).map((d, i) => (
-                <button
+                <a
                   key={d.id}
-                  onClick={() => handleDisciplineClick(d.id)}
+                  href={`${language === 'en' ? '' : `/${language}`}/${d.id}`}
+                  onClick={(event) => {
+                    if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                    event.preventDefault();
+                    handleDisciplineClick(d.id);
+                  }}
                   className="text-[11px] font-mono tracking-widest uppercase px-3 py-1.5 border border-black/15 hover:border-black hover:bg-black hover:text-white transition-all duration-300 cursor-pointer focus:outline-none"
                 >
                   0{i + 1} / {d.label}
-                </button>
+                </a>
               ))}
 
-              <button
+              <a
                 id="hero-contact-btn"
-                onClick={onOpenContact}
+                href={`${language === 'en' ? '' : `/${language}`}/contact`}
+                onClick={(event) => {
+                  if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                  event.preventDefault();
+                  onOpenContact();
+                }}
                 className="text-[11px] font-mono tracking-widest uppercase px-3.5 py-1.5 bg-black text-white hover:bg-black/80 transition-colors cursor-pointer"
               >
                 {t.connect} →
-              </button>
+              </a>
             </motion.div>
           </motion.div>
         </div>

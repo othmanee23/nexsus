@@ -98,7 +98,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, language }) => {
               className="inline-flex items-center gap-2 hover:text-black hover:translate-x-1 transition-all w-fit cursor-pointer"
             >
               <Instagram className="w-3 h-3" />
-              @AMARIS__AGENCY
+              @AMARIS_FROM_NEXSUS
             </a>
           </motion.div>
 
@@ -110,25 +110,35 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, language }) => {
             transition={{ duration: 0.65, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-4 flex lg:justify-end items-start"
           >
-            <button
-              onClick={onOpenContact}
+            <a
+              href={`${language === 'en' ? '' : `/${language}`}/contact`}
+              onClick={(event) => {
+                if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                event.preventDefault();
+                onOpenContact();
+              }}
               className="inline-flex items-center gap-2 border-b border-black pb-0.5 text-xs font-mono uppercase tracking-widest text-black hover:opacity-60 transition-opacity cursor-pointer group"
             >
               <span>{t.getInTouch}</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
+            </a>
           </motion.div>
         </div>
 
         {/* Bottom Giant Typography Section & Nexsus Brand Logo (Reduced Gap) */}
         <div className="w-full mt-8 sm:mt-12 lg:mt-14 flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-10">
           {/* Massive "Let's talk" Headline: "Let's" in Clean Sans, "talk" in Flowing Italic Serif */}
-          <motion.div
+          <motion.a
+            href={`${language === 'en' ? '' : `/${language}`}/contact`}
             initial={{ opacity: 0, y: 44 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            onClick={onOpenContact}
+            onClick={(event) => {
+              if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+              event.preventDefault();
+              onOpenContact();
+            }}
             className="cursor-pointer group flex flex-wrap items-baseline gap-x-4 sm:gap-x-6 lg:gap-x-10 leading-[0.84] select-none"
             title={t.footerTitle}
           >
@@ -140,7 +150,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, language }) => {
                 {t.talk}
               </span>
             ) : null}
-          </motion.div>
+          </motion.a>
 
           {/* Official NEXSUS Brandmark Logo in Bottom Right */}
           <motion.div

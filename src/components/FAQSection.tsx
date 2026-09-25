@@ -187,14 +187,18 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ language, onOpenContact,
       if (divisionIndex === -1) return <React.Fragment key={`${part}-${index}`}>{part}</React.Fragment>;
 
       return (
-        <button
+        <a
           key={part}
-          type="button"
-          onClick={() => onSelectDivision(divisionLinks[divisionIndex])}
+          href={`${language === 'en' ? '' : `/${language}`}/${divisionLinks[divisionIndex]}`}
+          onClick={(event) => {
+            if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            onSelectDivision(divisionLinks[divisionIndex]);
+          }}
           className="font-medium text-black underline decoration-black/30 underline-offset-4 hover:decoration-black focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
         >
           {part}
-        </button>
+        </a>
       );
     });
   };
@@ -266,13 +270,17 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ language, onOpenContact,
             <p className="text-sm font-medium uppercase tracking-wide text-black">
               {t.faqClosing}
             </p>
-            <button
-              type="button"
-              onClick={onOpenContact}
+            <a
+              href={`${language === 'en' ? '' : `/${language}`}/contact`}
+              onClick={(event) => {
+                if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                event.preventDefault();
+                onOpenContact();
+              }}
               className="border-b border-black pb-0.5 text-xs font-mono uppercase tracking-widest text-black transition-opacity hover:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
             >
               {t.discussProject}
-            </button>
+            </a>
           </div>
         </div>
       </div>

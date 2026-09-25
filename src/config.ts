@@ -11,6 +11,6 @@ export const FORMATTED_PHONE = '+212 708 019 109';
 export const SECONDARY_PHONE = '+212627901859';
 export const FORMATTED_SECONDARY_PHONE = '+212 627 901 859';
 export const INSTAGRAM_URL = 'https://www.instagram.com/the_nexsus_/';
-export const AMARIS_INSTAGRAM_URL = 'https://www.instagram.com/amaris__agency/';
+export const AMARIS_INSTAGRAM_URL = 'https://www.instagram.com/amaris_from_nexsus/';
 export const ADDRESS_LINES = ['LOT ALWAHDA FATH AL KHIR N 60', 'Temara', 'Maroc'];
 export const ADDRESS_TEXT = 'LOT ALWAHDA FATH AL KHIR N 60, Temara, Maroc';

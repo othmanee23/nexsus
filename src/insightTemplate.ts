@@ -1,4 +1,0 @@
-export const TEMPLATE_INSIGHTS: { slug: string; title: string; excerpt: string; image: string; category: number }[] = [
-  { slug: 'brand-storytelling-success', title: 'Unlocking the Power of Brand Storytelling: Success', excerpt: 'Brand storytelling goes beyond traditional marketing tactics by creating a narrative that captures the essence of your brand and communicates its values, mission, and purpose.', image: '/images/insights/amaris-nexsus-hero.jpeg', category: 1 },
-  { slug: 'sustainable-brand-identity', title: 'The Impact of Sustainability on Brand Identity: Building a Greener Future', excerpt: 'The strongest stories are rooted in your brand’s values, beliefs, and actions, and strive to align your storytelling efforts with them at every turn.', image: '/images/insights/amaris-red.jpeg', category: 1 },
-];
