@@ -31,7 +31,7 @@ export const ClientsSection: React.FC<ClientsSectionProps> = ({ language }) => {
   return (
     <section
       id="clients"
-      className="w-full overflow-hidden border-t border-black/10 bg-white px-4 py-14 sm:px-8 sm:py-16 lg:px-12"
+      className="cv-auto cv-clients w-full overflow-hidden border-t border-black/10 bg-white px-4 py-14 sm:px-8 sm:py-16 lg:px-12"
     >
       <div className="mx-auto grid w-full max-w-[1800px] grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
         <motion.div

@@ -206,7 +206,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ language, onOpenContact,
   return (
     <section
       id="faq"
-      className="w-full border-t border-black/10 bg-white px-4 py-16 sm:px-8 sm:py-20 lg:px-12"
+      className="cv-auto cv-faq w-full border-t border-black/10 bg-white px-4 py-16 sm:px-8 sm:py-20 lg:px-12"
     >
       <div className="mx-auto grid w-full max-w-[1800px] grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
         <motion.div

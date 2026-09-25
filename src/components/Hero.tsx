@@ -1,7 +1,11 @@
-import React, { useRef } from 'react';
+import React, { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { InteractiveHeroLogo } from './InteractiveHeroLogo';
+import { NexsusLogo } from './NexsusLogo';
 import { copy, Language } from '../i18n';
+
+const InteractiveHeroLogo = lazy(() =>
+  import('./InteractiveHeroLogo').then((module) => ({ default: module.InteractiveHeroLogo })),
+);
 
 interface HeroProps {
   onOpenContact: () => void;
@@ -11,6 +15,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision, language }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [enhanceLogo, setEnhanceLogo] = useState(false);
   const t = copy[language];
 
   const { scrollYProgress } = useScroll({
@@ -32,6 +37,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision, lan
     }
   };
 
+  useEffect(() => {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    const enableEnhancement = () => setEnhanceLogo(true);
+
+    if ('requestIdleCallback' in window) {
+      const idleId = window.requestIdleCallback(enableEnhancement, { timeout: 1800 });
+      return () => window.cancelIdleCallback(idleId);
+    }
+
+    const timeoutId = globalThis.setTimeout(enableEnhancement, 1200);
+    return () => globalThis.clearTimeout(timeoutId);
+  }, []);
+
   return (
     <section
       ref={containerRef}
@@ -50,7 +69,23 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision, lan
           className="w-full transition-transform ease-out will-change-transform"
         >
           <span className="sr-only">NEXSUS</span>
-          <InteractiveHeroLogo className="w-full h-auto max-h-[35vh] sm:max-h-[46vh] object-contain" />
+          {enhanceLogo ? (
+            <Suspense
+              fallback={
+                <NexsusLogo
+                  fillColor="#000000"
+                  className="w-full h-auto max-h-[35vh] sm:max-h-[46vh] object-contain"
+                />
+              }
+            >
+              <InteractiveHeroLogo className="w-full h-auto max-h-[35vh] sm:max-h-[46vh] object-contain" />
+            </Suspense>
+          ) : (
+            <NexsusLogo
+              fillColor="#000000"
+              className="w-full h-auto max-h-[35vh] sm:max-h-[46vh] object-contain"
+            />
+          )}
         </motion.h1>
       </div>
 
@@ -70,17 +105,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision, lan
               <span className="font-semibold">{t.independentGroup}</span>
             </div>
             <p className="text-black/60">33.9265° N, 6.9123° W • {t.heroLocation}</p>
-            <p className="text-[10px] text-black/40">{t.rights}</p>
+            <p className="text-[10px] text-black/60">{t.rights}</p>
           </motion.div>
 
           {/* Right Block: Strictly on Right */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.25 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col space-y-6 sm:space-y-8 max-w-2xl lg:max-w-3xl"
-          >
+          <div className="flex flex-col space-y-6 sm:space-y-8 max-w-2xl lg:max-w-3xl">
             <p className="text-lg sm:text-xl lg:text-2xl font-light tracking-[-0.015em] leading-[1.35] text-black">
               {t.heroLead}
               {t.heroEmphasis ? (
@@ -137,7 +166,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onSelectDivision, lan
                 {t.connect} →
               </a>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

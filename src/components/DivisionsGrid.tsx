@@ -402,7 +402,7 @@ export const DivisionsGrid: React.FC<DivisionsGridProps> = ({
   }, []);
 
   return (
-    <section id="divisions-grid" className="w-full bg-white">
+    <section id="divisions-grid" className="cv-auto cv-divisions w-full bg-white">
       {/* Section Header Matching Reference Layout */}
       <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-8 lg:px-12 pt-12 sm:pt-16 pb-8 sm:pb-12 border-b border-black/10">
         <motion.div
@@ -417,7 +417,7 @@ export const DivisionsGrid: React.FC<DivisionsGridProps> = ({
               {t.disciplinesTitle}
             </h2>
           </div>
-          <div className="text-xs sm:text-sm font-mono tracking-wider uppercase text-black/50">
+          <div className="text-xs sm:text-sm font-mono tracking-wider uppercase text-black/70">
             {t.operatingModel}
           </div>
         </motion.div>

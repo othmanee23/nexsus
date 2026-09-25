@@ -1,22 +1,36 @@
-import React, { useState } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { DivisionsGrid } from './components/DivisionsGrid';
 import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
-import { ContactModal } from './components/ContactModal';
-import { LoadingScreen } from './components/LoadingScreen';
 import { FAQSection } from './components/FAQSection';
 import { ClientsSection } from './components/ClientsSection';
-import { InsightsPage } from './components/InsightsPage';
-import { InsightArticlePage } from './components/InsightArticlePage';
-import { ContactPage } from './components/ContactPage';
-import { DivisionPage } from './components/DivisionPage';
-import { NotFoundPage } from './components/NotFoundPage';
 import { getInsight, getInsightCategory, type DivisionSlug, type InsightCategorySlug } from './insights';
 import { applySeoMetadata, getSeoMetadata } from './seo';
 import { LANGUAGES, Language } from './i18n';
+
+const ContactModal = lazy(() =>
+  import('./components/ContactModal').then((module) => ({ default: module.ContactModal })),
+);
+const ContactPage = lazy(() =>
+  import('./components/ContactPage').then((module) => ({ default: module.ContactPage })),
+);
+const DivisionPage = lazy(() =>
+  import('./components/DivisionPage').then((module) => ({ default: module.DivisionPage })),
+);
+const InsightsPage = lazy(() =>
+  import('./components/InsightsPage').then((module) => ({ default: module.InsightsPage })),
+);
+const InsightArticlePage = lazy(() =>
+  import('./components/InsightArticlePage').then((module) => ({
+    default: module.InsightArticlePage,
+  })),
+);
+const NotFoundPage = lazy(() =>
+  import('./components/NotFoundPage').then((module) => ({ default: module.NotFoundPage })),
+);
 
 export const App: React.FC = () => {
   const [contactOpen, setContactOpen] = useState(false);
@@ -27,6 +41,7 @@ export const App: React.FC = () => {
     return 'en';
   };
   const [language, setLanguageState] = useState<Language>(initialLanguage);
+  const shouldLoadAnalytics = !['localhost', '127.0.0.1'].includes(window.location.hostname);
   const normalizePath = () => {
     const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
     const withoutLanguage = pathname.replace(/^\/(fr|ar)(?=\/|$)/, '') || '/';
@@ -161,9 +176,6 @@ export const App: React.FC = () => {
       lang={language === 'ar' ? 'ar-MA' : language === 'fr' ? 'fr-MA' : 'en-MA'}
       className="min-h-screen w-full bg-white text-black selection:bg-black selection:text-white flex flex-col justify-between"
     >
-      {/* Intro Loading Screen with Centered Logo & Zoom-Out Website Entry */}
-      <LoadingScreen durationMs={1600} />
-
       {/* Top Header */}
       <Header
         onNavigate={handleSectionNavigate}
@@ -172,7 +184,7 @@ export const App: React.FC = () => {
         onLanguageChange={setLanguage}
       />
 
-      {page}
+      <Suspense fallback={null}>{page}</Suspense>
 
       {/* Minimal Footer */}
       <Footer
@@ -183,14 +195,18 @@ export const App: React.FC = () => {
       />
 
       {/* Interactive Contact Modal */}
-      <ContactModal
-        isOpen={contactOpen}
-        onClose={() => setContactOpen(false)}
-        preselectedDivision={contactDivision}
-        language={language}
-      />
+      {contactOpen && (
+        <Suspense fallback={null}>
+          <ContactModal
+            isOpen={contactOpen}
+            onClose={() => setContactOpen(false)}
+            preselectedDivision={contactDivision}
+            language={language}
+          />
+        </Suspense>
+      )}
 
-      <Analytics />
+      {shouldLoadAnalytics && <Analytics />}
     </div>
   );
 };
