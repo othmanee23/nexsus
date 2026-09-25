@@ -21,7 +21,7 @@ The website is technically ready for structured content production. The current 
 - English, French, and Arabic corporate and division routes have self-referencing canonicals and reciprocal hreflang links.
 - Insights remain English-only until translated content exists, avoiding false hreflang declarations and duplicate translated URLs.
 - Empty Insights category hubs remain accessible and crawlable but use `noindex, follow` until a real article is published in that category.
-- Unknown routes render a noindex 404 page, and the build produces a static `404.html` for hosting-level fallback.
+- Unknown routes return a real hosting-level 404 response. The client-side noindex 404 page remains available for unknown in-app route states.
 
 ### Insights architecture
 
@@ -76,7 +76,7 @@ The website is technically ready for structured content production. The current 
 
 - Publish real articles before removing `noindex` from Projects, Technology, and Ventures category hubs. This happens automatically once their article arrays contain content.
 - Submit the regenerated sitemap in Google Search Console after deployment and request validation of the new canonical URLs.
-- Verify production redirect status codes and the custom 404 response after the Vercel deployment.
+- Verify production redirect status codes after each routing change.
 - Social preview images are currently JPEG/PNG assets. A future media pipeline can add WebP/AVIF variants and responsive `srcset` output; Vite does not provide this automatically.
 - The main JavaScript bundle is approximately 504 KB before gzip and triggers Vite's advisory warning. Route-level code splitting is a worthwhile performance follow-up but does not block this SEO architecture.
 - Route-specific metadata is statically generated, while page body content is still hydrated by the existing React SPA. Full HTML body prerendering or SSR would improve support for non-JavaScript crawlers if the project later adopts an SSR-capable architecture.

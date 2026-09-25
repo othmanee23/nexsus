@@ -57,9 +57,11 @@ const renderHead = (template: string, metadata: SeoMetadata) => {
   return html;
 };
 
-const outputPath = (route: string) => route === '/'
-  ? join(DIST, 'index.html')
-  : join(DIST, route.slice(1) + '.html');
+const outputPath = (route: string) => {
+  if (route === '/') return join(DIST, 'index.html');
+  if (route === '/insights') return join(DIST, 'insights', 'index.html');
+  return join(DIST, route.slice(1) + '.html');
+};
 
 const writeRoute = async (template: string, route: string, language: Language) => {
   const localizedRoute = localizedPath(route, language);
