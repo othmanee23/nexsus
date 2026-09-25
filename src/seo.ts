@@ -143,6 +143,7 @@ export const GLOBAL_STRUCTURED_DATA = {
       email: CONTACT_EMAIL,
       telephone: CONTACT_PHONE,
       logo: SITE_URL + '/images/nexsus-logo-og.jpeg',
+      image: SITE_URL + '/images/nexsus-logo-og.jpeg',
       foundingDate: '2025',
       address: {
         '@type': 'PostalAddress',

@@ -71,13 +71,20 @@ The website is technically ready for structured content production. The current 
 - Runtime route audit: one H1 and one main region on all core, division, category, article, and 404 states.
 - Responsive audit: desktop Insights and mobile division layouts render without horizontal overflow.
 - Browser console: no errors or warnings during the final article-page test.
-- Google Rich Results Test: live crawl succeeded; Article and Breadcrumb items were detected as valid.
+- Production HTTP audit: normal pages return `200`, unknown URLs return a real `404`, and tested legacy, protocol, host, and trailing-slash redirects resolve in one permanent hop.
+- Production indexation audit: public routes are indexable, empty category hubs use `noindex, follow`, and empty hubs are absent from the sitemap.
+- Production canonical audit: all 25 sitemap URLs are self-canonical and use only `https://nexsus.ma`.
+- Hreflang audit: all 21 translated corporate and division routes have reciprocal `en-MA`, `fr-MA`, `ar-MA`, and `x-default` references. English-only Insights routes do not declare hreflang.
+- Rendered-content audit: the live JavaScript application exposes its H1, page copy, navigation, internal links, and article content after rendering, with no missing image alt attributes on the tested routes.
+- Google Rich Results Test: live crawl succeeded and detected four valid items: Article, Breadcrumbs, Organization, and Local business. Article and Breadcrumbs have no reported issues.
+- Sitemap timestamps: significant site pages use the current architecture release date, while articles use their content dates; routine builds do not replace these values with the deployment date.
 
 ## Remaining Work
 
 - Publish real articles before removing `noindex` from Projects, Technology, and Ventures category hubs. This happens automatically once their article arrays contain content.
 - Submit the regenerated sitemap in Google Search Console after deployment and request validation of the new canonical URLs.
-- Verify production redirect status codes after each routing change.
+- Keep redirect status and chain checks in the release checklist whenever routing rules change.
+- The Organization schema still has an optional `postalCode` warning. Add it only after the official business postal code is confirmed.
 - Social preview images are currently JPEG/PNG assets. A future media pipeline can add WebP/AVIF variants and responsive `srcset` output; Vite does not provide this automatically.
 - The main JavaScript bundle is approximately 504 KB before gzip and triggers Vite's advisory warning. Route-level code splitting is a worthwhile performance follow-up but does not block this SEO architecture.
-- Route-specific metadata is statically generated, while page body content is still hydrated by the existing React SPA. Full HTML body prerendering or SSR would improve support for non-JavaScript crawlers if the project later adopts an SSR-capable architecture.
+- Route-specific metadata is statically generated, while page body content is still hydrated by the existing React SPA. Google successfully rendered the live content, so an SSR rebuild is not currently justified; full body prerendering remains a future enhancement for non-JavaScript crawlers and performance.
