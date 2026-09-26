@@ -34,7 +34,7 @@
 .insight-article-byline dd { margin-top: 3px; font-size: 13px; }
 .insight-article-hero { width: 100%; aspect-ratio: 640 / 208; object-fit: cover; margin-top: 40px; }
 .insight-article-layout { display: grid; grid-template-columns: 34fr 62fr; gap: 5%; margin-top: 80px; }
-.insight-article-layout aside { display: grid; grid-template-columns: 1fr 1fr; align-content: start; gap: 24px; font-size: 14px; line-height: 1.4; }
+.insight-article-layout aside { position: sticky; top: 96px; display: grid; grid-template-columns: 1fr 1fr; align-content: start; align-self: start; gap: 24px; font-size: 14px; line-height: 1.4; }
 .insight-article-layout aside p { color: #888; }
 .insight-article-body { font-size: 15px; line-height: 1.45; }
 .insight-article-body > * + * { margin-top: 18px; }
@@ -72,7 +72,7 @@
   .insight-article-page { padding: 65px 26px 90px; }
   .insight-article-heading h1 { font-size: 42px; }
   .insight-article-layout { grid-template-columns: 1fr; gap: 35px; margin-top: 40px; }
-  .insight-article-layout aside { max-width: 400px; }
+  .insight-article-layout aside { position: static; max-width: 400px; }
   .insight-recent { margin-top: 85px; }
 }
 @media (max-width: 640px) {
