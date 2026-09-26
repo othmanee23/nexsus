@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { INSIGHTS } from '../src/insights';
+import { INSIGHTS, getInsightCategory, getInsightsByCategory } from '../src/insights';
 import { getSeoMetadata, INDEXABLE_ROUTES, MULTILINGUAL_ROUTES, type SeoMetadata } from '../src/seo';
 import type { Language } from '../src/i18n';
 
@@ -45,6 +45,7 @@ const renderHead = (template: string, metadata: SeoMetadata) => {
   html = replaceAttribute(html, 'property="og:type"', metadata.type);
   html = replaceAttribute(html, 'property="og:url"', metadata.canonical);
   html = replaceAttribute(html, 'property="og:image"', metadata.image);
+  html = replaceAttribute(html, 'property="og:image:alt"', metadata.imageAlt || 'NEXSUS wordmark');
   html = replaceAttribute(html, 'property="og:locale"', metadata.language.replace('-', '_'));
   html = replaceAttribute(html, 'name="twitter:title"', metadata.title);
   html = replaceAttribute(html, 'name="twitter:description"', metadata.description);
@@ -82,7 +83,15 @@ const xmlEscape = (value: string) => value
 const sitemapEntry = (route: string, language: Language = 'en') => {
   const metadata = getSeoMetadata(route, language);
   const article = INSIGHTS.find((item) => metadata.canonical === item.canonicalUrl);
-  const lastmod = article?.updatedAt || LAST_MODIFIED;
+  const category = getInsightCategory(route.replace('/insights/', ''));
+  const latestInsightUpdate = (items = INSIGHTS) => items
+    .map((item) => item.updatedAt)
+    .sort()
+    .at(-1);
+  const lastmod = article?.updatedAt
+    || (category ? latestInsightUpdate(getInsightsByCategory(category.slug)) : undefined)
+    || (route === '/insights' ? latestInsightUpdate() : undefined)
+    || LAST_MODIFIED;
   const alternates = metadata.alternates.map((alternate) =>
     `    <xhtml:link rel="alternate" hreflang="${xmlEscape(alternate.hreflang)}" href="${xmlEscape(alternate.href)}" />`,
   ).join('\n');

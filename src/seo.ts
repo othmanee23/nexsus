@@ -7,6 +7,7 @@ export interface SeoMetadata {
   description: string;
   canonical: string;
   image: string;
+  imageAlt?: string;
   type: 'website' | 'article';
   robots: string;
   language: string;
@@ -274,6 +275,7 @@ export const getSeoMetadata = (route: string, language: Language = 'en'): SeoMet
       description: insight.seoDescription,
       canonical: insight.canonicalUrl,
       image: insight.ogImage,
+      imageAlt: insight.featuredImageAlt,
       type: 'article',
       robots: INDEXABLE_ROBOTS,
       language: 'en-MA',
@@ -318,6 +320,7 @@ export const applySeoMetadata = (metadata: SeoMetadata) => {
   setMeta('meta[property="og:type"]', 'content', metadata.type);
   setMeta('meta[property="og:url"]', 'content', metadata.canonical);
   setMeta('meta[property="og:image"]', 'content', metadata.image);
+  setMeta('meta[property="og:image:alt"]', 'content', metadata.imageAlt || 'NEXSUS wordmark');
   setMeta('meta[property="og:locale"]', 'content', metadata.language.replace('-', '_'));
   setMeta('meta[name="twitter:title"]', 'content', metadata.title);
   setMeta('meta[name="twitter:description"]', 'content', metadata.description);

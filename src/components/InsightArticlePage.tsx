@@ -7,10 +7,20 @@ import { InsightCard } from './InsightCard';
 
 const RichTextParagraph = ({ block }: { block: Extract<InsightContentBlock, { type: 'paragraph' }> }) => {
   if (!block.links?.length) return <p>{block.text}</p>;
-  const parts: React.ReactNode[] = [block.text];
-  block.links.forEach((link) => {
-    parts.push(' ', <a key={link.href + link.text} href={link.href}>{link.text}</a>);
+  const parts: React.ReactNode[] = [];
+  let remaining = block.text;
+  block.links.forEach((link, index) => {
+    const matchIndex = remaining.indexOf(link.text);
+    if (matchIndex === -1) {
+      if (parts.length || remaining) parts.push(' ');
+      parts.push(<a key={link.href + link.text + index} href={link.href}>{link.text}</a>);
+      return;
+    }
+    parts.push(remaining.slice(0, matchIndex));
+    parts.push(<a key={link.href + link.text + index} href={link.href}>{link.text}</a>);
+    remaining = remaining.slice(matchIndex + link.text.length);
   });
+  parts.push(remaining);
   return <p>{parts}</p>;
 };
 

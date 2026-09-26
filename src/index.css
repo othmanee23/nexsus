@@ -84,7 +84,7 @@
   .insight-recent > header a { font-size: 12px; }
   .insight-recent h3 { white-space: normal; }
 }
-.insights-meta { color: #888; font-size: 11px; margin-top: 15px; }
+.insights-meta { color: #888; display: flex; flex-wrap: wrap; gap: 5px 12px; font-size: 11px; margin-top: 15px; }
 .insights-card :is(h2, h3) { font-size: 18px; line-height: 1.3; font-weight: 400; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; margin-top: 3px; }
 .insights-excerpt { font-size: 12px; line-height: 1.4; margin-top: 14px; max-width: 95%; }
 .insights-empty { min-height: 260px; display: grid; align-content: center; border-bottom: 1px solid #eee; }
