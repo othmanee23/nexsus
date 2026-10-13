@@ -124,11 +124,17 @@ const sendEmail = async (payload: Required<Pick<ContactPayload, 'division' | 'na
     }),
   });
 
+  const responseBody = await response.text();
+
   if (!response.ok) {
+    console.error('Resend rejected contact email:', {
+      status: response.status,
+      body: responseBody.slice(0, 1000),
+    });
     throw new Error(`RESEND_${response.status}`);
   }
 
-  return response.json();
+  return responseBody ? JSON.parse(responseBody) : { id: 'accepted' };
 };
 
 export default async function handler(req: any, res: any) {
