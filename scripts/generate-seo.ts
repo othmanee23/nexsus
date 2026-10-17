@@ -1,4 +1,5 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { INSIGHTS, getInsightCategory, getInsightsByCategory } from '../src/insights';
@@ -6,7 +7,12 @@ import { getSeoMetadata, INDEXABLE_ROUTES, MULTILINGUAL_ROUTES, type SeoMetadata
 import type { Language } from '../src/i18n';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const DIST = join(ROOT, 'dist');
+const outputCandidates = [
+  join(ROOT, '.cloudflare', 'output', 'v0', 'workers', 'default', 'assets'),
+  join(ROOT, 'dist', 'client'),
+  join(ROOT, 'dist'),
+];
+const DIST = outputCandidates.find((path) => existsSync(join(path, 'index.html'))) ?? outputCandidates.at(-1)!;
 const SITE_URL = 'https://nexsus.ma';
 const LAST_MODIFIED = '2026-09-25';
 const LANGUAGES: Language[] = ['en', 'fr', 'ar'];
