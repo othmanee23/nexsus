@@ -1,5 +1,4 @@
 import React, { Suspense, lazy, useState } from 'react';
-import { Analytics } from '@vercel/analytics/react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { DivisionsGrid } from './components/DivisionsGrid';
@@ -41,7 +40,6 @@ export const App: React.FC = () => {
     return 'en';
   };
   const [language, setLanguageState] = useState<Language>(initialLanguage);
-  const shouldLoadAnalytics = !['localhost', '127.0.0.1'].includes(window.location.hostname);
   const normalizePath = () => {
     const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
     const withoutLanguage = pathname.replace(/^\/(fr|ar)(?=\/|$)/, '') || '/';
@@ -205,8 +203,6 @@ export const App: React.FC = () => {
           />
         </Suspense>
       )}
-
-      {shouldLoadAnalytics && <Analytics />}
     </div>
   );
 };
