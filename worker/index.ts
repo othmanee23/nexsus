@@ -1,4 +1,8 @@
 const allowedDivisions = new Set(['group', 'amaris', 'projects', 'technology', 'ventures']);
+const retiredInsightSlugs = new Set([
+  'sustainable-brand-identity',
+  'brand-storytelling-success',
+]);
 const maxBodyBytes = 12_000;
 
 type ContactPayload = {
@@ -179,7 +183,11 @@ const legacyRedirect = (url: URL) => {
   const match = url.pathname.match(/^\/(?:fr\/|ar\/)?insight(?:\/(.+))?\/?$/);
   if (!match) return null;
 
-  const destination = new URL(match[1] ? `/insights/${match[1]}` : '/insights', url);
+  const slug = match[1];
+  const destinationPath = slug && !retiredInsightSlugs.has(slug)
+    ? `/insights/${slug}`
+    : '/insights';
+  const destination = new URL(destinationPath, url);
   destination.search = url.search;
   return Response.redirect(destination, 308);
 };
