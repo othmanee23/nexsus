@@ -12,6 +12,8 @@
     "deploy:cloudflare": "npm run build && cf deploy --prebuilt",
     "deploy:cloudflare:dry-run": "npm run build && cf deploy --prebuilt --dry-run",
     "seo:generate": "tsx scripts/generate-seo.ts",
+    "sitemap:validate": "tsx scripts/validate-sitemap.ts",
+    "sitemap:validate:live": "tsx scripts/validate-sitemap.ts --live",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"

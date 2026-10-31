@@ -353,7 +353,7 @@ export const INDEXABLE_ROUTES = [
   ...INSIGHTS.map((insight) => '/insights/' + insight.slug),
 ];
 
-export const MULTILINGUAL_ROUTES = ['/', '/about', '/contact', ...Object.keys(DIVISION_SEO).map((slug) => '/' + slug)];
+export const MULTILINGUAL_ROUTES = ['/', '/about', ...Object.keys(DIVISION_SEO).map((slug) => '/' + slug), '/contact'];
 
 export const formatPublishedDate = (date: string) => new Intl.DateTimeFormat('en', {
   month: 'long',

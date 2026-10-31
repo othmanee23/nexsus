@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { INSIGHTS, getInsightCategory, getInsightsByCategory } from '../src/insights';
+import { INSIGHTS, INSIGHT_CATEGORIES, getInsightCategory, getInsightsByCategory } from '../src/insights';
 import { getSeoMetadata, INDEXABLE_ROUTES, MULTILINGUAL_ROUTES, type SeoMetadata } from '../src/seo';
 import type { Language } from '../src/i18n';
 
@@ -110,6 +110,38 @@ const sitemapEntry = (route: string, language: Language = 'en') => {
   ].filter(Boolean).join('\n');
 };
 
+const isIndexableRoute = (route: string) => getSeoMetadata(route, 'en').robots
+  .split(',')
+  .map((directive) => directive.trim())
+  .includes('index');
+
+const englishOnlySitemapRoutes = () => {
+  const categoryOrder = new Map(INSIGHT_CATEGORIES.map((category, index) => [category.slug, index]));
+  const articleOrder = new Map(
+    [...INSIGHTS]
+      .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt) || b.publishedAt.localeCompare(a.publishedAt) || a.title.localeCompare(b.title))
+      .map((insight, index) => [insight.slug, index]),
+  );
+
+  const rank = (route: string) => {
+    if (route === '/insights') return [0, 0];
+    const category = getInsightCategory(route.replace('/insights/', ''));
+    if (category) return [1, categoryOrder.get(category.slug) ?? Number.MAX_SAFE_INTEGER];
+    const article = INSIGHTS.find((insight) => route === '/insights/' + insight.slug);
+    if (article) return [2, articleOrder.get(article.slug) ?? Number.MAX_SAFE_INTEGER];
+    return [3, 0];
+  };
+
+  return INDEXABLE_ROUTES
+    .filter((route) => !MULTILINGUAL_ROUTES.includes(route))
+    .filter(isIndexableRoute)
+    .sort((a, b) => {
+      const [aGroup, aOrder] = rank(a);
+      const [bGroup, bOrder] = rank(b);
+      return aGroup - bGroup || aOrder - bOrder || a.localeCompare(b);
+    });
+};
+
 const generate = async () => {
   const template = await readFile(join(DIST, 'index.html'), 'utf8');
   const generated: { route: string; metadata: SeoMetadata }[] = [];
@@ -127,14 +159,16 @@ const generate = async () => {
   if (!uniqueValues(generated.map((page) => page.metadata.title))) throw new Error('Duplicate SEO title detected.');
   if (!uniqueValues(generated.map((page) => page.metadata.canonical))) throw new Error('Duplicate canonical URL detected.');
 
-  const localizedSitemapEntries = MULTILINGUAL_ROUTES.flatMap((route) => LANGUAGES.map((language) => sitemapEntry(route, language)));
-  const englishOnlyEntries = INDEXABLE_ROUTES
-    .filter((route) => !MULTILINGUAL_ROUTES.includes(route))
-    .filter((route) => getSeoMetadata(route, 'en').robots.startsWith('index'))
-    .map((route) => sitemapEntry(route));
+  const localizedSitemapEntries = LANGUAGES.flatMap((language) => MULTILINGUAL_ROUTES.map((route) => sitemapEntry(route, language)));
+  const englishOnlyEntries = englishOnlySitemapRoutes().map((route) => sitemapEntry(route));
+  const hasHreflang = localizedSitemapEntries.some((entry) => entry.includes('<xhtml:link'));
+  const namespace = hasHreflang
+    ? ' xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"'
+    : ' xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
   const sitemap = [
     '<?xml version="1.0" encoding="UTF-8"?>',
-    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
+    `<urlset${namespace}>`,
     ...localizedSitemapEntries,
     ...englishOnlyEntries,
     '</urlset>',

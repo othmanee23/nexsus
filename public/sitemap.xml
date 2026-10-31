@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://nexsus.ma/</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/" />
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://nexsus.ma/fr</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/" />
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://nexsus.ma/ar</loc>
     <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/" />
     <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr" />
     <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar" />
@@ -33,63 +18,7 @@
     <lastmod>2026-09-25</lastmod>
   </url>
   <url>
-    <loc>https://nexsus.ma/fr/about</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/about" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/about" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/about" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/about" />
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://nexsus.ma/ar/about</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/about" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/about" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/about" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/about" />
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://nexsus.ma/contact</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/contact" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/contact" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/contact" />
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://nexsus.ma/fr/contact</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/contact" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/contact" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/contact" />
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://nexsus.ma/ar/contact</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/contact" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/contact" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/contact" />
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
     <loc>https://nexsus.ma/projects</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/projects" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/projects" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/projects" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/projects" />
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://nexsus.ma/fr/projects</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/projects" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/projects" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/projects" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/projects" />
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://nexsus.ma/ar/projects</loc>
     <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/projects" />
     <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/projects" />
     <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/projects" />
@@ -105,39 +34,7 @@
     <lastmod>2026-09-25</lastmod>
   </url>
   <url>
-    <loc>https://nexsus.ma/fr/technology</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/technology" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/technology" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/technology" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/technology" />
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://nexsus.ma/ar/technology</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/technology" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/technology" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/technology" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/technology" />
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
     <loc>https://nexsus.ma/amaris</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/amaris" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/amaris" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/amaris" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/amaris" />
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://nexsus.ma/fr/amaris</loc>
-    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/amaris" />
-    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/amaris" />
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/amaris" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/amaris" />
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://nexsus.ma/ar/amaris</loc>
     <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/amaris" />
     <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/amaris" />
     <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/amaris" />
@@ -153,6 +50,54 @@
     <lastmod>2026-09-25</lastmod>
   </url>
   <url>
+    <loc>https://nexsus.ma/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/contact" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/contact" />
+    <lastmod>2026-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/fr</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/" />
+    <lastmod>2026-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/fr/about</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/about" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/about" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/about" />
+    <lastmod>2026-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/fr/projects</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/projects" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/projects" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/projects" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/projects" />
+    <lastmod>2026-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/fr/technology</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/technology" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/technology" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/technology" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/technology" />
+    <lastmod>2026-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/fr/amaris</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/amaris" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/amaris" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/amaris" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/amaris" />
+    <lastmod>2026-09-25</lastmod>
+  </url>
+  <url>
     <loc>https://nexsus.ma/fr/ventures</loc>
     <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/ventures" />
     <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/ventures" />
@@ -161,11 +106,67 @@
     <lastmod>2026-09-25</lastmod>
   </url>
   <url>
+    <loc>https://nexsus.ma/fr/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/contact" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/contact" />
+    <lastmod>2026-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/ar</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/" />
+    <lastmod>2026-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/ar/about</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/about" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/about" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/about" />
+    <lastmod>2026-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/ar/projects</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/projects" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/projects" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/projects" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/projects" />
+    <lastmod>2026-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/ar/technology</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/technology" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/technology" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/technology" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/technology" />
+    <lastmod>2026-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/ar/amaris</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/amaris" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/amaris" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/amaris" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/amaris" />
+    <lastmod>2026-09-25</lastmod>
+  </url>
+  <url>
     <loc>https://nexsus.ma/ar/ventures</loc>
     <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/ventures" />
     <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/ventures" />
     <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/ventures" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/ventures" />
+    <lastmod>2026-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://nexsus.ma/ar/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en-MA" href="https://nexsus.ma/contact" />
+    <xhtml:link rel="alternate" hreflang="fr-MA" href="https://nexsus.ma/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://nexsus.ma/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexsus.ma/contact" />
     <lastmod>2026-09-25</lastmod>
   </url>
   <url>
@@ -189,11 +190,11 @@
     <lastmod>2026-10-30</lastmod>
   </url>
   <url>
-    <loc>https://nexsus.ma/insights/launching-a-new-brand-in-morocco</loc>
+    <loc>https://nexsus.ma/insights/business-process-automation-morocco</loc>
     <lastmod>2026-10-30</lastmod>
   </url>
   <url>
-    <loc>https://nexsus.ma/insights/business-process-automation-morocco</loc>
+    <loc>https://nexsus.ma/insights/launching-a-new-brand-in-morocco</loc>
     <lastmod>2026-10-30</lastmod>
   </url>
   <url>
