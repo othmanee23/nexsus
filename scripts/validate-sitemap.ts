@@ -7,7 +7,9 @@ import type { Language } from '../src/i18n';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITEMAP_PATH = join(ROOT, 'public', 'sitemap.xml');
+const HTML_SITEMAP_PATH = join(ROOT, 'public', 'sitemap.html');
 const SITE_ORIGIN = 'https://nexsus.ma';
+const HTML_SITEMAP_URL = SITE_ORIGIN + '/sitemap';
 const LANGUAGES: Language[] = ['en', 'fr', 'ar'];
 const LIVE = process.argv.includes('--live');
 const outputCandidates = [
@@ -39,11 +41,6 @@ const extractTag = (block: string, tag: string) => {
 const canonicalFromHtml = (html: string) => html.match(/<link rel="canonical" href="([^"]+)"/i)?.[1];
 const robotsFromHtml = (html: string) => html.match(/<meta name="robots" content="([^"]+)"/i)?.[1];
 const isIndexable = (robots = '') => robots.split(',').map((value) => value.trim()).includes('index');
-
-const localizedPath = (route: string, language: Language) => {
-  if (language === 'en') return route;
-  return route === '/' ? '/' + language : '/' + language + route;
-};
 
 const expectedCanonicalUrls = () => {
   const multilingual = LANGUAGES.flatMap((language) => MULTILINGUAL_ROUTES.map((route) =>
@@ -78,7 +75,7 @@ const validate = async () => {
   const errors: string[] = [];
 
   if (!xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>')) errors.push('Missing valid UTF-8 XML declaration.');
-  if (!xml.includes('<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>')) errors.push('Missing sitemap XSL processing instruction.');
+  if (xml.includes('<?xml-stylesheet')) errors.push('Deprecated browser-side XSLT instruction must not be present.');
   if (!xml.includes('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"')) errors.push('Missing sitemap namespace.');
 
   const blocks = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((match) => match[1]);
@@ -165,6 +162,34 @@ const validate = async () => {
     }
   }
 
+  let htmlSitemap = '';
+  if (LIVE) {
+    try {
+      const response = await fetchWithoutRedirect(HTML_SITEMAP_URL);
+      if (response.status >= 300 && response.status < 400) errors.push(`HTML sitemap redirects (${response.status}): ${HTML_SITEMAP_URL}`);
+      else if (response.status !== 200) errors.push(`HTML sitemap returns ${response.status}: ${HTML_SITEMAP_URL}`);
+      htmlSitemap = await response.text();
+    } catch (error) {
+      errors.push(`Unable to fetch ${HTML_SITEMAP_URL}: ${error instanceof Error ? error.message : String(error)}`);
+    }
+  } else if (!existsSync(HTML_SITEMAP_PATH)) {
+    errors.push('Generated public/sitemap.html is missing.');
+  } else {
+    htmlSitemap = await readFile(HTML_SITEMAP_PATH, 'utf8');
+  }
+
+  if (htmlSitemap) {
+    const htmlRows = (htmlSitemap.match(/data-sitemap-row/g) ?? []).length;
+    if (htmlRows !== locations.length) errors.push(`HTML sitemap contains ${htmlRows} rows; expected ${locations.length}.`);
+    if (canonicalFromHtml(htmlSitemap) !== HTML_SITEMAP_URL) errors.push('HTML sitemap canonical is missing or incorrect.');
+    if (robotsFromHtml(htmlSitemap) !== 'noindex, follow') errors.push('HTML sitemap must be noindex, follow.');
+    if (/<script\b/i.test(htmlSitemap)) errors.push('HTML sitemap must not require JavaScript.');
+    if (!htmlSitemap.includes('href="/sitemap.xml"')) errors.push('HTML sitemap must link to /sitemap.xml.');
+    for (const location of locations) {
+      if (!htmlSitemap.includes(`href="${location}"`)) errors.push(`HTML sitemap is missing ${location}`);
+    }
+  }
+
   if (errors.length) {
     console.error(`Sitemap validation failed with ${errors.length} issue(s):`);
     errors.forEach((error) => console.error('- ' + error));
@@ -177,7 +202,9 @@ const validate = async () => {
     return pathname === '/fr' || pathname.startsWith('/fr/') || pathname === '/ar' || pathname.startsWith('/ar/');
   }).length;
   console.log(`Sitemap validation passed: ${locations.length} canonical, indexable URLs (${localizedCount} localized).`);
-  console.log(LIVE ? 'Live HTTP, redirect, canonical, and indexation checks passed.' : 'Generated route, canonical, indexation, namespace, hreflang, duplicate, and lastmod checks passed.');
+  console.log(LIVE
+    ? 'Live HTTP, redirect, canonical, indexation, XML sitemap, and HTML sitemap checks passed.'
+    : 'Generated route, canonical, indexation, namespace, hreflang, duplicate, lastmod, and HTML sitemap checks passed.');
 };
 
 await validate();
