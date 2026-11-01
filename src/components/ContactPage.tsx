@@ -160,6 +160,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ language }) => {
             {error ? <p className="text-sm text-red-700">{error}</p> : null}
             {status ? <p className="text-sm text-black">{status}</p> : null}
 
+            <p className="max-w-xl text-xs leading-relaxed text-black/55">
+              {t.privacyNotice}{' '}
+              <a className="underline underline-offset-2 hover:text-black" href="/privacy">
+                {t.privacyPolicy}
+              </a>
+            </p>
+
             <button
               type="submit"
               disabled={submitting}

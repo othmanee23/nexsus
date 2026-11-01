@@ -24,7 +24,8 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact, language }) => {
   const t = copy[language];
-  const localizedPath = (path: string) => path === '/insights' || language === 'en' ? path : `/${language}${path === '/' ? '' : path}`;
+  const englishOnlyPaths = ['/insights', '/privacy', '/terms', '/ai-transparency', '/sitemap'];
+  const localizedPath = (path: string) => englishOnlyPaths.includes(path) || language === 'en' ? path : `/${language}${path === '/' ? '' : path}`;
   const footerLinks = [
     { label: 'Projects', path: '/projects' },
     { label: 'Technology', path: '/technology' },
@@ -32,8 +33,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact, langu
     { label: 'Ventures', path: '/ventures' },
     { label: 'Insights', path: '/insights' },
     { label: 'Contact', path: '/contact' },
+    { label: 'Privacy Policy', path: '/privacy' },
+    { label: 'Terms of Use', path: '/terms' },
+    { label: 'AI Transparency', path: '/ai-transparency' },
+    { label: 'Sitemap', path: '/sitemap' },
   ];
   const navigate = (event: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    if (path === '/sitemap') return;
     if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || !onNavigate) return;
     event.preventDefault();
     onNavigate(path);

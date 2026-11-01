@@ -331,6 +331,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 />
               ) : null}
 
+              <p className="text-xs leading-relaxed text-black/55">
+                {t.privacyNotice}{' '}
+                <a className="underline underline-offset-2 hover:text-black" href="/privacy">
+                  {t.privacyPolicy}
+                </a>
+              </p>
+
               <div className="pt-2">
                 {error ? (
                   <p className="mb-3 text-xs text-red-700 font-sans" role="alert">

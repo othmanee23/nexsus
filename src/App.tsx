@@ -29,6 +29,9 @@ const InsightArticlePage = lazy(() =>
 const NotFoundPage = lazy(() =>
   import('./components/NotFoundPage').then((module) => ({ default: module.NotFoundPage })),
 );
+const LegalPage = lazy(() =>
+  import('./components/LegalPage').then((module) => ({ default: module.LegalPage })),
+);
 
 export const App: React.FC = () => {
   const [contactOpen, setContactOpen] = useState(false);
@@ -52,7 +55,10 @@ export const App: React.FC = () => {
 
   const pathForLanguage = (path: string, targetLanguage = language) => {
     const cleanPath = path === '/' ? '' : path.replace(/^\/?/, '/');
-    if (cleanPath.startsWith('/insights')) return cleanPath;
+    if (
+      cleanPath.startsWith('/insights')
+      || ['/privacy', '/terms', '/ai-transparency', '/sitemap'].includes(cleanPath)
+    ) return cleanPath;
     return targetLanguage === 'en' ? cleanPath || '/' : `/${targetLanguage}${cleanPath || ''}`;
   };
 
@@ -124,6 +130,7 @@ export const App: React.FC = () => {
   const divisionMatch = route.match(/^\/(projects|technology|amaris|ventures)$/);
   const articleSlug = articleMatch && !categoryMatch ? articleMatch[1] : undefined;
   const categorySlug = categoryMatch ? (categoryMatch[1] as InsightCategorySlug) : undefined;
+  const legalMatch = route.match(/^\/(privacy|terms|ai-transparency)$/);
   const page =
     route === '/about' ? (
       <main className="flex-1 w-full flex flex-col">
@@ -152,6 +159,8 @@ export const App: React.FC = () => {
       />
     ) : articleSlug ? (
       <InsightArticlePage slug={articleSlug} onNavigate={handleRouteNavigate} language={language} />
+    ) : legalMatch ? (
+      <LegalPage slug={legalMatch[1] as 'privacy' | 'terms' | 'ai-transparency'} />
     ) : route === '/' ? (
       <main className="flex-1 w-full flex flex-col">
         <Hero

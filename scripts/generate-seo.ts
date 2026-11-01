@@ -15,6 +15,11 @@ const outputCandidates = [
 const DIST = outputCandidates.find((path) => existsSync(join(path, 'index.html'))) ?? outputCandidates.at(-1)!;
 const SITE_URL = 'https://nexsus.ma';
 const LAST_MODIFIED = '2026-09-25';
+const ROUTE_LAST_MODIFIED: Partial<Record<string, string>> = {
+  '/privacy': '2026-11-01',
+  '/terms': '2026-11-01',
+  '/ai-transparency': '2026-11-01',
+};
 const LANGUAGES: Language[] = ['en', 'fr', 'ar'];
 
 const escapeHtml = (value: string) => value
@@ -104,6 +109,7 @@ const sitemapItem = (route: string, language: Language = 'en'): SitemapItem => {
   const lastmod = article?.updatedAt
     || (category ? latestInsightUpdate(getInsightsByCategory(category.slug)) : undefined)
     || (route === '/insights' ? latestInsightUpdate() : undefined)
+    || ROUTE_LAST_MODIFIED[route]
     || LAST_MODIFIED;
   return { route, language, metadata, lastmod };
 };

@@ -18,6 +18,7 @@ const SITE_ORIGIN = 'https://nexsus.ma';
 const LANGUAGES: Language[] = ['en', 'fr', 'ar'];
 const DIVISION_ROUTES = ['/projects', '/technology', '/amaris', '/ventures'] as const;
 const CORE_ROUTES = ['/', '/about', ...DIVISION_ROUTES, '/contact'] as const;
+const LEGAL_ROUTES = ['/privacy', '/terms', '/ai-transparency'] as const;
 
 type Page = {
   route: string;
@@ -79,6 +80,7 @@ const localizedCoreRoute = (route: string, language: Language) => localizedRoute
 
 for (const page of pages) {
   for (const route of CORE_ROUTES) addLink(page.route, localizedCoreRoute(route, page.language));
+  for (const route of LEGAL_ROUTES) addLink(page.route, route);
   addLink(page.route, '/insights');
 
   if (DIVISION_ROUTES.includes(page.baseRoute as typeof DIVISION_ROUTES[number])) {

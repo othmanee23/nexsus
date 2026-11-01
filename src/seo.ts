@@ -46,6 +46,24 @@ const DIVISION_SEO = {
   },
 } as const;
 
+const LEGAL_PAGE_SEO = {
+  '/privacy': {
+    title: 'Privacy Policy | NEXSUS',
+    description: 'Learn how NEXSUS collects, uses, protects and handles information submitted through nexsus.ma.',
+    label: 'Privacy Policy',
+  },
+  '/terms': {
+    title: 'Terms of Use | NEXSUS',
+    description: 'Terms governing the use of the NEXSUS website, content, intellectual property and external resources.',
+    label: 'Terms of Use',
+  },
+  '/ai-transparency': {
+    title: 'AI Transparency | NEXSUS',
+    description: 'Learn how NEXSUS approaches AI-assisted tools, human oversight, content creation and responsible use.',
+    label: 'AI Transparency',
+  },
+} as const;
+
 const DIVISION_LOCALIZED_SEO: Record<Language, Partial<Record<keyof typeof DIVISION_SEO, { title: string; description: string }>>> = {
   en: {},
   fr: {
@@ -173,6 +191,25 @@ export const getSeoMetadata = (route: string, language: Language = 'en'): SeoMet
   const cleanRoute = route === '/' ? '/' : route.replace(/\/+$/, '');
   const languageInfo = LANGUAGE_META[language];
   const coreKey = cleanRoute === '/' ? 'home' : cleanRoute === '/about' ? 'about' : cleanRoute === '/contact' ? 'contact' : null;
+
+  if (cleanRoute in LEGAL_PAGE_SEO) {
+    const page = LEGAL_PAGE_SEO[cleanRoute as keyof typeof LEGAL_PAGE_SEO];
+    return {
+      title: page.title,
+      description: page.description,
+      canonical: absoluteUrl(cleanRoute),
+      image: DEFAULT_IMAGE,
+      imageAlt: 'NEXSUS wordmark',
+      type: 'website',
+      robots: INDEXABLE_ROBOTS,
+      language: 'en-MA',
+      alternates: [],
+      structuredData: [breadcrumbSchema([
+        { name: 'Home', path: '/' },
+        { name: page.label, path: cleanRoute },
+      ])],
+    };
+  }
 
   if (coreKey) {
     const page = CORE_PAGE_COPY[language][coreKey];
@@ -347,6 +384,9 @@ export const INDEXABLE_ROUTES = [
   '/',
   '/about',
   '/contact',
+  '/privacy',
+  '/terms',
+  '/ai-transparency',
   ...Object.keys(DIVISION_SEO).map((slug) => '/' + slug),
   '/insights',
   ...INSIGHT_CATEGORIES.map((category) => '/insights/' + category.slug),
