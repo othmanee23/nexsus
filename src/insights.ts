@@ -2112,15 +2112,20 @@ export const INSIGHTS: Insight[] = [
 
 export const getInsight = (slug: string) => INSIGHTS.find((insight) => insight.slug === slug);
 export const getInsightCategory = (slug: string) => INSIGHT_CATEGORIES.find((category) => category.slug === slug);
-export const getInsightsByCategory = (slug: InsightCategorySlug) => INSIGHTS.filter((insight) => insight.primaryCategory === slug);
-export const getInsightsByDivision = (division: DivisionSlug) => INSIGHTS.filter((insight) => insight.relatedDivisions.includes(division));
+export const getPublishedInsights = () => [...INSIGHTS].sort((a, b) =>
+  b.publishedAt.localeCompare(a.publishedAt)
+  || b.updatedAt.localeCompare(a.updatedAt)
+  || a.title.localeCompare(b.title),
+);
+export const getInsightsByCategory = (slug: InsightCategorySlug) => getPublishedInsights().filter((insight) => insight.primaryCategory === slug);
+export const getInsightsByDivision = (division: DivisionSlug) => getPublishedInsights().filter((insight) => insight.relatedDivisions.includes(division));
 
 export const getRelatedInsights = (insight: Insight, limit = 3): Insight[] => {
   const manual = (insight.relatedInsights || []).map(getInsight).filter((item): item is Insight => Boolean(item));
-  const automatic = INSIGHTS.filter((candidate) =>
+  const automatic = getPublishedInsights().filter((candidate) =>
     candidate.slug !== insight.slug
     && !manual.some((item) => item.slug === candidate.slug)
-    && (candidate.primaryCategory === insight.primaryCategory || candidate.topics.some((topic) => insight.topics.includes(topic))),
+    && candidate.primaryCategory === insight.primaryCategory,
   );
   return [...manual, ...automatic].slice(0, limit);
 };

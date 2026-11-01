@@ -186,7 +186,7 @@ export const App: React.FC = () => {
 
       {/* Minimal Footer */}
       <Footer
-        onNavigate={handleSectionNavigate}
+        onNavigate={handleRouteNavigate}
         onOpenContact={() => handleRouteNavigate('/contact')}
         onSelectDivision={(id) => handleOpenContact(id)}
         language={language}

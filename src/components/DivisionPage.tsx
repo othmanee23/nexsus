@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import type { Language } from '../i18n';
-import { getInsightsByDivision, type DivisionSlug } from '../insights';
+import { getInsightsByDivision, INSIGHT_CATEGORIES, type DivisionSlug } from '../insights';
 import { Breadcrumbs } from './Breadcrumbs';
 import { DIVISIONS_BY_LANGUAGE } from './DivisionsGrid';
 import { InsightCard } from './InsightCard';
@@ -22,7 +22,9 @@ export const DivisionPage = ({
   onNavigate: (path: string) => void;
 }) => {
   const division = DIVISIONS_BY_LANGUAGE[language].find((item) => item.id === slug)!;
-  const relatedInsights = getInsightsByDivision(slug);
+  const relatedInsights = getInsightsByDivision(slug).slice(0, 3);
+  const insightCategory = INSIGHT_CATEGORIES.find((category) => category.division === slug)!;
+  const insightCategoryPath = '/insights/' + insightCategory.slug;
   const t = labels[language];
   const navigate = (event: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -66,7 +68,7 @@ export const DivisionPage = ({
         <section className="division-related-insights" aria-labelledby="division-related-title">
           <header>
             <h2 id="division-related-title">{t.related}</h2>
-            <a href="/insights" onClick={(event) => navigate(event, '/insights')}>View all insights</a>
+            <a href={insightCategoryPath} onClick={(event) => navigate(event, insightCategoryPath)}>View all {insightCategory.label} insights</a>
           </header>
           <div>{relatedInsights.map((insight) => <InsightCard key={insight.slug} insight={insight} headingLevel={3} onNavigate={onNavigate} />)}</div>
         </section>

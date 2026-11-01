@@ -8,12 +8,13 @@
   },
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build && tsx scripts/generate-seo.ts",
+    "build": "vite build && tsx scripts/generate-seo.ts && tsx scripts/internal-link-report.ts",
     "deploy:cloudflare": "npm run build && cf deploy --prebuilt",
     "deploy:cloudflare:dry-run": "npm run build && cf deploy --prebuilt --dry-run",
     "seo:generate": "tsx scripts/generate-seo.ts",
     "sitemap:validate": "tsx scripts/validate-sitemap.ts",
     "sitemap:validate:live": "tsx scripts/validate-sitemap.ts --live",
+    "internal-links:report": "tsx scripts/internal-link-report.ts",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Instagram, Phone } from 'lucide-react';
+import { Instagram, Phone } from 'lucide-react';
 import { NexsusLogo } from './NexsusLogo';
 import {
   ADDRESS_LINES,
@@ -22,8 +22,22 @@ interface FooterProps {
   language: Language;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenContact, language }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact, language }) => {
   const t = copy[language];
+  const localizedPath = (path: string) => path === '/insights' || language === 'en' ? path : `/${language}${path === '/' ? '' : path}`;
+  const footerLinks = [
+    { label: 'Projects', path: '/projects' },
+    { label: 'Technology', path: '/technology' },
+    { label: 'AMARIS', path: '/amaris' },
+    { label: 'Ventures', path: '/ventures' },
+    { label: 'Insights', path: '/insights' },
+    { label: 'Contact', path: '/contact' },
+  ];
+  const navigate = (event: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || !onNavigate) return;
+    event.preventDefault();
+    onNavigate(path);
+  };
 
   return (
     <footer
@@ -102,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, language }) => {
             </a>
           </motion.div>
 
-          {/* Column 3: Action Link (Right-aligned on desktop) */}
+          {/* Column 3: Crawlable site navigation */}
           <motion.div
             initial={{ opacity: 0, y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -110,18 +124,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, language }) => {
             transition={{ duration: 0.65, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-4 flex lg:justify-end items-start"
           >
-            <a
-              href={`${language === 'en' ? '' : `/${language}`}/contact`}
-              onClick={(event) => {
-                if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-                event.preventDefault();
-                onOpenContact();
-              }}
-              className="inline-flex items-center gap-2 border-b border-black pb-0.5 text-xs font-mono uppercase tracking-widest text-black hover:opacity-60 transition-opacity cursor-pointer group"
-            >
-              <span>{t.getInTouch}</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            <nav aria-label="Footer" className="flex flex-wrap gap-x-5 gap-y-2 lg:max-w-[360px] lg:justify-end text-[11px] font-mono uppercase tracking-widest">
+              {footerLinks.map((link) => (
+                <a
+                  key={link.path}
+                  href={localizedPath(link.path)}
+                  onClick={(event) => navigate(event, link.path)}
+                  className="border-b border-transparent pb-0.5 text-black/75 transition-colors hover:border-black hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
           </motion.div>
         </div>
 

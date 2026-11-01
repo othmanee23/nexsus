@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Language } from '../i18n';
-import { INSIGHTS, getInsightCategory, getInsightsByCategory, type InsightCategorySlug } from '../insights';
+import { getInsightCategory, getInsightsByCategory, getPublishedInsights, type InsightCategorySlug } from '../insights';
 import { Breadcrumbs } from './Breadcrumbs';
 import { InsightArtwork } from './InsightArtwork';
 import { InsightCard } from './InsightCard';
@@ -17,7 +17,7 @@ export const InsightsPage = ({ onNavigate, language: _language, categorySlug }: 
   const [offset, setOffset] = useState(0);
   const contactCursor = useRef<HTMLSpanElement>(null);
   const category = categorySlug ? getInsightCategory(categorySlug) : undefined;
-  const articles = categorySlug ? getInsightsByCategory(categorySlug) : INSIGHTS;
+  const articles = categorySlug ? getInsightsByCategory(categorySlug) : getPublishedInsights();
   const navigate = (event: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
