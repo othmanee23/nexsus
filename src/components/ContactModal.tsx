@@ -220,7 +220,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
+              <label className="sr-only" htmlFor="contact-modal-website">
+                Leave this field empty
+              </label>
               <input
+                id="contact-modal-website"
                 type="text"
                 name="website"
                 value={website}

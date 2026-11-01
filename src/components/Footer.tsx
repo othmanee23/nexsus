@@ -99,7 +99,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact, langu
             <a
               href={INSTAGRAM_URL}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 hover:text-black hover:translate-x-1 transition-all w-fit cursor-pointer"
             >
               <Instagram className="w-3 h-3" />
@@ -108,7 +108,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenContact, langu
             <a
               href={AMARIS_INSTAGRAM_URL}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 hover:text-black hover:translate-x-1 transition-all w-fit cursor-pointer"
             >
               <Instagram className="w-3 h-3" />

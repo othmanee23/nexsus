@@ -6,8 +6,7 @@ import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
 import { FAQSection } from './components/FAQSection';
 import { ClientsSection } from './components/ClientsSection';
-import { getInsight, getInsightCategory, type DivisionSlug, type InsightCategorySlug } from './insights';
-import { applySeoMetadata, getSeoMetadata } from './seo';
+import type { DivisionSlug, InsightCategorySlug } from './insights';
 import { LANGUAGES, Language } from './i18n';
 
 const ContactModal = lazy(() =>
@@ -48,6 +47,7 @@ export const App: React.FC = () => {
     return withoutLanguage;
   };
   const [route, setRoute] = useState<string>(normalizePath);
+  const hasMounted = React.useRef(false);
   const dir = LANGUAGES.find((item) => item.code === language)?.dir || 'ltr';
 
   const pathForLanguage = (path: string, targetLanguage = language) => {
@@ -98,7 +98,18 @@ export const App: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    applySeoMetadata(getSeoMetadata(route, language));
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return;
+    }
+
+    let active = true;
+    void import('./seo').then(({ applySeoMetadata, getSeoMetadata }) => {
+      if (active) applySeoMetadata(getSeoMetadata(route, language));
+    });
+    return () => {
+      active = false;
+    };
   }, [route, language]);
 
   React.useEffect(() => {
@@ -111,8 +122,8 @@ export const App: React.FC = () => {
   const categoryMatch = route.match(/^\/insights\/(projects|technology|brand-creative|ventures)$/);
   const articleMatch = route.match(/^\/insights\/([^/]+)$/);
   const divisionMatch = route.match(/^\/(projects|technology|amaris|ventures)$/);
-  const article = articleMatch && !categoryMatch ? getInsight(articleMatch[1]) : undefined;
-  const category = categoryMatch ? getInsightCategory(categoryMatch[1]) : undefined;
+  const articleSlug = articleMatch && !categoryMatch ? articleMatch[1] : undefined;
+  const categorySlug = categoryMatch ? (categoryMatch[1] as InsightCategorySlug) : undefined;
   const page =
     route === '/about' ? (
       <main className="flex-1 w-full flex flex-col">
@@ -133,14 +144,14 @@ export const App: React.FC = () => {
       />
     ) : route === '/insights' ? (
       <InsightsPage onNavigate={handleRouteNavigate} language={language} />
-    ) : category ? (
+    ) : categorySlug ? (
       <InsightsPage
         onNavigate={handleRouteNavigate}
         language={language}
-        categorySlug={category.slug as InsightCategorySlug}
+        categorySlug={categorySlug}
       />
-    ) : article ? (
-      <InsightArticlePage slug={article.slug} onNavigate={handleRouteNavigate} language={language} />
+    ) : articleSlug ? (
+      <InsightArticlePage slug={articleSlug} onNavigate={handleRouteNavigate} language={language} />
     ) : route === '/' ? (
       <main className="flex-1 w-full flex flex-col">
         <Hero

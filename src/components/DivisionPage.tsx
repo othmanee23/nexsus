@@ -5,6 +5,7 @@ import { getInsightsByDivision, INSIGHT_CATEGORIES, type DivisionSlug } from '..
 import { Breadcrumbs } from './Breadcrumbs';
 import { DIVISIONS_BY_LANGUAGE } from './DivisionsGrid';
 import { InsightCard } from './InsightCard';
+import { ResponsiveServiceImage } from './ResponsiveServiceImage';
 
 const labels: Record<Language, { overview: string; mission: string; capabilities: string; approach: string; vision: string; related: string }> = {
   en: { overview: 'Overview', mission: 'Mission', capabilities: 'Capabilities', approach: 'Approach', vision: 'Vision', related: 'Related insights' },
@@ -42,7 +43,13 @@ export const DivisionPage = ({
           <p className="division-page-lead">{division.description}</p>
           <a href="/contact" onClick={(event) => navigate(event, '/contact')}>{division.cta}<ArrowUpRight aria-hidden="true" /></a>
         </div>
-        <img src={division.image} alt={division.name + ' division'} width={1200} height={1141} loading="eager" fetchPriority="high" />
+        <ResponsiveServiceImage
+          src={division.image}
+          alt={division.name + ' division'}
+          sizes="(max-width: 1023px) calc(100vw - 2rem), 42vw"
+          loading="eager"
+          fetchPriority="high"
+        />
       </header>
 
       <div className="division-page-details">

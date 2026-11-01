@@ -4,6 +4,22 @@ const retiredInsightSlugs = new Set([
   'brand-storytelling-success',
 ]);
 const maxBodyBytes = 12_000;
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'none'",
+  "form-action 'self'",
+  "script-src 'self' https://static.cloudflareinsights.com https://challenges.cloudflare.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://rsms.me",
+  "font-src 'self' data: https://fonts.gstatic.com https://rsms.me",
+  "img-src 'self' data: blob:",
+  "connect-src 'self' https://cloudflareinsights.com https://*.cloudflareinsights.com https://challenges.cloudflare.com",
+  "frame-src https://challenges.cloudflare.com",
+  "worker-src 'self' blob:",
+  "manifest-src 'self'",
+  'upgrade-insecure-requests',
+].join('; ');
 
 type ContactPayload = {
   division?: string;
@@ -30,6 +46,8 @@ const securityHeaders = {
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
   'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+  'Cross-Origin-Opener-Policy': 'same-origin',
+  'Content-Security-Policy': contentSecurityPolicy,
 };
 
 const json = (status: number, body: unknown, extraHeaders: HeadersInit = {}) =>

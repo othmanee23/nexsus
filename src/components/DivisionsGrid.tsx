@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { copy, Language } from '../i18n';
+import { ResponsiveServiceImage } from './ResponsiveServiceImage';
 
 export interface DivisionItem {
   id: string;
@@ -358,11 +359,10 @@ const DivisionRow: React.FC<{
                 : 'h-[52px] sm:h-[62px] lg:h-[68px] opacity-90'
             }`}
           >
-            <img
+            <ResponsiveServiceImage
               src={division.image}
               alt={`${division.name} division`}
-              width={1200}
-              height={1141}
+              sizes="(max-width: 1023px) calc(100vw - 2rem), 420px"
               loading="lazy"
               decoding="async"
               referrerPolicy="no-referrer"

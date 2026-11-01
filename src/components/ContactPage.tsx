@@ -80,11 +80,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({ language }) => {
               <Phone className="h-4 w-4" />
               {FORMATTED_SECONDARY_PHONE}
             </a>
-            <a className="inline-flex items-center gap-2 hover:text-black" href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
+            <a className="inline-flex items-center gap-2 hover:text-black" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
               <Instagram className="h-4 w-4" />
               @the_nexsus_
             </a>
-            <a className="flex items-center gap-2 hover:text-black" href={AMARIS_INSTAGRAM_URL} target="_blank" rel="noreferrer">
+            <a className="flex items-center gap-2 hover:text-black" href={AMARIS_INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
               <Instagram className="h-4 w-4" />
               @amaris_from_nexsus
             </a>
@@ -92,7 +92,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({ language }) => {
         </div>
 
         <form onSubmit={handleSubmit} className="lg:col-span-7">
+          <label className="sr-only" htmlFor="contact-page-website">
+            Leave this field empty
+          </label>
           <input
+            id="contact-page-website"
             type="text"
             name="website"
             value={website}
