@@ -1,250 +1,571 @@
 import React from 'react';
-import { ADDRESS_TEXT, CONTACT_EMAIL, FORMATTED_PHONE, LEGAL_NAME } from '../config';
+import {
+  CONTACT_EMAIL,
+  FORMATTED_PHONE,
+  FORMATTED_SECONDARY_PHONE,
+  LEGAL_NAME,
+} from '../config';
 
 export type LegalPageSlug = 'privacy' | 'terms' | 'ai-transparency';
+
+type Subsection = {
+  title: string;
+  paragraphs?: React.ReactNode[];
+  items?: React.ReactNode[];
+  afterItems?: React.ReactNode[];
+};
 
 type Section = {
   title: string;
   paragraphs?: React.ReactNode[];
   items?: React.ReactNode[];
+  afterItems?: React.ReactNode[];
+  subsections?: Subsection[];
 };
 
 type LegalPageContent = {
   eyebrow: string;
   title: string;
-  introduction: string;
+  introduction: React.ReactNode[];
   sections: Section[];
 };
+
+const contactDetails = (
+  <>
+    <strong>{LEGAL_NAME}</strong><br />
+    LOT ALWAHDA FATH AL KHIR N 60<br />
+    Temara, Morocco<br /><br />
+    Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a><br />
+    Phone: <a href="tel:+212708019109">{FORMATTED_PHONE}</a> ·{' '}
+    <a href="tel:+212627901859">{FORMATTED_SECONDARY_PHONE}</a>
+  </>
+);
 
 const privacySections: Section[] = [
   {
     title: 'Who we are',
     paragraphs: [
-      <><strong>{LEGAL_NAME}</strong> is a multidisciplinary company based at {ADDRESS_TEXT}. This policy explains how information is handled through <a href="https://nexsus.ma">nexsus.ma</a>.</>,
+      <>NEXSUS PROJECT SARL is a Moroccan company operating through complementary activities including Projects, Technology &amp; Solutions, AMARIS and Ventures.</>,
+      <>Contact information:</>,
+      contactDetails,
     ],
   },
   {
     title: 'Information we collect',
-    paragraphs: [
-      <>When you submit an enquiry, we collect the area of interest, your name, email address, message, and any organization name you choose to provide.</>,
-      <>The site and its infrastructure may also process limited technical information needed to deliver and protect the service, such as request data, an IP address for spam verification, and aggregated page-performance measurements.</>,
+    paragraphs: [<>We collect personal information primarily when you choose to contact us.</>],
+    subsections: [
+      {
+        title: 'Contact and enquiry information',
+        paragraphs: [
+          <>When you use a contact or project-enquiry form, we may collect:</>,
+        ],
+        items: [
+          'your name',
+          'your email address',
+          'your organization, if provided',
+          'your area of interest',
+          'the content of your message',
+        ],
+      },
+      {
+        title: 'Technical and security information',
+        paragraphs: [
+          <>The website also uses technical anti-spam measures.</>,
+          <>Our infrastructure provider may process technical information necessary to deliver and secure the website, including:</>,
+        ],
+        items: [
+          'IP address',
+          'browser and device information',
+          'request information',
+          'security signals',
+          'performance and diagnostic information',
+        ],
+        afterItems: [<>Cloudflare Turnstile may process technical information, including an IP address and challenge token, when verifying that a form submission is legitimate.</>],
+      },
+      {
+        title: 'Website analytics',
+        paragraphs: [
+          <>We use Cloudflare Web Analytics to understand aggregate website usage and performance. The current implementation is designed to operate without NEXSUS setting analytics cookies or using browser localStorage or sessionStorage for behavioral tracking.</>,
+        ],
+      },
     ],
   },
   {
-    title: 'How we collect information',
+    title: 'How we use information',
+    paragraphs: [<>We may use information collected through the website to:</>],
     items: [
-      'Directly from you when you submit a contact or project enquiry.',
-      'Automatically through hosting, security, spam-prevention, and cookieless performance analytics systems.',
+      'respond to enquiries',
+      'route enquiries to the relevant NEXSUS division',
+      'communicate with prospective customers, partners and other visitors',
+      'operate and secure the website',
+      'prevent spam and abuse',
+      'diagnose technical problems',
+      'understand aggregate site usage and performance',
+      'improve the website and our services',
+      'comply with applicable legal obligations',
+    ],
+    subsections: [
+      {
+        title: 'Automated decisions',
+        paragraphs: [<>We do not currently use website enquiry data for automated decision-making.</>],
+      },
     ],
   },
   {
-    title: 'Why we use information',
-    items: [
-      'To respond to enquiries and take requested pre-contractual steps.',
-      'To provide information about NEXSUS and its divisions.',
-      'To operate, secure, diagnose, and improve the website.',
-      'To meet applicable operational or legal obligations.',
-    ],
+    title: 'Contact-form processing',
     paragraphs: [
-      <>Depending on the context, processing may be based on your consent, steps requested before a possible engagement, legitimate operational interests that do not override your rights, or applicable legal obligations.</>,
+      <>When you submit an enquiry, the website sends the information through our Cloudflare-hosted infrastructure and uses Resend to deliver the message to the NEXSUS business mailbox.</>,
+      <>The current application does not store submitted contact-form data in an application database, Cloudflare KV, D1, R2 or another dedicated website datastore.</>,
+      <>Messages may nevertheless be retained in our business email systems and by service providers for operational, security or delivery purposes. No precise mailbox or provider retention period is currently defined in the website code.</>,
     ],
   },
   {
-    title: 'Service providers and sharing',
+    title: 'Legal context',
     paragraphs: [
-      <>We use Cloudflare for hosting, content delivery, security, Turnstile spam protection, and cookieless web-performance analytics. We use Resend to deliver submitted enquiries to the NEXSUS business mailbox. These providers process relevant data on our behalf to provide their services.</>,
-      <>The site also requests font resources from Google Fonts and rsms.me. Those services receive the standard technical request information needed to return the requested files.</>,
-      <>We do not state that enquiry information is sold, and the current website does not include advertising pixels or a newsletter signup. Information may also be disclosed where required by law or necessary to establish, exercise, or defend legal rights.</>,
+      <>NEXSUS operates in Morocco.</>,
+      <>The processing of personal data may be subject to applicable Moroccan data-protection requirements, including Law No. 09-08 relating to the protection of individuals with regard to the processing of personal data.</>,
+      <>Where required, processing is carried out for legitimate and defined purposes such as responding to your enquiry, operating the website, maintaining security, taking steps requested by you before a possible business relationship, or complying with legal obligations.</>,
+      <>This policy does not claim a CNDP declaration or authorization reference unless such a reference is separately confirmed and published by NEXSUS.</>,
+    ],
+  },
+  {
+    title: 'Service providers',
+    paragraphs: [<>We use third-party service providers to operate the website.</>],
+    subsections: [
+      {
+        title: 'Cloudflare',
+        paragraphs: [<>Cloudflare provides website delivery, DNS/CDN services, security, Cloudflare Workers, Turnstile, Web Analytics and operational monitoring. Cloudflare may process technical data required to provide these services.</>],
+      },
+      {
+        title: 'Resend',
+        paragraphs: [<>Resend is used to deliver messages submitted through the website to the NEXSUS business mailbox. It receives the information required to transmit those enquiries.</>],
+      },
+      {
+        title: 'External font providers',
+        paragraphs: [<>The website may request font resources from providers including Google Fonts and rsms.me. Those providers may receive ordinary technical request information when a browser requests their resources.</>],
+      },
     ],
   },
   {
     title: 'International processing',
     paragraphs: [
-      <>Some service providers operate infrastructure outside Morocco. As a result, technical data and enquiry information may be processed in other countries. Provider locations and safeguards can change, so this statement does not claim a particular transfer mechanism that has not been independently verified.</>,
+      <>Some service providers used to operate the website may process information using infrastructure located outside Morocco.</>,
+      <>Where applicable, NEXSUS seeks to use reputable service providers and handle personal information in accordance with applicable requirements. The exact data-location and transfer arrangements of third-party providers are governed by their infrastructure and contractual terms.</>,
     ],
   },
   {
-    title: 'Retention',
+    title: 'Cookies and browser storage',
     paragraphs: [
-      <>The website does not store contact submissions in its own database. Enquiries are delivered by email and may remain in NEXSUS and service-provider systems only for as long as reasonably necessary to respond, manage the resulting business relationship, protect the service, and meet applicable obligations. Exact provider and mailbox retention periods are governed by the relevant account settings and operational practices.</>,
+      <>NEXSUS does not currently use optional advertising, remarketing or behavioral-tracking cookies on nexsus.ma.</>,
+      <>The current application does not use application cookies, localStorage or sessionStorage for visitor tracking or preferences.</>,
+      <>Cloudflare Web Analytics is currently implemented as cookieless aggregate analytics. Cloudflare Turnstile is used as a website security and abuse-prevention mechanism.</>,
+      <>Because the current site does not use optional cookie-based advertising or tracking technologies, NEXSUS does not currently display a general cookie-consent banner.</>,
+      <>If the website later introduces technologies such as advertising pixels, remarketing, personalization storage or other optional trackers, this policy and the consent mechanism will be reassessed.</>,
     ],
   },
   {
-    title: 'Security',
+    title: 'How long we retain information',
     paragraphs: [
-      <>We use reasonable technical and organizational measures intended to protect the website and submitted information, including encrypted transport, access controls, security headers, input validation, and spam protection. No internet service can guarantee absolute security.</>,
+      <>We retain personal information only for as long as reasonably necessary for the purpose for which it was collected and for applicable operational or legal requirements.</>,
+      <>The website itself does not maintain a dedicated database of contact enquiries. Information delivered to our business mailbox or processed by service providers may be retained in accordance with our operational needs and the relevant provider settings or terms.</>,
+    ],
+  },
+  {
+    title: 'Data security',
+    paragraphs: [
+      <>We use reasonable technical and organizational measures intended to protect the website and information processed through it.</>,
+      <>These measures include secured HTTPS delivery, infrastructure security controls, form validation, anti-spam protections and access controls.</>,
+      <>However, no internet transmission or information system can be guaranteed to be completely secure.</>,
     ],
   },
   {
     title: 'Your rights',
-    paragraphs: [
-      <>Subject to applicable Moroccan law and relevant exceptions, you may ask whether we process information about you and request access, correction, updating, deletion or blocking where appropriate. You may also object to certain processing on legitimate grounds.</>,
-      <>To make a request, email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. We may need to verify your identity before acting on a request.</>,
+    paragraphs: [<>Depending on applicable law and the circumstances of the processing, you may have rights concerning your personal information, including rights to request:</>],
+    items: [
+      'access to personal information concerning you',
+      'correction of inaccurate or incomplete information',
+      'opposition to certain processing where legally applicable',
     ],
-  },
-  {
-    title: 'Cookies and tracking',
-    paragraphs: [
-      <>The current website does not set application cookies or use localStorage or sessionStorage for analytics, preferences, or advertising. Cloudflare Web Analytics is used for aggregate performance and usage measurement without cookies. Cloudflare Turnstile processes technical signals when displayed to protect enquiry submission from abuse.</>,
-      <>Because no optional cookie-based analytics or marketing trackers are currently present, the site does not display a consent banner. This assessment should be revisited before any optional analytics, advertising, personalization, or embedded tracking technology is added.</>,
+    subsections: [
+      {
+        title: 'Submitting a request',
+        paragraphs: [
+          <>To submit a privacy-related request, contact <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. We may need to verify your identity before acting on a request.</>,
+          <>Where applicable, individuals may also contact the Moroccan Commission Nationale de contrôle de la protection des Données à caractère Personnel (CNDP).</>,
+        ],
+      },
     ],
   },
   {
     title: 'External links',
     paragraphs: [
-      <>The site links to external websites and social profiles. Their operators control their own privacy practices, and this policy does not apply once you leave nexsus.ma.</>,
+      <>The website may contain links to third-party websites, social networks or informational sources.</>,
+      <>NEXSUS does not control those websites and is not responsible for their privacy practices. We recommend reviewing the privacy policies of third-party services you choose to visit.</>,
+    ],
+  },
+  {
+    title: 'Children',
+    paragraphs: [
+      <>The website is designed for general professional and business use and is not intentionally directed at children.</>,
+      <>We do not knowingly use the website to solicit personal data from children.</>,
     ],
   },
   {
     title: 'Changes to this policy',
     paragraphs: [
-      <>We may update this policy as the website, service providers, or applicable requirements change. The current version and its update date will remain available on this page.</>,
+      <>We may update this Privacy Policy as the website, our services, legal requirements or the technologies we use change.</>,
+      <>The latest version will be published on this page with an updated revision date.</>,
     ],
   },
   {
     title: 'Contact',
     paragraphs: [
-      <><strong>{LEGAL_NAME}</strong><br />{ADDRESS_TEXT}<br /><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a><br /><a href="tel:+212708019109">{FORMATTED_PHONE}</a></>,
+      <>Questions about this Privacy Policy or the handling of personal information can be sent to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</>,
+      contactDetails,
     ],
   },
 ];
 
 const termsSections: Section[] = [
   {
-    title: 'Website purpose',
-    paragraphs: [
-      <>nexsus.ma provides information about NEXSUS, its operating divisions and services, published Insights, and ways to contact the company about projects or opportunities. It is a public information website and these terms are not a client services agreement.</>,
+    title: 'About the website',
+    paragraphs: [<>The NEXSUS website provides information about:</>],
+    items: [
+      'NEXSUS PROJECT SARL',
+      'NEXSUS Projects',
+      'NEXSUS Technology & Solutions',
+      'AMARIS',
+      'NEXSUS Ventures',
+      'selected projects and capabilities',
+      'Insights and professional content',
+      'ways to contact NEXSUS',
     ],
-  },
-  {
-    title: 'Acceptance of these terms',
-    paragraphs: [
-      <>By accessing or using this website, you agree to use it in accordance with these Terms of Use and applicable law. If you do not agree, please stop using the site.</>,
+    subsections: [
+      {
+        title: 'Purpose',
+        paragraphs: [<>The information is provided for general business and informational purposes.</>],
+      },
     ],
   },
   {
     title: 'Permitted use',
-    paragraphs: [
-      <>You may browse, reference, and share links to publicly available pages for lawful informational and business purposes. Any reuse of protected site material must respect the intellectual-property section below.</>,
+    paragraphs: [<>You may access and use the website for lawful personal, professional and business purposes. Unless a specific restriction is clearly stated, you may:</>],
+    items: [
+      'browse public pages',
+      'read and reference public Insights',
+      'contact NEXSUS',
+      'share links to public NEXSUS content',
     ],
   },
   {
     title: 'Prohibited use',
+    paragraphs: [<>You may not use the website to:</>],
     items: [
-      'Attempting unauthorized access, security testing without permission, or disruption of the website or its infrastructure.',
-      'Introducing malicious code, automated abuse, or excessive requests that impair the service.',
-      'Using the site for unlawful activity, deception, impersonation, or infringement of another person’s rights.',
-      'Scraping or reproducing content in a way that harms the service or violates applicable rights.',
+      'engage in unlawful activity',
+      'attempt unauthorized access to systems or accounts',
+      'interfere with website availability or security',
+      'introduce malicious code',
+      'impersonate another person or organization',
+      'submit fraudulent or deliberately misleading enquiries',
+      'attempt to bypass security protections',
+      'use automated systems in a way that materially disrupts website operation',
+      'reproduce protected NEXSUS content commercially without authorization',
     ],
-    paragraphs: [
-      <>These restrictions do not prohibit ordinary search-engine crawling or reasonable access by legitimate indexing services.</>,
+    subsections: [
+      {
+        title: 'Legitimate access',
+        paragraphs: [<>Nothing in these terms is intended to prevent legitimate search-engine crawling, ordinary linking, security research carried out lawfully, or normal use of publicly available pages.</>],
+      },
     ],
   },
   {
     title: 'Intellectual property',
     paragraphs: [
-      <>Unless otherwise indicated, the NEXSUS and AMARIS names, original logos, website design, text, graphics, photography, Insights, and other original materials are owned by or licensed to NEXSUS. They may not be copied, republished, modified, or used commercially without permission, except where the law allows.</>,
-      <>Third-party names, marks, images, and linked materials remain the property of their respective owners. Their appearance does not transfer ownership to NEXSUS.</>,
+      <>Unless otherwise indicated, original website materials created by or for NEXSUS—including text, design, branding elements, graphics, photographs, audiovisual materials and other original content—may be protected by applicable intellectual-property rights.</>,
+      <>The names and branding associated with NEXSUS, NEXSUS Projects, NEXSUS Technology &amp; Solutions, AMARIS and NEXSUS Ventures may not be used in a way that falsely suggests endorsement, partnership or affiliation.</>,
+      <>Third-party names, trademarks, images or materials remain the property of their respective owners.</>,
     ],
   },
   {
     title: 'Insights and informational content',
-    paragraphs: [
-      <>Insights are general professional information. They are not a substitute for advice tailored to your circumstances and should not automatically be treated as legal, tax, financial, or investment advice. Project decisions should be validated against current requirements and appropriate specialist advice.</>,
+    paragraphs: [<>NEXSUS publishes Insights covering subjects such as:</>],
+    items: [
+      'branding and creative strategy',
+      'construction and fit-out',
+      'technology',
+      'automation',
+      'software',
+      'business development',
+      'venture building',
+      'market entry',
+    ],
+    subsections: [
+      {
+        title: 'Professional context',
+        paragraphs: [<>This content is intended to provide general professional information and perspectives. It should not automatically be treated as:</>],
+        items: [
+          'legal advice',
+          'tax advice',
+          'regulated financial advice',
+          'investment advice',
+          'engineering certification',
+          'professional advice specific to your individual circumstances',
+        ],
+      },
+      {
+        title: 'Specialist advice',
+        paragraphs: [<>Where a decision requires specialized professional advice, you should consult an appropriately qualified adviser.</>],
+      },
+    ],
+  },
+  {
+    title: 'Accuracy and updates',
+    paragraphs: [<>We aim to keep website information useful and accurate. However:</>],
+    items: [
+      'business conditions change',
+      'prices and market conditions change',
+      'laws and regulations evolve',
+      'third-party information may change',
+      'articles may become outdated over time',
+    ],
+    subsections: [
+      {
+        title: 'Content updates',
+        paragraphs: [
+          <>NEXSUS does not guarantee that every item of public website content will always remain complete, current or applicable to every situation.</>,
+          <>We may update, correct or remove content when appropriate.</>,
+        ],
+      },
     ],
   },
   {
     title: 'Third-party links',
-    paragraphs: [
-      <>External links are provided for convenience, reference, or attribution. NEXSUS does not control third-party websites and is not responsible for their content, availability, security, or privacy practices.</>,
+    paragraphs: [<>The website may link to:</>],
+    items: [
+      'public authorities',
+      'research',
+      'external publications',
+      'partner or client websites',
+      'social networks',
+      'other third-party resources',
+    ],
+    subsections: [
+      {
+        title: 'External resources',
+        paragraphs: [
+          <>Links are provided for convenience or reference. A link does not automatically mean that NEXSUS endorses every statement, product or service available on the third-party site.</>,
+          <>NEXSUS does not control external websites and is not responsible for their content, availability or practices.</>,
+        ],
+      },
     ],
   },
   {
-    title: 'Availability and accuracy',
+    title: 'Website availability',
     paragraphs: [
-      <>We aim to keep the site useful and accurate, but content may become incomplete or outdated and availability may be interrupted. We may correct, update, suspend, or withdraw parts of the website without promising uninterrupted access.</>,
+      <>We aim to keep nexsus.ma available and functioning reliably. However, we do not guarantee uninterrupted or error-free access.</>,
+      <>The site may temporarily become unavailable because of:</>,
+    ],
+    items: [
+      'maintenance',
+      'infrastructure changes',
+      'security measures',
+      'technical failures',
+      'network or provider outages',
+      'events beyond reasonable control',
     ],
   },
   {
-    title: 'Responsibility',
-    paragraphs: [
-      <>To the extent permitted by applicable law, NEXSUS is not responsible for loss arising solely from reliance on general website content, misuse of the site, or circumstances outside its reasonable control. Nothing in these terms excludes responsibility that cannot lawfully be excluded.</>,
+    title: 'Enquiries and communications',
+    paragraphs: [<>Submitting a website enquiry does not automatically create:</>],
+    items: [
+      'a client relationship',
+      'a contractual relationship',
+      'a partnership',
+      'an investment commitment',
+      'an obligation for NEXSUS to accept a project',
+    ],
+    subsections: [
+      {
+        title: 'Commercial engagement',
+        paragraphs: [<>Any commercial engagement is subject to separate discussion and, where appropriate, written agreement.</>],
+      },
     ],
   },
   {
-    title: 'Changes',
+    title: 'Limitation of responsibility',
     paragraphs: [
-      <>We may update the website and these terms when services, content, or applicable requirements change. Continued use after an update is subject to the version then published.</>,
+      <>To the extent permitted by applicable law, NEXSUS is not responsible for decisions made solely on the basis of general informational website content without appropriate consideration of the user&apos;s specific circumstances.</>,
+      <>Nothing in these Terms of Use is intended to exclude responsibility that cannot lawfully be excluded.</>,
     ],
   },
   {
-    title: 'Governing context',
+    title: 'Security',
     paragraphs: [
-      <>{LEGAL_NAME} operates from Morocco. These terms should be understood in that context and alongside applicable Moroccan law. Any precise choice-of-law or jurisdiction clause should form part of a separately reviewed legal instrument where required.</>,
+      <>You must not attempt to compromise, probe or interfere with the website or its supporting infrastructure in an unauthorized or harmful manner.</>,
+      <>Security issues may be reported through <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</>,
+    ],
+  },
+  {
+    title: 'Privacy',
+    paragraphs: [<>Use of personal information submitted through the website is described in the <a href="/privacy">NEXSUS Privacy Policy</a>.</>],
+  },
+  {
+    title: 'Changes to these terms',
+    paragraphs: [
+      <>We may update these Terms of Use as the website, our services or applicable requirements change.</>,
+      <>The latest version will be available on this page.</>,
+    ],
+  },
+  {
+    title: 'Applicable law',
+    paragraphs: [
+      <>Use of this website is subject to applicable law.</>,
+      <>NEXSUS PROJECT SARL operates in Morocco. These website terms do not attempt to replace any more specific jurisdiction, governing-law or dispute-resolution clause that may exist in a separate commercial agreement.</>,
     ],
   },
   {
     title: 'Contact',
     paragraphs: [
-      <>Questions about the website or these terms can be sent to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</>,
+      <>Questions about these Terms of Use may be sent to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</>,
+      contactDetails,
     ],
   },
 ];
 
 const aiSections: Section[] = [
   {
-    title: 'Our approach',
-    paragraphs: [
-      <>NEXSUS may use AI-enabled tools to support selected research, creative, analytical, technical, or operational workflows where they are useful and appropriate. This does not mean that every NEXSUS service, project, or deliverable uses AI.</>,
+    title: 'Our approach to AI',
+    paragraphs: [<>NEXSUS may use AI-enabled tools where they can improve:</>],
+    items: ['research', 'ideation', 'drafting', 'analysis', 'technical work', 'creative exploration', 'operational efficiency'],
+    subsections: [
+      {
+        title: 'Responsibility',
+        paragraphs: [
+          <>The presence of AI in a workflow does not mean that the final outcome is produced or approved automatically.</>,
+          <>Responsibility for work delivered or published by NEXSUS remains with people.</>,
+        ],
+      },
     ],
   },
   {
     title: 'Human oversight',
-    paragraphs: [
-      <>NEXSUS remains responsible for its published and client-facing work. AI-assisted material intended for use is subject to human direction, review, editing, and validation appropriate to the context.</>,
+    paragraphs: [<>AI-generated and AI-assisted outputs can contain:</>],
+    items: ['factual errors', 'incomplete information', 'weak assumptions', 'misleading interpretations', 'inappropriate recommendations'],
+    subsections: [
+      {
+        title: 'Professional review',
+        paragraphs: [
+          <>For this reason, AI assistance should be treated as input to professional work rather than unquestioned authority.</>,
+          <>Where AI-assisted material is used in published or client-facing work, appropriate human review, editing or validation should be applied according to the nature and importance of the task.</>,
+        ],
+      },
     ],
   },
   {
-    title: 'Insights and content',
-    paragraphs: [
-      <>AI tools may assist with tasks such as ideation, research organization, drafting support, editing, or quality checks. They do not replace editorial judgment. AI may assist the process; editorial responsibility remains with NEXSUS.</>,
+    title: 'AI and NEXSUS Insights',
+    paragraphs: [<>NEXSUS may use AI-assisted tools during parts of the editorial process for Insights, including:</>],
+    items: ['research assistance', 'idea development', 'content structuring', 'drafting support', 'editing', 'summarization'],
+    subsections: [
+      {
+        title: 'Editorial responsibility',
+        paragraphs: [
+          <>AI assistance does not remove editorial responsibility. NEXSUS remains responsible for the decision to publish content under its name.</>,
+          <>Where an Insight contains important factual, legal, financial, technical or market claims, appropriate sources and professional judgment should be used.</>,
+        ],
+      },
+    ],
+  },
+  {
+    title: 'AI in creative work',
+    paragraphs: [<>AI tools may be used selectively during creative exploration where appropriate. Examples may include:</>],
+    items: ['concept development', 'visual exploration', 'ideation', 'moodboarding', 'draft generation', 'production assistance'],
+    subsections: [
+      {
+        title: 'Creative direction',
+        paragraphs: [
+          <>AI-generated material should not be presented as third-party original work where doing so would be misleading.</>,
+          <>Creative decisions and final deliverables remain subject to human direction and review.</>,
+        ],
+      },
     ],
   },
   {
     title: 'AI in technology solutions',
-    paragraphs: [
-      <>NEXSUS Technology may evaluate or implement AI capabilities when they fit a defined business problem, technical environment, risk profile, and expected benefit. AI is not assumed to be the right solution for every project.</>,
+    paragraphs: [<>NEXSUS Technology &amp; Solutions may evaluate or implement AI capabilities when they are appropriate to a client&apos;s business problem. Potential applications can include:</>],
+    items: ['automation', 'information retrieval', 'analysis', 'workflow assistance', 'decision support', 'generative interfaces'],
+    subsections: [
+      {
+        title: 'Choosing the right approach',
+        paragraphs: [
+          <>AI is not automatically the correct solution to every technology problem.</>,
+          <>Where a conventional workflow, deterministic system or standard software solution is more appropriate, it should remain an option.</>,
+        ],
+      },
     ],
   },
   {
-    title: 'Data and confidentiality',
-    paragraphs: [
-      <>The handling of confidential or personal information in AI-assisted workflows should be evaluated according to the project, provider, permissions, and applicable obligations. Users should not submit sensitive or confidential material through the public contact form unless it is necessary and appropriate.</>,
-      <>This page does not claim that information is never processed by external AI systems. Specific client controls, provider terms, retention settings, and approved-tool rules should be agreed or documented where a project requires them.</>,
+    title: 'No user-facing AI on the current website',
+    paragraphs: [<>The current public nexsus.ma website does not provide:</>],
+    items: ['an AI chatbot', 'automated AI-generated customer responses', 'an AI recommendation engine', 'an AI decision-making system for visitors'],
+    subsections: [
+      {
+        title: 'Current enquiry flow',
+        paragraphs: [
+          <>Contact enquiries are submitted through ordinary forms and routed to NEXSUS for human follow-up.</>,
+          <>If user-facing AI features are introduced in the future, this page and the relevant privacy information should be updated.</>,
+        ],
+      },
     ],
   },
   {
-    title: 'Limitations',
+    title: 'Privacy and confidential information',
+    paragraphs: [<>AI-assisted workflows should be used with appropriate consideration for:</>],
+    items: ['privacy', 'confidentiality', 'intellectual property', 'security', 'contractual obligations'],
+    subsections: [
+      {
+        title: 'Sensitive information',
+        paragraphs: [
+          <>Sensitive or confidential client information should not be placed into external AI systems without an appropriate basis, authorization and understanding of the relevant provider&apos;s terms and data-handling practices.</>,
+          <>NEXSUS intends to develop and refine its internal AI-use rules as tools and requirements evolve.</>,
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Accuracy and validation',
     paragraphs: [
-      <>AI-generated or AI-assisted outputs can be incomplete, inaccurate, biased, or unsuitable for a particular context. Important outputs require proportionate verification, subject-matter judgment, and human accountability.</>,
+      <>AI can accelerate work, but speed does not guarantee accuracy.</>,
+      <>Important outputs should be checked according to their context. The level of validation should increase when information may affect:</>,
+    ],
+    items: ['legal decisions', 'financial decisions', 'technical systems', 'safety', 'business strategy', 'customer-facing claims'],
+    subsections: [
+      { title: 'High-impact situations', paragraphs: [<>AI-generated content should not be relied upon blindly in high-impact situations.</>] },
     ],
   },
   {
     title: 'Responsible use principles',
-    items: [
-      'Usefulness and a defined purpose.',
-      'Human accountability and appropriate oversight.',
-      'Privacy and confidentiality awareness.',
-      'Security and proportionate access controls.',
-      'Accuracy checks and clear communication of limitations.',
-      'Avoiding unnecessary automation where a simpler approach is better.',
+    paragraphs: [<>Our approach is guided by practical principles:</>],
+    subsections: [
+      { title: 'Human accountability', paragraphs: [<>People remain responsible for work published or delivered under the NEXSUS name.</>] },
+      { title: 'Purpose before technology', paragraphs: [<>AI should be used where it solves a real problem, not simply because AI is available.</>] },
+      { title: 'Privacy awareness', paragraphs: [<>Personal, sensitive and confidential information deserves appropriate protection.</>] },
+      { title: 'Accuracy', paragraphs: [<>Important claims and decisions should receive appropriate validation.</>] },
+      { title: 'Transparency', paragraphs: [<>We aim to communicate honestly about material uses of AI where transparency is relevant to the user, client or context.</>] },
+      { title: 'Security', paragraphs: [<>AI integrations should be evaluated as part of the broader security architecture of a solution.</>] },
+      { title: 'Proportionality', paragraphs: [<>Automation should not be introduced where human judgment is more appropriate.</>] },
+    ],
+  },
+  {
+    title: 'AI will continue to evolve',
+    paragraphs: [<>AI technology, regulation and industry practices are changing quickly. Our approach may evolve as:</>],
+    items: ['tools change', 'customer expectations develop', 'new risks emerge', 'legal requirements change', 'industry standards mature'],
+    subsections: [
+      { title: 'Updates', paragraphs: [<>Material updates will be reflected on this page where appropriate.</>] },
     ],
   },
   {
     title: 'Questions',
-    paragraphs: [
-      <>For questions about this approach, contact <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</>,
-    ],
+    paragraphs: [<>Questions about NEXSUS&apos;s approach to AI may be sent to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</>],
   },
 ];
 
@@ -252,33 +573,62 @@ const pages: Record<LegalPageSlug, LegalPageContent> = {
   privacy: {
     eyebrow: 'Trust & privacy',
     title: 'Privacy Policy',
-    introduction: 'How NEXSUS handles information submitted through this website and the limited technical data used to operate it.',
+    introduction: [
+      <>NEXSUS PROJECT SARL (&quot;NEXSUS&quot;, &quot;we&quot;, &quot;us&quot; or &quot;our&quot;) respects the privacy of visitors to nexsus.ma.</>,
+      <>This Privacy Policy explains what information we collect through the website, why we use it, the service providers involved in operating the site, and how you can contact us regarding your personal information.</>,
+      <>This policy applies to the public website available at <a href="https://nexsus.ma">https://nexsus.ma</a>.</>,
+    ],
     sections: privacySections,
   },
   terms: {
     eyebrow: 'Website terms',
     title: 'Terms of Use',
-    introduction: 'The terms that govern access to and use of the public NEXSUS website and its content.',
+    introduction: [
+      <>These Terms of Use apply to the public website operated by NEXSUS PROJECT SARL at <a href="https://nexsus.ma">https://nexsus.ma</a>.</>,
+      <>By accessing or using this website, you agree to use it lawfully and in accordance with these terms.</>,
+      <>These Terms of Use govern the website only. They do not replace or modify any separate contract, proposal, statement of work or other agreement entered into between NEXSUS and a client, supplier, partner or other party.</>,
+    ],
     sections: termsSections,
   },
   'ai-transparency': {
     eyebrow: 'Responsible technology',
     title: 'AI Transparency',
-    introduction: 'A clear overview of how NEXSUS may use AI-assisted tools and where human responsibility remains essential.',
+    introduction: [
+      <>Artificial intelligence is becoming part of many creative, technical, analytical and operational workflows.</>,
+      <>NEXSUS approaches AI as a tool that can support people—not as a replacement for professional judgment, accountability or validation.</>,
+      <>This page explains how we currently think about AI-assisted work across NEXSUS.</>,
+    ],
     sections: aiSections,
   },
 };
+
+const renderParagraphs = (paragraphs?: React.ReactNode[]) => paragraphs?.map((paragraph, index) => (
+  <p key={index}>{paragraph}</p>
+));
+
+const renderItems = (items?: React.ReactNode[]) => items ? (
+  <ul>
+    {items.map((item, index) => <li key={index}>{item}</li>)}
+  </ul>
+) : null;
 
 export const LegalPage: React.FC<{ slug: LegalPageSlug }> = ({ slug }) => {
   const page = pages[slug];
 
   return (
     <main className="legal-page">
+      <nav className="legal-breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">{page.title}</li>
+        </ol>
+      </nav>
+
       <header className="legal-page-header">
         <p>{page.eyebrow}</p>
         <h1>{page.title}</h1>
-        <p>{page.introduction}</p>
-        <p>Last updated: November 1, 2026</p>
+        <div className="legal-page-introduction">{renderParagraphs(page.introduction)}</div>
+        <p>Last updated: November 2026</p>
       </header>
 
       <div className="legal-page-layout">
@@ -298,14 +648,17 @@ export const LegalPage: React.FC<{ slug: LegalPageSlug }> = ({ slug }) => {
             <section id={`section-${index + 1}`} key={section.title}>
               <p>{String(index + 1).padStart(2, '0')}</p>
               <h2>{section.title}</h2>
-              {section.paragraphs?.map((paragraph, paragraphIndex) => (
-                <p key={paragraphIndex}>{paragraph}</p>
+              {renderParagraphs(section.paragraphs)}
+              {renderItems(section.items)}
+              {renderParagraphs(section.afterItems)}
+              {section.subsections?.map((subsection) => (
+                <div className="legal-subsection" key={subsection.title}>
+                  <h3>{subsection.title}</h3>
+                  {renderParagraphs(subsection.paragraphs)}
+                  {renderItems(subsection.items)}
+                  {renderParagraphs(subsection.afterItems)}
+                </div>
               ))}
-              {section.items ? (
-                <ul>
-                  {section.items.map((item, itemIndex) => <li key={itemIndex}>{item}</li>)}
-                </ul>
-              ) : null}
             </section>
           ))}
         </div>

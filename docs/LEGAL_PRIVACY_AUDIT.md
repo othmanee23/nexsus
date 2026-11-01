@@ -5,6 +5,15 @@ Production domain: https://nexsus.ma
 
 This audit documents the behavior visible in the repository and current production delivery. It is an implementation record, not formal legal advice.
 
+## Implementation status
+
+- Public trust pages implemented at `/privacy`, `/terms`, and `/ai-transparency`.
+- All three pages use unique metadata, self-canonicals, `index, follow`, visible and structured breadcrumbs, and are included in the XML and HTML sitemaps.
+- Crawlable footer links are present for Privacy Policy, Terms of Use, AI Transparency, and Sitemap.
+- Privacy notices linking to `/privacy` are present beside the submit action in the contact page form and contact modal.
+- No cookie banner is present by design because the current site has no optional cookie-based analytics, marketing tracker, or application browser storage.
+- Before adding Google Analytics, GTM, Meta Pixel, LinkedIn Insight Tag, marketing cookies, remarketing, personalization storage, or tracking embeds, the Privacy Policy and consent requirements must be reviewed.
+
 ## Data collected
 
 | Source | Data | Purpose | Destination | Processor | Retention known? |
@@ -73,7 +82,7 @@ Instagram and editorial-source URLs are ordinary outbound links, not embedded pr
 - RC, ICE, tax identifiers, and any other registration numbers.
 - Confirmation that the published address may be described as the formal registered office rather than simply the published business address.
 - Named legal representative or DPO, if NEXSUS intends to publish one.
-- CNDP declaration/authorization status and reference, if applicable to these processing activities.
+- Business/legal follow-up: determine whether the current contact-form processing requires a CNDP declaration/authorization and record the applicable reference if completed.
 - Formal retention schedule for the NEXSUS mailbox, Resend records, Cloudflare logs, and enquiry follow-up records.
 - Executed data-processing terms, subprocessors, data locations, and transfer safeguards for each provider.
 - Internal approved-AI-tool, confidential-data, human-review, and recordkeeping rules.

@@ -54,7 +54,7 @@ const LEGAL_PAGE_SEO = {
   },
   '/terms': {
     title: 'Terms of Use | NEXSUS',
-    description: 'Terms governing the use of the NEXSUS website, content, intellectual property and external resources.',
+    description: 'Terms governing the use of the NEXSUS website, its content, intellectual property and external resources.',
     label: 'Terms of Use',
   },
   '/ai-transparency': {

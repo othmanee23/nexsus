@@ -1,10 +1,16 @@
 @import "tailwindcss";
 
 .legal-page { width: 100%; max-width: 1800px; margin: 0 auto; padding: 110px 40px 150px; }
+.legal-breadcrumbs { margin-bottom: 56px; color: #777; font-size: 12px; }
+.legal-breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 8px; }
+.legal-breadcrumbs li:not(:last-child)::after { content: '/'; margin-left: 8px; color: #bbb; }
+.legal-breadcrumbs a:hover { color: #000; }
 .legal-page-header { max-width: 1050px; padding-bottom: 70px; border-bottom: 1px solid #d8d8d4; }
 .legal-page-header > p:first-child { color: #777; font-family: monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
 .legal-page-header h1 { margin-top: 18px; font-size: clamp(48px, 7vw, 96px); font-weight: 500; letter-spacing: -.055em; line-height: .96; }
-.legal-page-header h1 + p { max-width: 760px; margin-top: 30px; color: #555; font-size: 18px; line-height: 1.55; }
+.legal-page-introduction { max-width: 780px; margin-top: 30px; color: #555; font-size: 18px; line-height: 1.55; }
+.legal-page-introduction p + p { margin-top: 14px; }
+.legal-page-introduction a { color: #111; text-decoration: underline; text-underline-offset: 3px; }
 .legal-page-header > p:last-child { margin-top: 28px; color: #777; font-family: monospace; font-size: 11px; text-transform: uppercase; }
 .legal-page-layout { display: grid; grid-template-columns: minmax(210px, 1fr) minmax(0, 2.4fr); gap: 8%; margin-top: 70px; }
 .legal-page-layout > nav { position: sticky; top: 96px; align-self: start; }
@@ -21,6 +27,9 @@
 .legal-page-content h2 ~ p, .legal-page-content ul { margin-top: 18px; color: #444; font-size: 15px; line-height: 1.65; }
 .legal-page-content ul { padding-left: 20px; list-style: disc; }
 .legal-page-content li + li { margin-top: 8px; }
+.legal-subsection { margin-top: 30px; }
+.legal-subsection h3 { font-size: 18px; font-weight: 500; }
+.legal-subsection h3 ~ p, .legal-subsection ul { margin-top: 12px; color: #444; font-size: 15px; line-height: 1.65; }
 .legal-page-content a { color: #111; text-decoration: underline; text-underline-offset: 3px; }
 .legal-page :is(a):focus-visible { outline: 2px solid #000; outline-offset: 4px; }
 @media (max-width: 900px) {
@@ -32,7 +41,8 @@
 @media (max-width: 640px) {
   .legal-page { padding: 50px 16px 75px; }
   .legal-page-header { padding-bottom: 48px; }
-  .legal-page-header h1 + p { font-size: 16px; }
+  .legal-breadcrumbs { margin-bottom: 36px; }
+  .legal-page-introduction { font-size: 16px; }
   .legal-page-layout { margin-top: 45px; }
   .legal-page-layout > nav ol { columns: 1; }
   .legal-page-content h2 { font-size: 24px; }
