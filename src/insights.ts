@@ -1327,7 +1327,7 @@ export const INSIGHTS: Insight[] = [
       { type: 'paragraph', text: 'That is why comparing two projects only by square-meter cost can be misleading.' },
       { type: 'paragraph', text: 'The scope must be compared first. Our guide to office fit-out costs, timelines and key decisions explains the budget drivers that should be defined before construction begins.', links: [{ text: 'office fit-out costs, timelines and key decisions', href: '/insights/office-fit-out-morocco-costs-timeline-key-decisions' }] },
       { type: 'heading', level: 2, text: 'Existing condition changes everything' },
-      { type: 'paragraph', text: 'Before defining whether a project is primarily renovation or fit-out, assess the existing property.' },
+      { type: 'paragraph', text: 'Before defining whether a project is primarily renovation or fit-out, assess the existing property and consider planning the office layout around its intended use.', links: [{ text: 'planning the office layout', href: '/insights/office-space-planning-morocco' }] },
       { type: 'paragraph', text: 'Important questions include:' },
       { type: 'list', style: 'unordered', items: ['Are the electrical systems adequate?', 'Is the air conditioning usable?', 'Are ceilings and floors in acceptable condition?', 'Is the network infrastructure sufficient?', 'Are existing partitions useful?', 'Does the layout support the required team structure?', 'Are fire and safety systems appropriate?', 'Are accessibility requirements satisfied?'] },
       { type: 'paragraph', text: 'The answers determine how much existing infrastructure can be retained.' },
@@ -1562,7 +1562,7 @@ export const INSIGHTS: Insight[] = [
       { type: 'paragraph', text: 'The exact timeline depends on surface area, technical complexity, procurement lead times and whether the site remains occupied during construction.' },
       { type: 'heading', level: 2, text: 'The decisions that should be made before design begins' },
       { type: 'paragraph', text: 'A successful office should respond to the way the company actually works.' },
-      { type: 'paragraph', text: 'Before designing layouts, define the operational requirements.' },
+      { type: 'paragraph', text: 'Before designing layouts, define the operational requirements through office space planning.', links: [{ text: 'office space planning', href: '/insights/office-space-planning-morocco' }] },
       { type: 'heading', level: 3, text: 'How many people will use the office?' },
       { type: 'paragraph', text: "Do not design only for today's headcount." },
       { type: 'paragraph', text: 'Consider expected growth over the next 12 to 24 months.' },
@@ -1717,6 +1717,1182 @@ export const INSIGHTS: Insight[] = [
     relatedServices: ['Construction & renovation', 'Interior architecture & space design', 'Fit-out & finishes', 'Project coordination & delivery'],
     relatedDivision: 'projects',
     relatedTopics: ['office fit-out', 'construction', 'renovation', 'interior architecture', 'workplace'],
+  },
+  {
+    "slug": "office-space-planning-morocco",
+    "title": "Office Space Planning in Morocco: A Practical Guide to Layout, Capacity and Workplace Performance",
+    "excerpt": "A practical guide to planning office layouts in Morocco, including capacity, circulation, meeting spaces, workplace performance and future growth.",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Office design should not begin with furniture."
+      },
+      {
+        "type": "paragraph",
+        "text": "It should begin with understanding how the company works."
+      },
+      {
+        "type": "paragraph",
+        "text": "A workplace may look impressive and still perform poorly if employees cannot find meeting rooms, teams are constantly interrupted, circulation is inefficient or the office runs out of capacity shortly after completion."
+      },
+      {
+        "type": "paragraph",
+        "text": "For companies planning a new office, relocation, renovation or fit-out in Morocco, space planning is one of the most important early decisions."
+      },
+      {
+        "type": "paragraph",
+        "text": "It connects business requirements with the physical environment."
+      },
+      {
+        "type": "paragraph",
+        "text": "The objective is not simply to fit as many desks as possible into a floor plan."
+      },
+      {
+        "type": "paragraph",
+        "text": "It is to create a workplace that supports people, operations and future growth."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "What is office space planning?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Office space planning is the process of organizing a workplace around the activities that need to happen inside it."
+      },
+      {
+        "type": "paragraph",
+        "text": "It considers:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "number of employees",
+          "team structure",
+          "circulation",
+          "workstations",
+          "private offices",
+          "meeting rooms",
+          "collaboration areas",
+          "reception",
+          "storage",
+          "support spaces",
+          "technology",
+          "acoustics",
+          "privacy",
+          "future growth"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The result is a layout that balances operational needs with available space."
+      },
+      {
+        "type": "paragraph",
+        "text": "Space planning normally happens before detailed interior design, furniture selection and construction."
+      },
+      {
+        "type": "paragraph",
+        "text": "That order matters."
+      },
+      {
+        "type": "paragraph",
+        "text": "Designing finishes before resolving the layout can lead to expensive changes later."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Start with how the company works"
+      },
+      {
+        "type": "paragraph",
+        "text": "Two companies with the same number of employees may need completely different offices."
+      },
+      {
+        "type": "paragraph",
+        "text": "A consulting firm may require many meeting rooms."
+      },
+      {
+        "type": "paragraph",
+        "text": "A software company may need more collaborative project areas and quiet focus spaces."
+      },
+      {
+        "type": "paragraph",
+        "text": "A law firm may prioritize acoustic privacy."
+      },
+      {
+        "type": "paragraph",
+        "text": "A sales organization may need phone booths and client meeting areas."
+      },
+      {
+        "type": "paragraph",
+        "text": "A company receiving frequent visitors may require a larger reception and hospitality area."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before drawing walls, understand:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "who uses the office",
+          "what they do",
+          "how teams interact",
+          "how often clients visit",
+          "how much privacy is required",
+          "which activities create noise",
+          "which teams need to sit together"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The workplace should follow the operating model."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Calculate capacity carefully"
+      },
+      {
+        "type": "paragraph",
+        "text": "Headcount is one of the first planning inputs."
+      },
+      {
+        "type": "paragraph",
+        "text": "But planning only for today's headcount can create problems quickly."
+      },
+      {
+        "type": "paragraph",
+        "text": "Consider:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "current employees",
+          "expected hiring",
+          "contractors",
+          "interns",
+          "visitors",
+          "hybrid work",
+          "peak occupancy"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "A company with 60 employees may not need exactly 60 permanent desks if people work remotely several days per week."
+      },
+      {
+        "type": "paragraph",
+        "text": "At the same time, aggressively reducing desks based on theoretical hybrid-work assumptions can create shortages on busy days."
+      },
+      {
+        "type": "paragraph",
+        "text": "Capacity should be based on real behavior."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Plan for future growth"
+      },
+      {
+        "type": "paragraph",
+        "text": "An office is a long-term operational asset."
+      },
+      {
+        "type": "paragraph",
+        "text": "A company may grow significantly during the life of the lease."
+      },
+      {
+        "type": "paragraph",
+        "text": "Space planning should therefore ask:"
+      },
+      {
+        "type": "paragraph",
+        "text": "What happens if the team grows by 10%, 20% or 30%?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Future capacity can be supported through:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "flexible meeting rooms",
+          "modular furniture",
+          "adaptable team zones",
+          "multifunctional spaces",
+          "infrastructure designed for additional workstations"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Not every future scenario needs to be built immediately."
+      },
+      {
+        "type": "paragraph",
+        "text": "But the layout should avoid making growth unnecessarily expensive."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Open plan is not always the answer"
+      },
+      {
+        "type": "paragraph",
+        "text": "Open-plan offices can use space efficiently and support collaboration."
+      },
+      {
+        "type": "paragraph",
+        "text": "They can also create problems."
+      },
+      {
+        "type": "paragraph",
+        "text": "Common challenges include:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "noise",
+          "interruptions",
+          "lack of privacy",
+          "limited concentration",
+          "confidential conversations"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The alternative is not necessarily to return to individual offices."
+      },
+      {
+        "type": "paragraph",
+        "text": "A balanced workplace can combine:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "open work areas",
+          "focus rooms",
+          "phone booths",
+          "meeting rooms",
+          "quiet zones",
+          "collaborative spaces"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Different activities need different environments."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Meeting rooms should match actual demand"
+      },
+      {
+        "type": "paragraph",
+        "text": "Many offices underestimate meeting-room requirements."
+      },
+      {
+        "type": "paragraph",
+        "text": "The result is predictable:"
+      },
+      {
+        "type": "paragraph",
+        "text": "employees hold calls in open areas because rooms are always occupied."
+      },
+      {
+        "type": "paragraph",
+        "text": "When planning meeting spaces, consider:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "how many meetings happen simultaneously",
+          "typical meeting size",
+          "internal vs client meetings",
+          "video conferencing",
+          "confidentiality",
+          "booking behavior"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "A workplace may need several small rooms rather than one very large boardroom."
+      },
+      {
+        "type": "paragraph",
+        "text": "Room mix matters more than simply counting rooms."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Do not forget phone booths and focus rooms"
+      },
+      {
+        "type": "paragraph",
+        "text": "Hybrid work has increased the number of individual video calls inside offices."
+      },
+      {
+        "type": "paragraph",
+        "text": "Without dedicated spaces, these calls can create constant background noise."
+      },
+      {
+        "type": "paragraph",
+        "text": "Small acoustic rooms can support:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "individual calls",
+          "confidential discussions",
+          "focused work",
+          "short meetings"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "They use relatively little space but can improve how the rest of the office functions."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Circulation needs space too"
+      },
+      {
+        "type": "paragraph",
+        "text": "Not every square meter should become a workstation."
+      },
+      {
+        "type": "paragraph",
+        "text": "People need to move through the building."
+      },
+      {
+        "type": "paragraph",
+        "text": "Good circulation should provide clear access between:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "entrances",
+          "work areas",
+          "meeting rooms",
+          "bathrooms",
+          "exits",
+          "shared facilities"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Poor circulation creates congestion and makes the workplace feel smaller than it actually is."
+      },
+      {
+        "type": "paragraph",
+        "text": "It can also interfere with focused work when major routes pass directly through team areas."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Separate noisy and quiet activities"
+      },
+      {
+        "type": "paragraph",
+        "text": "Office activities create different levels of noise."
+      },
+      {
+        "type": "paragraph",
+        "text": "Potentially noisy areas include:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "cafeterias",
+          "collaboration spaces",
+          "printing",
+          "reception",
+          "phone areas"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Quiet areas may include:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "focus rooms",
+          "executive offices",
+          "finance",
+          "legal",
+          "analytical work"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Placing incompatible activities beside each other creates avoidable problems."
+      },
+      {
+        "type": "paragraph",
+        "text": "Space planning should create logical acoustic zones."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Technology should influence the layout"
+      },
+      {
+        "type": "paragraph",
+        "text": "Technology requirements should be considered before construction begins."
+      },
+      {
+        "type": "paragraph",
+        "text": "Examples include:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "network points",
+          "Wi-Fi coverage",
+          "meeting-room displays",
+          "video conferencing",
+          "access control",
+          "printers",
+          "server equipment",
+          "power outlets",
+          "charging",
+          "audiovisual systems"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Technology introduced after ceilings, partitions and furniture are installed often requires additional work."
+      },
+      {
+        "type": "paragraph",
+        "text": "This is especially important during an office fit-out in Morocco.",
+        "links": [
+          {
+            "text": "office fit-out in Morocco",
+            "href": "/insights/office-fit-out-morocco-costs-timeline-key-decisions"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Link that phrase contextually to:"
+      },
+      {
+        "type": "paragraph",
+        "text": "`/insights/office-fit-out-morocco-costs-timeline-key-decisions`"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Think about daylight"
+      },
+      {
+        "type": "paragraph",
+        "text": "Access to daylight can significantly influence how spaces are organized."
+      },
+      {
+        "type": "paragraph",
+        "text": "High-value perimeter zones near windows should be planned intentionally."
+      },
+      {
+        "type": "paragraph",
+        "text": "Depending on the building, these areas may be suitable for:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "workstations",
+          "shared spaces",
+          "meeting rooms"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The best allocation depends on the company's priorities."
+      },
+      {
+        "type": "paragraph",
+        "text": "Avoid automatically placing every private office along the façade if this removes natural light from the majority of employees."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Furniture dimensions matter"
+      },
+      {
+        "type": "paragraph",
+        "text": "Space planning should use realistic furniture dimensions."
+      },
+      {
+        "type": "paragraph",
+        "text": "A plan can look efficient on screen until actual desks and chairs are installed."
+      },
+      {
+        "type": "paragraph",
+        "text": "Consider:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "desk depth",
+          "chair movement",
+          "storage",
+          "circulation behind chairs",
+          "meeting-room clearance",
+          "door movement",
+          "cabinets"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Small dimensional errors repeated across a large office can create major usability problems."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Storage is still necessary"
+      },
+      {
+        "type": "paragraph",
+        "text": "Digital workflows reduce paper, but offices still require storage."
+      },
+      {
+        "type": "paragraph",
+        "text": "Possible requirements include:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "employee storage",
+          "archives",
+          "supplies",
+          "equipment",
+          "cleaning materials",
+          "IT hardware",
+          "promotional materials"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "If storage is ignored during planning, it often appears later in inappropriate spaces."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Reception should match the business"
+      },
+      {
+        "type": "paragraph",
+        "text": "Not every business needs a large reception."
+      },
+      {
+        "type": "paragraph",
+        "text": "The appropriate size depends on:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "visitor frequency",
+          "waiting time",
+          "brand experience",
+          "security process",
+          "reception staffing"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "For some companies, reception is a major customer touchpoint."
+      },
+      {
+        "type": "paragraph",
+        "text": "For others, a small arrival area is enough."
+      },
+      {
+        "type": "paragraph",
+        "text": "Space should reflect operational reality."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Employee amenities affect the total plan"
+      },
+      {
+        "type": "paragraph",
+        "text": "Workplace planning should also consider support areas such as:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "cafeteria",
+          "kitchen",
+          "break areas",
+          "prayer space",
+          "lockers",
+          "wellness rooms",
+          "storage",
+          "copy/print areas"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "These spaces consume floor area but support workplace functionality."
+      },
+      {
+        "type": "paragraph",
+        "text": "They should not be added after all available space has already been allocated."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Existing offices require different decisions"
+      },
+      {
+        "type": "paragraph",
+        "text": "When renovating an existing workplace, the company must decide what can be retained."
+      },
+      {
+        "type": "paragraph",
+        "text": "Existing elements may include:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "partitions",
+          "ceilings",
+          "flooring",
+          "lighting",
+          "air conditioning",
+          "electrical systems",
+          "network infrastructure"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Some may remain useful."
+      },
+      {
+        "type": "paragraph",
+        "text": "Others may limit the new layout."
+      },
+      {
+        "type": "paragraph",
+        "text": "Understanding the difference between fit-out and renovation can help define the correct project scope.",
+        "links": [
+          {
+            "text": "fit-out and renovation",
+            "href": "/insights/fit-out-vs-renovation-morocco"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Link `fit-out and renovation` to:",
+        "links": [
+          {
+            "text": "fit-out and renovation",
+            "href": "/insights/fit-out-vs-renovation-morocco"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "`/insights/fit-out-vs-renovation-morocco`"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Hybrid work changes capacity planning"
+      },
+      {
+        "type": "paragraph",
+        "text": "Hybrid work can reduce the need for assigned desks."
+      },
+      {
+        "type": "paragraph",
+        "text": "But the office may need more:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "meeting rooms",
+          "video-call spaces",
+          "collaboration zones",
+          "shared desks",
+          "project areas"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The objective is not simply to shrink the workplace."
+      },
+      {
+        "type": "paragraph",
+        "text": "It is to understand what employees need when they are physically present."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Flexible spaces can improve efficiency"
+      },
+      {
+        "type": "paragraph",
+        "text": "Some spaces can serve more than one purpose."
+      },
+      {
+        "type": "paragraph",
+        "text": "For example:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "training rooms can become large meeting rooms",
+          "movable partitions can combine rooms",
+          "project rooms can support workshops",
+          "cafeterias can host informal events"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Flexibility helps companies make better use of limited floor area."
+      },
+      {
+        "type": "paragraph",
+        "text": "But multifunctional spaces should still work well for their main purpose."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Think about employee experience"
+      },
+      {
+        "type": "paragraph",
+        "text": "Workplace performance is partly operational and partly human."
+      },
+      {
+        "type": "paragraph",
+        "text": "Employees interact with the office every day."
+      },
+      {
+        "type": "paragraph",
+        "text": "Useful questions include:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "Can people find quiet space?",
+          "Are meeting rooms available?",
+          "Is circulation intuitive?",
+          "Are teams located logically?",
+          "Is there enough storage?",
+          "Does the office feel overcrowded?",
+          "Can employees work comfortably?"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Small planning decisions can have large everyday consequences."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Brand can influence workplace design"
+      },
+      {
+        "type": "paragraph",
+        "text": "Physical space also communicates something about the organization."
+      },
+      {
+        "type": "paragraph",
+        "text": "Brand expression can appear through:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "materials",
+          "signage",
+          "color",
+          "graphics",
+          "reception",
+          "customer-facing areas"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The objective is not to turn the office into a billboard."
+      },
+      {
+        "type": "paragraph",
+        "text": "Brand elements should support the overall environment."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Space planning should happen before detailed design"
+      },
+      {
+        "type": "paragraph",
+        "text": "One of the most expensive mistakes is developing a visual design before resolving operational layout."
+      },
+      {
+        "type": "paragraph",
+        "text": "A better sequence is:"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "1. Requirements"
+      },
+      {
+        "type": "paragraph",
+        "text": "Define people, activities and constraints."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "2. Capacity"
+      },
+      {
+        "type": "paragraph",
+        "text": "Determine current and future occupancy."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "3. Zoning"
+      },
+      {
+        "type": "paragraph",
+        "text": "Organize major functions."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "4. Layout"
+      },
+      {
+        "type": "paragraph",
+        "text": "Position workstations, rooms and circulation."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "5. Technical coordination"
+      },
+      {
+        "type": "paragraph",
+        "text": "Coordinate electrical, HVAC, data and audiovisual systems."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "6. Interior design"
+      },
+      {
+        "type": "paragraph",
+        "text": "Develop materials, lighting, furniture and visual language."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "7. Fit-out"
+      },
+      {
+        "type": "paragraph",
+        "text": "Execute the approved design."
+      },
+      {
+        "type": "paragraph",
+        "text": "This sequence reduces rework."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Common office space planning mistakes"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Planning only for today's team"
+      },
+      {
+        "type": "paragraph",
+        "text": "Growth can make the office obsolete quickly."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Maximizing desk count"
+      },
+      {
+        "type": "paragraph",
+        "text": "High density can reduce workplace usability."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Too few small meeting rooms"
+      },
+      {
+        "type": "paragraph",
+        "text": "Many meetings involve only two to four people."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Ignoring acoustics"
+      },
+      {
+        "type": "paragraph",
+        "text": "Noise problems become difficult to fix after construction."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Designing around appearance first"
+      },
+      {
+        "type": "paragraph",
+        "text": "Aesthetic design should support functionality."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Forgetting technology"
+      },
+      {
+        "type": "paragraph",
+        "text": "Late infrastructure changes create additional cost."
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Ignoring storage"
+      },
+      {
+        "type": "paragraph",
+        "text": "Storage needs do not disappear because they were omitted from the plan."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "What information should you prepare?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Before beginning office planning, gather:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "floor plans",
+          "approximate usable area",
+          "current headcount",
+          "projected headcount",
+          "team structure",
+          "hybrid-work patterns",
+          "visitor requirements",
+          "meeting-room needs",
+          "technology requirements",
+          "support-space needs",
+          "target completion date",
+          "budget range if known"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Better information leads to better planning."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Office space planning and fit-out"
+      },
+      {
+        "type": "paragraph",
+        "text": "Space planning is only one part of the full workplace project."
+      },
+      {
+        "type": "paragraph",
+        "text": "After the layout is defined, the project may continue through:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "interior architecture",
+          "technical design",
+          "budgeting",
+          "procurement",
+          "fit-out",
+          "furniture",
+          "testing",
+          "handover"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "For a deeper look at the execution stage, see:"
+      },
+      {
+        "type": "paragraph",
+        "text": "Office Fit-Out in Morocco: Costs, Timeline and Key Decisions",
+        "links": [
+          {
+            "text": "Office Fit-Out in Morocco: Costs, Timeline and Key Decisions",
+            "href": "/insights/office-fit-out-morocco-costs-timeline-key-decisions"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Link this title to:"
+      },
+      {
+        "type": "paragraph",
+        "text": "`/insights/office-fit-out-morocco-costs-timeline-key-decisions`"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Office space planning in Morocco: the practical answer"
+      },
+      {
+        "type": "paragraph",
+        "text": "A strong workplace is not simply an attractive office."
+      },
+      {
+        "type": "paragraph",
+        "text": "It is a space that supports:"
+      },
+      {
+        "type": "list",
+        "style": "unordered",
+        "items": [
+          "people",
+          "operations",
+          "collaboration",
+          "concentration",
+          "technology",
+          "future growth"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The most effective projects begin by understanding how the business works before deciding how the office should look."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Planning a new office or workplace?"
+      },
+      {
+        "type": "paragraph",
+        "text": "NEXSUS Projects brings together construction, interior architecture, fit-out and project coordination to create functional environments aligned with each project's intended use, budget and schedule.",
+        "links": [
+          {
+            "text": "NEXSUS Projects",
+            "href": "/projects"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Effective space planning creates the foundation for everything that follows."
+      },
+      {
+        "type": "paragraph",
+        "text": "Discuss your project with NEXSUS Projects.",
+        "links": [
+          {
+            "text": "Discuss your project with NEXSUS Projects",
+            "href": "/contact"
+          }
+        ]
+      }
+    ],
+    "primaryCategory": "projects",
+    "topics": [
+      "office-space-planning",
+      "workplace-design",
+      "office-layout",
+      "fit-out",
+      "interior-architecture",
+      "workplace-performance",
+      "morocco"
+    ],
+    "relatedDivisions": [
+      "projects"
+    ],
+    "featuredImage": "/images/insights/nexsus-projects-office-space-planning.webp",
+    "featuredImageAlt": "Modern office space planning and workplace design in Morocco",
+    "featuredImageWidth": 1774,
+    "featuredImageHeight": 887,
+    "author": "NEXSUS Editorial",
+    "publishedAt": "2026-11-02",
+    "updatedAt": "2026-11-02",
+    "readingTime": "10 min",
+    "seoTitle": "Office Space Planning in Morocco | NEXSUS Projects",
+    "seoDescription": "A practical guide to office space planning in Morocco, covering layout, capacity, circulation, meeting rooms, workplace performance and future growth.",
+    "canonicalUrl": "https://nexsus.ma/insights/office-space-planning-morocco",
+    "ogTitle": "Office Space Planning in Morocco | NEXSUS Projects",
+    "ogDescription": "A practical guide to office space planning in Morocco, covering layout, capacity, circulation, meeting rooms, workplace performance and future growth.",
+    "ogImage": "https://nexsus.ma/images/insights/nexsus-projects-office-space-planning.webp",
+    "targetKeywords": [
+      "office space planning Morocco",
+      "office layout Morocco",
+      "office design Morocco",
+      "workplace design Morocco",
+      "office space design Morocco",
+      "office planning Morocco",
+      "commercial office design Morocco",
+      "office fit out Morocco",
+      "workspace planning Morocco",
+      "office interior design Morocco"
+    ],
+    "relatedInsights": [
+      "office-fit-out-morocco-costs-timeline-key-decisions",
+      "fit-out-vs-renovation-morocco"
+    ],
+    "relatedServices": [
+      "Construction & renovation",
+      "Interior architecture & space design",
+      "Fit-out & finishes",
+      "Project coordination & delivery"
+    ],
+    "relatedDivision": "projects",
+    "relatedTopics": [
+      "office-space-planning",
+      "workplace-design",
+      "office-layout",
+      "fit-out",
+      "interior-architecture",
+      "workplace-performance"
+    ]
   },
   {
     slug: 'branding-cost-morocco',
