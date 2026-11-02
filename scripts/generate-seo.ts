@@ -155,6 +155,7 @@ const renderSitemapHtml = (items: SitemapItem[]) => {
     <title>NEXSUS HTML Sitemap</title>
     <meta name="description" content="Canonical, indexable NEXSUS pages available to visitors and search engines." />
     <meta name="robots" content="noindex, follow" />
+    <link rel="icon" type="image/jpeg" href="/favicon.jpeg" />
     <link rel="canonical" href="${SITE_URL}/sitemap" />
     <style>
       :root { color-scheme: light; }
