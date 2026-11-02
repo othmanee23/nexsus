@@ -202,6 +202,33 @@
 .division-page-hero a { display: inline-flex; align-items: center; gap: 8px; margin-top: 34px; border-bottom: 1px solid #000; padding-bottom: 4px; font-size: 13px; text-transform: uppercase; }
 .division-page-hero a svg { width: 16px; height: 16px; }
 .division-page-hero img { width: 100%; aspect-ratio: 1200 / 1141; object-fit: cover; }
+.division-page-actions { display: flex; flex-wrap: wrap; gap: 18px 28px; }
+.division-page-actions a + a { color: #666; border-color: #aaa; }
+.division-offer { margin-top: 110px; border-top: 1px solid #ddd; padding-top: 34px; }
+.division-offer > header { display: grid; grid-template-columns: minmax(140px, .45fr) minmax(300px, 1fr) minmax(280px, 1fr); gap: 40px; align-items: start; }
+.division-offer > header > p:first-child { color: #777; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+.division-offer > header h2 { max-width: 620px; font-size: 38px; font-weight: 500; line-height: 1.08; }
+.division-offer > header > p:last-child { max-width: 650px; color: #555; line-height: 1.55; }
+.division-capability-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 55px; border-top: 1px solid #ddd; }
+.division-capability-grid article { min-height: 245px; padding: 28px 38px 34px 0; border-bottom: 1px solid #ddd; }
+.division-capability-grid article:nth-child(even) { padding-left: 38px; border-left: 1px solid #ddd; }
+.division-capability-grid span { color: #777; font-size: 11px; letter-spacing: .08em; }
+.division-capability-grid h3 { margin-top: 36px; max-width: 570px; font-size: 25px; font-weight: 500; line-height: 1.2; }
+.division-capability-grid p { margin-top: 15px; max-width: 650px; color: #555; line-height: 1.55; }
+.division-editorial-section { display: grid; grid-template-columns: minmax(280px, .8fr) minmax(0, 1.5fr); gap: 70px; margin-top: 100px; padding-top: 32px; border-top: 1px solid #ddd; }
+.division-editorial-section h2 { max-width: 540px; font-size: 34px; font-weight: 500; line-height: 1.1; }
+.division-editorial-section p { max-width: 850px; color: #444; font-size: 18px; line-height: 1.65; }
+.division-editorial-section p + p { margin-top: 18px; }
+.division-editorial-section a, .division-faq a { color: #111; text-decoration: underline; text-decoration-color: #aaa; text-underline-offset: 4px; }
+.division-editorial-section a:hover, .division-faq a:hover { text-decoration-color: #111; }
+.division-approach { margin-top: 100px; padding-top: 32px; border-top: 1px solid #ddd; }
+.division-approach > header { display: grid; grid-template-columns: minmax(280px, .8fr) minmax(0, 1.5fr); gap: 70px; }
+.division-approach h2 { font-size: 34px; font-weight: 500; }
+.division-approach header p { max-width: 720px; color: #555; line-height: 1.55; }
+.division-approach ol { margin-top: 48px; border-top: 1px solid #ddd; }
+.division-approach li { display: grid; grid-template-columns: 70px 1fr; gap: 20px; padding: 19px 0; border-bottom: 1px solid #ddd; }
+.division-approach li span { color: #777; font-size: 11px; letter-spacing: .08em; }
+.division-approach li strong { font-size: 18px; font-weight: 500; }
 .division-page-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid #ddd; margin-top: 110px; }
 .division-page-details section { min-height: 230px; padding: 32px 40px 35px 0; border-bottom: 1px solid #ddd; }
 .division-page-details section:nth-child(even) { padding-left: 40px; border-left: 1px solid #ddd; }
@@ -216,7 +243,27 @@
 .division-related-insights > header h2 { font-size: 28px; font-weight: 500; }
 .division-related-insights > header a { font-size: 13px; border-bottom: 1px solid #000; }
 .division-related-insights > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.division-faq { display: grid; grid-template-columns: minmax(280px, .75fr) minmax(0, 1.5fr); gap: 70px; margin-top: 110px; padding-top: 34px; border-top: 1px solid #ddd; }
+.division-faq > header h2 { font-size: 34px; font-weight: 500; }
+.division-faq > header p { max-width: 390px; margin-top: 16px; color: #666; line-height: 1.55; }
+.division-faq > div { border-top: 1px solid #ddd; }
+.division-faq article { border-bottom: 1px solid #ddd; }
+.division-faq h3 { font-size: inherit; }
+.division-faq button { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 24px; padding: 22px 0; text-align: left; }
+.division-faq button span { font-size: 15px; font-weight: 500; line-height: 1.35; }
+.division-faq button svg { width: 17px; flex: 0 0 auto; transition: transform .25s ease; }
+.division-faq button svg.is-open { transform: rotate(180deg); }
+.division-faq article > div { padding: 0 42px 25px 0; }
+.division-faq article > div[hidden] { display: none; }
+.division-faq article p { max-width: 790px; color: #555; line-height: 1.6; }
+.division-faq article p + p { margin-top: 12px; }
+.division-final-cta { margin-top: 115px; padding: 55px 0 0; border-top: 1px solid #111; }
+.division-final-cta h2 { max-width: 900px; font-size: clamp(36px, 5vw, 72px); font-weight: 500; line-height: .98; }
+.division-final-cta p { max-width: 650px; margin-top: 28px; color: #555; font-size: 18px; line-height: 1.55; }
+.division-final-cta a { display: inline-flex; align-items: center; gap: 8px; margin-top: 30px; border-bottom: 1px solid #000; padding-bottom: 4px; font-size: 13px; text-transform: uppercase; }
+.division-final-cta svg { width: 16px; height: 16px; }
 .division-page a:focus-visible { outline: 2px solid #000; outline-offset: 5px; }
+.division-page button:focus-visible { outline: 2px solid #000; outline-offset: 4px; }
 .not-found-page { min-height: 60vh; display: grid; place-content: center; justify-items: start; gap: 18px; padding: 100px 40px; }
 .not-found-page h1 { font-size: 64px; font-weight: 500; }
 .not-found-page p { max-width: 520px; color: #666; }
@@ -227,6 +274,10 @@
   .division-page-hero { grid-template-columns: 1fr; gap: 45px; }
   .division-page-hero h1 { font-size: 48px; }
   .division-page-hero img { max-height: 650px; }
+  .division-offer { margin-top: 80px; }
+  .division-offer > header { grid-template-columns: 1fr 1.5fr; }
+  .division-offer > header > p:first-child { grid-column: 1 / -1; }
+  .division-editorial-section, .division-approach > header, .division-faq { grid-template-columns: 1fr; gap: 28px; }
   .division-page-details { margin-top: 70px; }
   .insight-related-division { margin-left: 0; }
 }
@@ -239,6 +290,19 @@
   .division-page { padding: 48px 16px 75px; }
   .division-page-hero h1 { font-size: 39px; }
   .division-page-lead { font-size: 18px; }
+  .division-page-actions { gap: 8px 22px; }
+  .division-offer > header { grid-template-columns: 1fr; gap: 18px; }
+  .division-offer > header > p:first-child { grid-column: auto; }
+  .division-offer > header h2, .division-editorial-section h2, .division-approach h2, .division-faq > header h2 { font-size: 28px; }
+  .division-capability-grid { grid-template-columns: 1fr; margin-top: 35px; }
+  .division-capability-grid article, .division-capability-grid article:nth-child(even) { min-height: 0; padding: 25px 0; border-left: 0; }
+  .division-capability-grid h3 { margin-top: 22px; font-size: 22px; }
+  .division-editorial-section, .division-approach, .division-faq { margin-top: 75px; }
+  .division-editorial-section p { font-size: 16px; }
+  .division-approach li { grid-template-columns: 45px 1fr; }
+  .division-faq article > div { padding-right: 0; }
+  .division-final-cta { margin-top: 80px; }
+  .division-final-cta p { font-size: 16px; }
   .division-page-details { grid-template-columns: 1fr; }
   .division-page-details section, .division-page-details section:nth-child(even) { min-height: 0; padding: 27px 0; border-left: 0; }
   .division-page-details section > p + h2 { font-size: 25px; }

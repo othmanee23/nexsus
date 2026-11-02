@@ -25,23 +25,23 @@ const LANGUAGE_META: Record<Language, { html: string; hreflang: string }> = {
 
 const DIVISION_SEO = {
   projects: {
-    title: 'NEXSUS Projects | Construction, Interior Architecture & Fit-Out',
-    description: 'Construction, renovation, interior architecture, fit-out, project coordination, and delivery from NEXSUS Projects.',
+    title: 'Construction, Interior Architecture & Fit-Out Morocco | NEXSUS Projects',
+    description: 'NEXSUS Projects delivers construction, renovation, interior architecture, fit-out and coordinated project delivery for businesses and institutions in Morocco.',
     name: 'NEXSUS Projects',
   },
   technology: {
-    title: 'Technology & Solutions | NEXSUS',
-    description: 'Enterprise software, B2B consulting, digital platforms, data, automation, and system integration from NEXSUS.',
+    title: 'Enterprise Software & Automation Morocco | NEXSUS Technology',
+    description: 'NEXSUS Technology builds enterprise software, digital platforms, automation, data solutions and system integrations around the way businesses operate.',
     name: 'NEXSUS Technology & Solutions',
   },
   amaris: {
-    title: 'AMARIS | Brand Strategy & Creative Direction',
-    description: 'Brand strategy, identity, creative direction, campaigns, branded content, and audiovisual production from AMARIS.',
+    title: 'Branding Agency Morocco | Brand Strategy & Identity | AMARIS',
+    description: 'AMARIS by NEXSUS helps companies build distinctive brands through strategy, identity, creative direction, campaigns and audiovisual production in Morocco.',
     name: 'AMARIS',
   },
   ventures: {
-    title: 'NEXSUS Ventures | Business Building & Strategic Investments',
-    description: 'Consumer business development, proprietary brands, market strategy, partnerships, and strategic investments from NEXSUS Ventures.',
+    title: 'Venture Building & Market Validation Morocco | NEXSUS Ventures',
+    description: 'NEXSUS Ventures assesses market opportunities, validates propositions and develops practical go-to-market and operating models for new businesses in Morocco.',
     name: 'NEXSUS Ventures',
   },
 } as const;

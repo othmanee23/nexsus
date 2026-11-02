@@ -137,7 +137,8 @@ export const App: React.FC = () => {
         <AboutSection onOpenContact={() => handleOpenContact('group')} language={language} />
         <FAQSection
           onOpenContact={() => handleRouteNavigate('/contact')}
-          onSelectDivision={(id) => handleSectionNavigate(`division-${id}`)}
+          onSelectDivision={(id) => handleRouteNavigate(`/${id}`)}
+          onRouteNavigate={handleRouteNavigate}
           language={language}
         />
       </main>
@@ -170,7 +171,6 @@ export const App: React.FC = () => {
         />
 
         <DivisionsGrid
-          onSelectDivision={(id) => handleSectionNavigate(`division-${id}`)}
           onOpenContact={handleOpenContact}
           onRouteNavigate={handleRouteNavigate}
           language={language}
@@ -178,7 +178,8 @@ export const App: React.FC = () => {
 
         <FAQSection
           onOpenContact={() => handleRouteNavigate('/contact')}
-          onSelectDivision={(id) => handleSectionNavigate(`division-${id}`)}
+          onSelectDivision={(id) => handleRouteNavigate(`/${id}`)}
+          onRouteNavigate={handleRouteNavigate}
           language={language}
         />
 

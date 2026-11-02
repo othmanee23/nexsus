@@ -19,7 +19,6 @@ export interface DivisionItem {
 }
 
 interface DivisionsGridProps {
-  onSelectDivision: (id: string) => void;
   onOpenContact: (divisionId?: string) => void;
   onRouteNavigate: (path: string) => void;
   language: Language;
@@ -204,12 +203,11 @@ const DivisionRow: React.FC<{
   index: number;
   isActive: boolean;
   onHover: () => void;
-  onSelect: (id: string) => void;
   onOpenContact: (id: string) => void;
   onRouteNavigate: (path: string) => void;
   language: Language;
   viewLabel: string;
-}> = ({ division, index, isActive, onHover, onSelect, onOpenContact, onRouteNavigate, language, viewLabel }) => {
+}> = ({ division, index, isActive, onHover, onOpenContact, onRouteNavigate, language, viewLabel }) => {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -235,24 +233,12 @@ const DivisionRow: React.FC<{
         onHover();
       }}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => onSelect(division.id)}
-      onFocus={() => {
-        onHover();
-        onSelect(division.id);
-      }}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onSelect(division.id);
-        }
-      }}
       id={`division-${division.id}`}
-      tabIndex={0}
       initial={{ opacity: 0, y: 35 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.15 }}
       transition={{ duration: 0.7, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative scroll-mt-24 w-full border-b border-black/10 py-7 sm:py-9 lg:py-10 px-4 sm:px-8 lg:px-12 transition-colors duration-400 cursor-pointer overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset ${
+      className={`group relative scroll-mt-24 w-full border-b border-black/10 py-7 sm:py-9 lg:py-10 px-4 sm:px-8 lg:px-12 transition-colors duration-400 overflow-hidden ${
         isActive ? 'bg-black/[0.012]' : 'hover:bg-black/[0.008]'
       }`}
     >
@@ -281,6 +267,7 @@ const DivisionRow: React.FC<{
             <h3 className="text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-black uppercase select-none transition-transform duration-300 group-hover:translate-x-1.5">
               <a
                 href={(language === 'en' ? '' : '/' + language) + '/' + division.id}
+                aria-label={`Explore ${division.name === 'AMARIS' ? 'AMARIS' : `NEXSUS ${division.name}`}`}
                 onClick={(event) => {
                   event.stopPropagation();
                   if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -333,6 +320,20 @@ const DivisionRow: React.FC<{
                   <span>{division.cta}</span>
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </button>
+                <a
+                  href={(language === 'en' ? '' : '/' + language) + '/' + division.id}
+                  aria-label={`Explore ${division.name === 'AMARIS' ? 'AMARIS' : `NEXSUS ${division.name}`}`}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                    event.preventDefault();
+                    onRouteNavigate('/' + division.id);
+                  }}
+                  className="mt-4 inline-flex w-fit items-center gap-2 border-b border-black pb-0.5 text-[11px] font-mono uppercase tracking-widest text-black transition-opacity hover:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
+                >
+                  <span>{viewLabel} {division.name}</span>
+                  <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
               </motion.div>
             ) : (
               <motion.div
@@ -352,7 +353,14 @@ const DivisionRow: React.FC<{
 
         {/* Column 3: Image Container - Thin Slice when Collapsed, Full Aspect when Active */}
         <div className="lg:col-span-4 flex justify-end">
-          <div
+          <a
+            href={(language === 'en' ? '' : '/' + language) + '/' + division.id}
+            aria-label={`Explore ${division.name === 'AMARIS' ? 'AMARIS' : `NEXSUS ${division.name}`}`}
+            onClick={(event) => {
+              if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+              event.preventDefault();
+              onRouteNavigate('/' + division.id);
+            }}
             className={`w-full lg:w-[420px] bg-[#E8E8E5] overflow-hidden transition-all duration-500 ease-[0.16,1,0.3,1] relative ${
               isActive
                 ? 'h-[220px] sm:h-[260px] lg:h-[280px]'
@@ -375,7 +383,7 @@ const DivisionRow: React.FC<{
             {!isActive && (
               <div className="absolute inset-0 bg-black/10 transition-opacity duration-300 group-hover:bg-transparent" />
             )}
-          </div>
+          </a>
         </div>
       </div>
     </motion.div>
@@ -383,7 +391,6 @@ const DivisionRow: React.FC<{
 };
 
 export const DivisionsGrid: React.FC<DivisionsGridProps> = ({
-  onSelectDivision,
   onOpenContact,
   onRouteNavigate,
   language,
@@ -432,7 +439,6 @@ export const DivisionsGrid: React.FC<DivisionsGridProps> = ({
             division={division}
             isActive={mobileExpanded || activeId === division.id}
             onHover={() => setActiveId(division.id)}
-            onSelect={onSelectDivision}
             onOpenContact={onOpenContact}
             onRouteNavigate={onRouteNavigate}
             language={language}

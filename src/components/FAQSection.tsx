@@ -7,6 +7,7 @@ interface FAQSectionProps {
   language: Language;
   onOpenContact: () => void;
   onSelectDivision: (id: string) => void;
+  onRouteNavigate: (path: string) => void;
 }
 
 type FAQItem = {
@@ -17,52 +18,51 @@ type FAQItem = {
 const FAQS: Record<Language, FAQItem[]> = {
   en: [
     {
-      question: 'What does NEXSUS do?',
+      question: 'What is NEXSUS?',
       answer: [
-        'NEXSUS is a multidisciplinary company founded in 2025 and based in Temara, Morocco. We operate through four complementary divisions: PROJECTS, TECHNOLOGY & SOLUTIONS, AMARIS, and VENTURES. Together, they cover construction and interior projects, enterprise technology, creative services, and business ventures.',
+        'NEXSUS PROJECT SARL is a Moroccan operating company structured around four complementary divisions: PROJECTS, TECHNOLOGY & SOLUTIONS, AMARIS and VENTURES.',
       ],
     },
     {
-      question: 'Which division is right for my project?',
+      question: 'What services does NEXSUS provide?',
       answer: [
-        'PROJECTS covers construction, interior architecture, fit-out, and space design. TECHNOLOGY & SOLUTIONS focuses on enterprise software, digital platforms, and B2B consulting. AMARIS brings together brand strategy, creative direction, and production. VENTURES focuses on consumer businesses, proprietary brands, and strategic investments.',
-        'If you are unsure which division to contact, send us a general enquiry describing your needs.',
+        'PROJECTS covers construction, renovation, interior architecture and fit-out. TECHNOLOGY & SOLUTIONS develops enterprise software, digital platforms, automation and integrations. AMARIS focuses on brand strategy, identity, creative direction and production. VENTURES assesses opportunities and develops new businesses, proprietary brands and selected strategic initiatives.',
       ],
     },
     {
-      question: 'Can one project involve several NEXSUS divisions?',
+      question: 'Where does NEXSUS operate?',
       answer: [
-        'Yes. When a project requires complementary expertise, we bring together the relevant divisions within a coordinated scope. For example, opening a commercial space may involve interior fit-out, brand identity, and digital systems. Responsibilities and deliverables are defined around the needs of the project.',
+        'NEXSUS is based in Temara, Morocco. The delivery location and operating model for each engagement are confirmed according to its scope, requirements and the people or partners needed.',
       ],
     },
     {
-      question: 'How does NEXSUS organize project delivery?',
+      question: 'Can NEXSUS manage projects across more than one division?',
       answer: [
-        'We work through a core team supported by specialist collaborators and delivery partners selected according to the assignment. Each project is organized around its scope, technical requirements, schedule, and required expertise.',
+        'Yes, when a project genuinely requires complementary disciplines. A physical space may also require technology; a new venture may need AMARIS brand work; and a brand launch may require a digital platform. The participating divisions and responsibilities are defined around the actual scope rather than applied to every engagement.',
       ],
     },
     {
-      question: 'Can I engage NEXSUS for a specific service?',
+      question: 'Does NEXSUS work with businesses and institutions?',
       answer: [
-        'Yes. You can engage a division for a defined service or discuss a broader project involving several areas of expertise. The proposal sets out the agreed deliverables, responsibilities, and boundaries of the engagement.',
+        'Yes. NEXSUS works with businesses, institutions, commercial operators, public-sector projects and private project owners where the brief aligns with the capabilities of one or more divisions.',
       ],
     },
     {
-      question: 'How are costs and timelines determined?',
+      question: 'How do I start a project with NEXSUS?',
       answer: [
-        'Costs and timelines depend on the project’s scope, complexity, and delivery requirements. After reviewing your brief and clarifying your priorities, we prepare a proposal detailing the scope, fees, estimated schedule, and relevant assumptions.',
+        'Contact NEXSUS with a concise description of what you want to achieve, your preferred timing and any available brief, plans or requirements. We will arrange an initial discussion, clarify the scope and connect the enquiry with the appropriate division and next steps.',
       ],
     },
     {
-      question: 'How can I discuss a venture or partnership?',
+      question: 'Does NEXSUS publish business and industry insights?',
       answer: [
-        'Contact VENTURES with an overview of the opportunity, the customer need it addresses, its current stage, and the type of collaboration you are seeking. This information helps us assess how the opportunity aligns with the division’s focus.',
+        'Yes. NEXSUS Insights publishes practical perspectives across Projects, Technology, Brand & Creative and Ventures, with each article connected to its relevant division and topic cluster.',
       ],
     },
     {
-      question: 'What information should I provide to start a project?',
+      question: 'How does NEXSUS use AI?',
       answer: [
-        'Tell us what you want to achieve, the services you need, and your preferred timeline. Include any available brief, plans, references, or technical requirements. For construction and interior projects, specify the location and approximate area. An indicative budget is helpful if available.',
+        'NEXSUS may use AI-assisted tools internally where they are appropriate, with human oversight and responsibility for final decisions and published work. The AI Transparency page explains the current website position and responsible-use principles.',
       ],
     },
   ],
@@ -172,28 +172,41 @@ const FAQS: Record<Language, FAQItem[]> = {
 
 const divisionLinks = ['projects', 'technology', 'amaris', 'ventures'];
 
-export const FAQSection: React.FC<FAQSectionProps> = ({ language, onOpenContact, onSelectDivision }) => {
+export const FAQSection: React.FC<FAQSectionProps> = ({ language, onOpenContact, onSelectDivision, onRouteNavigate }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const t = copy[language];
 
-  const renderParagraph = (text: string, faqIndex: number, paragraphIndex: number) => {
-    if (faqIndex !== 1 || paragraphIndex !== 0) return text;
-
-    const labels = ['PROJECTS', 'TECHNOLOGY & SOLUTIONS', 'AMARIS', 'VENTURES'];
-    const parts = text.split(new RegExp(`(${labels.map((label) => label.replace('&', '\\&')).join('|')})`, 'g'));
+  const renderParagraph = (text: string) => {
+    const destinations: Record<string, string> = {
+      'TECHNOLOGY & SOLUTIONS': '/technology',
+      'AI Transparency page': '/ai-transparency',
+      'NEXSUS Insights': '/insights',
+      'Contact NEXSUS': '/contact',
+      PROJECTS: '/projects',
+      AMARIS: '/amaris',
+      VENTURES: '/ventures',
+    };
+    const labels = Object.keys(destinations).sort((a, b) => b.length - a.length);
+    const escapedLabels = labels.map((label) => label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    const parts = text.split(new RegExp(`(${escapedLabels.join('|')})`, 'g'));
 
     return parts.map((part, index) => {
-      const divisionIndex = labels.indexOf(part);
-      if (divisionIndex === -1) return <React.Fragment key={`${part}-${index}`}>{part}</React.Fragment>;
+      const path = destinations[part];
+      if (!path) return <React.Fragment key={`${part}-${index}`}>{part}</React.Fragment>;
+      const localizedHref = language === 'en' || path.startsWith('/insights') || path === '/ai-transparency'
+        ? path
+        : `/${language}${path}`;
 
       return (
         <a
           key={part}
-          href={`${language === 'en' ? '' : `/${language}`}/${divisionLinks[divisionIndex]}`}
+          href={localizedHref}
           onClick={(event) => {
             if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
             event.preventDefault();
-            onSelectDivision(divisionLinks[divisionIndex]);
+            const divisionIndex = divisionLinks.indexOf(path.slice(1));
+            if (divisionIndex !== -1) onSelectDivision(divisionLinks[divisionIndex]);
+            else onRouteNavigate(path);
           }}
           className="font-medium text-black underline decoration-black/30 underline-offset-4 hover:decoration-black focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
         >
@@ -256,8 +269,8 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ language, onOpenContact,
                     className={`${isOpen ? 'block' : 'hidden'} pb-6`}
                   >
                     <div className="max-w-3xl space-y-4 text-sm leading-relaxed text-black/70">
-                      {item.answer.map((paragraph, paragraphIndex) => (
-                        <p key={paragraph}>{renderParagraph(paragraph, index, paragraphIndex)}</p>
+                      {item.answer.map((paragraph) => (
+                        <p key={paragraph}>{renderParagraph(paragraph)}</p>
                       ))}
                     </div>
                   </div>
