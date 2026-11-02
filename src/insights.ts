@@ -2093,10 +2093,6 @@ export const INSIGHTS: Insight[] = [
           "text": "This is a core part of effective automation."
         },
         {
-          "type": "paragraph",
-          "text": "automation and system integration"
-        },
-        {
           "type": "heading",
           "level": 2,
           "text": "What should be automated first?"
@@ -2361,11 +2357,13 @@ export const INSIGHTS: Insight[] = [
         },
         {
           "type": "paragraph",
-          "text": "using anchor text:"
-        },
-        {
-          "type": "paragraph",
-          "text": "NEXSUS approach to AI"
+          "text": "Read more about the NEXSUS approach to AI.",
+          "links": [
+            {
+              "text": "NEXSUS approach to AI",
+              "href": "/ai-transparency"
+            }
+          ]
         },
         {
           "type": "heading",
